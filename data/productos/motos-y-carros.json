@@ -11,17 +11,6 @@
     "destacado": true
   },
   {
-    "id": "moto-002",
-    "nombre": "Bicimoto Eléctrica City",
-    "descripcion": "Bicimoto ligera, perfecta para trayectos cortos.",
-    "precio": 650,
-    "moneda": "USD",
-    "imagen": "img/productos/moto-002.webp",
-    "categoria": "motos-y-carros",
-    "disponible": true,
-    "destacado": false
-  },
-  {
     "id": "moto-003",
     "nombre": "Scooter Eléctrico Pro",
     "descripcion": "Scooter con batería de litio de larga duración.",
