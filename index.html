@@ -5,20 +5,12 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>AllStore — Todo lo que necesitas, en un solo lugar</title>
 <meta name="description" content="Motos eléctricas, bicimotos, casas, electrodomésticos, consolas, ecoflows y paneles solares. Pide por WhatsApp.">
+<link rel="icon" type="image/webp" href="favicon.webp">
 <style>
 :root{
-  --azul-oscuro:#0a192f;
-  --azul-medio:#1e3a5f;
-  --azul-brillante:#00a8ff;
-  --celeste:#00d4ff;
-  --blanco:#ffffff;
-  --gris-claro:#f4f6f9;
-  --gris-medio:#e1e6ec;
-  --texto:#1f2937;
-  --texto-gris:#6b7280;
-  --verde:#25D366;
-  --rojo:#e74c3c;
-  --amarillo:#f39c12;
+  --azul-oscuro:#0a192f;--azul-medio:#1e3a5f;--azul-brillante:#00a8ff;--celeste:#00d4ff;
+  --blanco:#ffffff;--gris-claro:#f4f6f9;--gris-medio:#e1e6ec;
+  --texto:#1f2937;--texto-gris:#6b7280;--verde:#25D366;--rojo:#e74c3c;--amarillo:#f39c12;
 }
 *{margin:0;padding:0;box-sizing:border-box;font-family:'Segoe UI',Tahoma,Geneva,Verdana,sans-serif}
 body{background:var(--gris-claro);color:var(--texto);line-height:1.5;-webkit-font-smoothing:antialiased}
@@ -28,23 +20,24 @@ button{font-family:inherit;cursor:pointer;border:none}
 
 /* ===== HEADER ===== */
 header{
-  background:linear-gradient(135deg,var(--azul-oscuro) 0%,var(--azul-medio) 100%);
-  color:#fff;position:sticky;top:0;z-index:100;
-  box-shadow:0 2px 12px rgba(0,0,0,.15);
+  background:#fff;
+  position:sticky;top:0;z-index:100;
+  box-shadow:0 2px 12px rgba(0,0,0,.08);
+  border-bottom:1px solid var(--gris-medio);
 }
 .header-top{
   display:flex;align-items:center;justify-content:space-between;
   padding:12px 16px;gap:12px;
 }
-.logo-header{height:42px;width:auto}
+.logo-header{height:48px;width:auto;max-width:200px;object-fit:contain}
 .header-actions{display:flex;gap:8px;align-items:center}
 .btn-header{
-  background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.2);
-  color:#fff;padding:8px 12px;border-radius:20px;
+  background:var(--gris-claro);border:1px solid var(--gris-medio);
+  color:var(--azul-oscuro);padding:8px 12px;border-radius:20px;
   font-weight:700;font-size:.8rem;display:flex;align-items:center;gap:5px;
   transition:.15s;
 }
-.btn-header:hover{background:rgba(255,255,255,.2)}
+.btn-header:hover{background:#e8ecf1}
 .btn-carrito{background:var(--verde);border-color:var(--verde);color:#fff;position:relative}
 .carrito-badge{
   position:absolute;top:-6px;right:-6px;
@@ -54,37 +47,60 @@ header{
 }
 
 /* ===== BUSCADOR ===== */
-.search-wrap{
-  padding:0 16px 12px;
-}
-.search-wrap input{
-  width:100%;padding:11px 14px 11px 40px;
-  border:none;border-radius:10px;
-  background:rgba(255,255,255,.15);
-  color:#fff;font-size:.92rem;
-  transition:.15s;
-}
-.search-wrap input::placeholder{color:rgba(255,255,255,.6)}
-.search-wrap input:focus{outline:none;background:rgba(255,255,255,.25)}
+.search-wrap{padding:0 16px 12px}
 .search-box{position:relative}
+.search-box input{
+  width:100%;padding:11px 14px 11px 40px;
+  border:1px solid var(--gris-medio);border-radius:10px;
+  background:var(--gris-claro);color:var(--texto);
+  font-size:.92rem;transition:.15s;
+}
+.search-box input::placeholder{color:var(--texto-gris)}
+.search-box input:focus{outline:none;background:#fff;border-color:var(--azul-brillante)}
 .search-box::before{
   content:'🔍';position:absolute;left:14px;top:50%;
-  transform:translateY(-50%);font-size:.95rem;opacity:.7;
+  transform:translateY(-50%);font-size:.95rem;opacity:.6;
 }
 
-/* ===== CATEGORÍAS ===== */
+/* ===== BANNER CATEGORÍAS ===== */
+.banner-categorias{
+  position:relative;width:100%;
+  background:#0a192f;
+  overflow:hidden;
+}
+.banner-categorias img{
+  width:100%;display:block;
+}
+.banner-overlay{
+  position:absolute;inset:0;
+  display:grid;
+  grid-template-columns:repeat(7,1fr);
+  z-index:2;
+}
+.banner-overlay button{
+  background:transparent;border:none;cursor:pointer;
+  transition:background .15s;
+  border-radius:4px;
+}
+.banner-overlay button:active{background:rgba(0,168,255,.2)}
+.banner-overlay button.active{
+  background:rgba(0,168,255,.15);
+  box-shadow:inset 0 0 0 2px rgba(0,168,255,.5);
+}
+
+/* ===== CHIPS ===== */
 .categorias-bar{
   background:#fff;border-bottom:1px solid var(--gris-medio);
-  overflow-x:auto;white-space:nowrap;
-  padding:10px 16px;
+  overflow-x:auto;white-space:nowrap;padding:10px 16px;
   -webkit-overflow-scrolling:touch;
+  position:sticky;top:110px;z-index:90;
 }
 .categorias-bar::-webkit-scrollbar{display:none}
 .chip{
   display:inline-flex;align-items:center;gap:6px;
   background:var(--gris-claro);border:1px solid var(--gris-medio);
-  color:var(--texto-gris);padding:8px 14px;border-radius:999px;
-  font-size:.82rem;font-weight:700;margin-right:8px;
+  color:var(--texto-gris);padding:7px 13px;border-radius:999px;
+  font-size:.78rem;font-weight:700;margin-right:6px;
   transition:.15s;
 }
 .chip.active{
@@ -92,18 +108,18 @@ header{
   color:#fff;border-color:transparent;
   box-shadow:0 3px 10px rgba(10,25,47,.25);
 }
-.chip .icon{font-size:1rem}
+.chip .icon{font-size:.95rem}
 
-/* ===== HERO / BANNER ===== */
+/* ===== HERO ===== */
 .hero{
   background:linear-gradient(135deg,#0a192f 0%,#1e3a5f 100%);
-  color:#fff;padding:30px 20px;text-align:center;
+  color:#fff;padding:24px 20px;text-align:center;
 }
-.hero h1{font-size:1.4rem;margin-bottom:8px;line-height:1.25}
+.hero h1{font-size:1.3rem;margin-bottom:6px;line-height:1.25}
 .hero h1 span{color:var(--celeste)}
-.hero p{font-size:.88rem;color:rgba(255,255,255,.75);max-width:500px;margin:0 auto}
+.hero p{font-size:.85rem;color:rgba(255,255,255,.75);max-width:500px;margin:0 auto}
 
-/* ===== GRID PRODUCTOS ===== */
+/* ===== PRODUCTOS ===== */
 .productos-wrap{padding:16px;max-width:1200px;margin:0 auto}
 .productos-header{
   display:flex;justify-content:space-between;align-items:center;
@@ -111,18 +127,15 @@ header{
 }
 .productos-header h2{font-size:1.05rem;color:var(--azul-oscuro)}
 .productos-header .count{font-size:.78rem;color:var(--texto-gris);font-weight:600}
-
 .productos-grid{
-  display:grid;
-  grid-template-columns:repeat(auto-fill,minmax(160px,1fr));
+  display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));
   gap:12px;
 }
 .producto-card{
   background:#fff;border-radius:12px;overflow:hidden;
   box-shadow:0 2px 8px rgba(0,0,0,.06);
   transition:transform .2s,box-shadow .2s;
-  display:flex;flex-direction:column;
-  position:relative;
+  display:flex;flex-direction:column;position:relative;
 }
 .producto-card:hover{transform:translateY(-3px);box-shadow:0 8px 20px rgba(0,0,0,.1)}
 .producto-img-wrap{
@@ -131,14 +144,12 @@ header{
 }
 .producto-img-wrap img{width:100%;height:100%;object-fit:cover}
 .badge-agotado{
-  position:absolute;top:8px;left:8px;
-  background:var(--rojo);color:#fff;
+  position:absolute;top:8px;left:8px;background:var(--rojo);color:#fff;
   font-size:.62rem;font-weight:800;padding:3px 8px;border-radius:6px;
   text-transform:uppercase;letter-spacing:.5px;
 }
 .badge-destacado{
-  position:absolute;top:8px;right:8px;
-  background:var(--amarillo);color:#fff;
+  position:absolute;top:8px;right:8px;background:var(--amarillo);color:#fff;
   font-size:.62rem;font-weight:800;padding:3px 8px;border-radius:6px;
   text-transform:uppercase;letter-spacing:.5px;
 }
@@ -153,22 +164,20 @@ header{
   display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;
   overflow:hidden;min-height:2.4em;
 }
-.producto-precio{
-  font-size:1.15rem;font-weight:900;color:var(--azul-oscuro);
-  margin-bottom:8px;margin-top:auto;
-}
-.producto-precio small{font-size:.7rem;color:var(--texto-gris);font-weight:600}
+.producto-precios{margin-bottom:10px;margin-top:auto}
+.producto-precio{font-size:1.1rem;font-weight:900;color:var(--azul-oscuro);line-height:1.1}
+.producto-precio small{font-size:.68rem;color:var(--texto-gris);font-weight:700}
+.precio-cup{font-size:.72rem;font-weight:700;color:var(--texto-gris);margin-top:3px}
 .btn-agregar{
   width:100%;padding:9px;border-radius:8px;
   background:linear-gradient(135deg,var(--azul-oscuro),var(--azul-medio));
-  color:#fff;font-weight:800;font-size:.82rem;
-  transition:.15s;
+  color:#fff;font-weight:800;font-size:.82rem;transition:.15s;
   display:flex;align-items:center;justify-content:center;gap:5px;
 }
 .btn-agregar:hover{filter:brightness(1.15)}
 .btn-agregar:disabled{background:var(--gris-medio);color:var(--texto-gris);cursor:not-allowed}
 
-/* ===== CARRITO MODAL ===== */
+/* ===== CARRITO ===== */
 .carrito-overlay{
   position:fixed;inset:0;background:rgba(0,0,0,.5);
   z-index:200;display:none;align-items:flex-end;justify-content:center;
@@ -203,7 +212,8 @@ header{
 }
 .carrito-item-info{flex:1;min-width:0}
 .carrito-item-nombre{font-size:.85rem;font-weight:700;margin-bottom:4px}
-.carrito-item-precio{font-size:.82rem;color:var(--azul-brillante);font-weight:800}
+.carrito-item-precio{font-size:.78rem;color:var(--azul-brillante);font-weight:800}
+.carrito-item-precio small{color:var(--texto-gris);font-weight:600}
 .carrito-item-ctrl{display:flex;align-items:center;gap:6px;margin-top:6px}
 .qty-btn{
   background:var(--gris-claro);border:1px solid var(--gris-medio);
@@ -218,16 +228,30 @@ header{
 }
 .carrito-empty{text-align:center;padding:40px 20px;color:var(--texto-gris)}
 .carrito-empty .big{font-size:2.5rem;margin-bottom:10px}
+
 .carrito-foot{
   padding:16px 20px;border-top:1px solid var(--gris-medio);
   background:var(--gris-claro);
 }
-.carrito-total{
+.resumen-linea{
   display:flex;justify-content:space-between;align-items:center;
-  margin-bottom:12px;
+  font-size:.85rem;margin-bottom:6px;
 }
-.carrito-total .lbl{font-size:.82rem;color:var(--texto-gris);font-weight:700}
-.carrito-total .val{font-size:1.4rem;font-weight:900;color:var(--azul-oscuro)}
+.resumen-linea .lbl{color:var(--texto-gris);font-weight:700}
+.resumen-linea .val{font-weight:800;color:var(--azul-oscuro)}
+.resumen-linea.subtotal .val{color:var(--texto)}
+.resumen-linea.servicio .val{color:var(--amarillo)}
+.resumen-linea.servicio .lbl{color:var(--amarillo)}
+.resumen-linea.total{
+  border-top:2px dashed var(--gris-medio);
+  padding-top:10px;margin-top:10px;margin-bottom:12px;font-size:1.05rem;
+}
+.resumen-linea.total .lbl{color:var(--azul-oscuro);font-weight:900}
+.resumen-linea.total .val{font-size:1.3rem;color:var(--azul-oscuro);font-weight:900}
+.resumen-cup{
+  font-size:.75rem;color:var(--texto-gris);text-align:right;
+  margin-top:-2px;margin-bottom:4px;font-weight:600;
+}
 .btn-whatsapp{
   width:100%;padding:14px;border-radius:10px;
   background:var(--verde);color:#fff;
@@ -237,7 +261,7 @@ header{
 }
 .btn-whatsapp:hover{filter:brightness(1.08)}
 
-/* ===== LOADING & EMPTY ===== */
+/* ===== LOADING ===== */
 .loading{text-align:center;padding:40px;color:var(--texto-gris)}
 .spinner{
   width:36px;height:36px;border:3px solid var(--gris-medio);
@@ -248,12 +272,16 @@ header{
 
 /* ===== FOOTER ===== */
 footer{
-  background:var(--azul-oscuro);color:rgba(255,255,255,.7);
+  background:var(--azul-oscuro);color:rgba(255,255,255,.75);
   padding:30px 20px;text-align:center;margin-top:40px;
 }
-footer img{height:40px;margin:0 auto 12px;opacity:.95}
+footer img{
+  height:60px;width:auto;max-width:220px;margin:0 auto 14px;
+  background:#fff;padding:8px 14px;border-radius:10px;
+}
 footer p{font-size:.78rem;margin-bottom:6px}
-footer .credit{font-size:.72rem;opacity:.6;margin-top:14px}
+footer .credit{font-size:.72rem;opacity:.7;margin-top:14px;line-height:1.7}
+footer .credit strong{color:#2ecc71;font-weight:800}
 
 /* ===== TOAST ===== */
 .toast-container{
@@ -273,7 +301,13 @@ footer .credit{font-size:.72rem;opacity:.6;margin-top:14px}
 
 @media(min-width:768px){
   .productos-grid{grid-template-columns:repeat(auto-fill,minmax(200px,1fr))}
-  .hero h1{font-size:1.8rem}
+  .hero h1{font-size:1.6rem}
+  .logo-header{height:55px}
+}
+@media(max-width:520px){
+  .logo-header{height:38px;max-width:150px}
+  .banner-overlay button{border-radius:2px}
+  .categorias-bar{top:100px}
 }
 </style>
 </head>
@@ -281,8 +315,8 @@ footer .credit{font-size:.72rem;opacity:.6;margin-top:14px}
 
 <header>
   <div class="header-top">
-    <img src="img/logo.webp" alt="AllStore" class="logo-header" onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
-    <div style="display:none;color:#fff;font-weight:900;font-size:1.1rem;letter-spacing:2px">AllStore</div>
+    <img src="logo.webp" alt="AllStore" class="logo-header" onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
+    <div style="display:none;color:#0a192f;font-weight:900;font-size:1.1rem;letter-spacing:2px">AllStore</div>
     <div class="header-actions">
       <button class="btn-header btn-carrito" onclick="abrirCarrito()">
         🛒 Carrito
@@ -296,6 +330,11 @@ footer .credit{font-size:.72rem;opacity:.6;margin-top:14px}
     </div>
   </div>
 </header>
+
+<div class="banner-categorias">
+  <img src="banner-categorias.webp" alt="Categorías AllStore" onerror="this.parentElement.style.display='none'">
+  <div class="banner-overlay" id="bannerOverlay"></div>
+</div>
 
 <div class="categorias-bar" id="categoriasBar"></div>
 
@@ -317,7 +356,6 @@ footer .credit{font-size:.72rem;opacity:.6;margin-top:14px}
   </div>
 </div>
 
-<!-- CARRITO -->
 <div class="carrito-overlay" id="carritoOverlay" onclick="if(event.target===this)cerrarCarrito()">
   <div class="carrito-panel">
     <div class="carrito-head">
@@ -326,11 +364,21 @@ footer .credit{font-size:.72rem;opacity:.6;margin-top:14px}
     </div>
     <div class="carrito-body" id="carritoBody"></div>
     <div class="carrito-foot" id="carritoFoot" style="display:none">
-      <div class="carrito-total">
-        <span class="lbl">TOTAL</span>
-        <span class="val" id="carritoTotal">$0.00</span>
+      <div class="resumen-linea subtotal">
+        <span class="lbl">Subtotal</span>
+        <span class="val" id="subtotalUSD">$0.00</span>
       </div>
-      <button class="btn-whatsapp" onclick="enviarPedidoWhatsApp()">
+      <div class="resumen-cup" id="subtotalCUP">≈ 0 CUP</div>
+      <div class="resumen-linea servicio">
+        <span class="lbl">Servicio de plataforma</span>
+        <span class="val" id="servicioCUP">0 CUP</span>
+      </div>
+      <div class="resumen-linea total">
+        <span class="lbl">TOTAL</span>
+        <span class="val" id="totalUSD">$0.00</span>
+      </div>
+      <div class="resumen-cup" id="totalCUP" style="font-size:.85rem;font-weight:800;color:var(--azul-oscuro)">≈ 0 CUP</div>
+      <button class="btn-whatsapp" onclick="enviarPedidoWhatsApp()" style="margin-top:12px">
         💬 Enviar pedido por WhatsApp
       </button>
     </div>
@@ -338,13 +386,13 @@ footer .credit{font-size:.72rem;opacity:.6;margin-top:14px}
 </div>
 
 <footer>
-  <img src="img/logo.webp" alt="AllStore" onerror="this.style.display='none'">
+  <img src="logo.webp" alt="AllStore" onerror="this.style.display='none'">
   <p><strong>AllStore</strong> — Todo lo que necesitas, en un solo lugar.</p>
   <p>Pide por WhatsApp y coordinamos la entrega.</p>
   <div class="credit">
-  © 2026 AllStore · Todos los derechos reservados<br>
-  <span style="font-size:.68rem">Creado por Angel Systems</span>
-</div>
+    © 2026 AllStore · Todos los derechos reservados<br>
+    <strong>Creado por Angel Systems</strong>
+  </div>
 </footer>
 
 <div class="toast-container" id="toasts"></div>
@@ -352,13 +400,14 @@ footer .credit{font-size:.72rem;opacity:.6;margin-top:14px}
 <script>
 /* ============================================================
    ALLSTORE — CATÁLOGO PÚBLICO
-   ============================================================
-   Lee categorías y productos desde archivos JSON en /data
-   El carrito se guarda en localStorage
-   El pedido se envía por WhatsApp con mensaje pre-llenado
    ============================================================ */
 
-const WHATSAPP_NUMERO = '5351188758'; // Cambiar por el número del dueño
+let config = {
+  tasaUSD: 790,
+  comisionPorcentaje: 3,
+  comisionTopeCUP: 1000,
+  whatsapp: '5356686384'
+};
 
 let categorias = [];
 let productos = [];
@@ -366,10 +415,19 @@ let categoriaActiva = 'todas';
 let busqueda = '';
 let carrito = [];
 
-/* ===== UTILIDADES ===== */
 const $ = s => document.querySelector(s);
 const money = n => '$' + Number(n || 0).toFixed(2);
 const escapeHtml = s => String(s ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+
+function fmtCUP(n){
+  const r = Math.round(Number(n) || 0);
+  return r.toString().replace(/\B(?=(\d{3})+(?!\d))/g, '.') + ' CUP';
+}
+function usdToCUP(usd){ return usd * config.tasaUSD; }
+function calcularComision(subtotalCUP){
+  const p = subtotalCUP * (config.comisionPorcentaje / 100);
+  return Math.min(p, config.comisionTopeCUP);
+}
 
 function toast(msg){
   const c = $('#toasts');
@@ -385,7 +443,6 @@ function toast(msg){
   }, 2500);
 }
 
-/* ===== CARRITO (localStorage) ===== */
 function cargarCarrito(){
   try{
     const raw = localStorage.getItem('allstore_carrito');
@@ -427,20 +484,21 @@ function actualizarBadge(){
   else badge.style.display = 'none';
 }
 
-/* ===== CARGAR DATOS ===== */
+async function cargarConfig(){
+  try{
+    const r = await fetch('data/config.json');
+    const data = await r.json();
+    config = Object.assign(config, data);
+  }catch(e){ console.warn('Usando config por defecto'); }
+}
 async function cargarCategorias(){
   try{
     const r = await fetch('data/categorias.json');
     categorias = await r.json();
-  }catch(e){
-    console.warn('Error cargando categorías:', e);
-    categorias = [];
-  }
+  }catch(e){ categorias = []; }
 }
-
 async function cargarProductosDeCategoria(catId){
   if(catId === 'todas'){
-    // Cargar todas las categorías en paralelo
     const promesas = categorias.map(c => cargarProductosDeCategoria(c.id));
     const resultados = await Promise.all(promesas);
     productos = resultados.flat();
@@ -450,13 +508,9 @@ async function cargarProductosDeCategoria(catId){
     const r = await fetch(`data/productos/${catId}.json`);
     const data = await r.json();
     productos = data;
-  }catch(e){
-    console.warn('Error cargando productos de', catId, e);
-    productos = [];
-  }
+  }catch(e){ productos = []; }
 }
 
-/* ===== RENDER ===== */
 function renderCategoriasBar(){
   const bar = $('#categoriasBar');
   const items = [{id:'todas', nombre:'Todas', icon:'🏠'}, ...categorias];
@@ -467,13 +521,23 @@ function renderCategoriasBar(){
   `).join('');
 }
 
+function renderBannerOverlay(){
+  const overlay = $('#bannerOverlay');
+  if(!categorias.length){ overlay.innerHTML = ''; return; }
+  overlay.innerHTML = categorias.map(c => `
+    <button type="button" class="${categoriaActiva === c.id ? 'active' : ''}"
+            onclick="cambiarCategoria('${c.id}')"
+            title="${escapeHtml(c.nombre)}"
+            aria-label="${escapeHtml(c.nombre)}"></button>
+  `).join('');
+}
+
 function renderProductos(){
   const grid = $('#productosGrid');
   const q = busqueda.toLowerCase().trim();
   const filtrados = productos.filter(p => {
     if(!q) return true;
-    return p.nombre.toLowerCase().includes(q) ||
-           (p.descripcion || '').toLowerCase().includes(q);
+    return p.nombre.toLowerCase().includes(q) || (p.descripcion || '').toLowerCase().includes(q);
   });
 
   const catActual = categorias.find(c => c.id === categoriaActiva);
@@ -483,13 +547,14 @@ function renderProductos(){
   $('#contadorProductos').textContent = `${filtrados.length} producto${filtrados.length===1?'':'s'}`;
 
   if(!filtrados.length){
-    grid.innerHTML = '<div class="loading" style="grid-column:1/-1"><div class="big" style="font-size:2.5rem;margin-bottom:10px">🔍</div>No hay productos con ese filtro.</div>';
+    grid.innerHTML = '<div class="loading" style="grid-column:1/-1"><div style="font-size:2.5rem;margin-bottom:10px">🔍</div>No hay productos con ese filtro.</div>';
     return;
   }
 
   grid.innerHTML = filtrados.map(p => {
     const agotado = p.disponible === false;
     const cat = categorias.find(c => c.id === p.categoria);
+    const cup = usdToCUP(p.precio);
     return `
       <div class="producto-card">
         <div class="producto-img-wrap">
@@ -500,7 +565,10 @@ function renderProductos(){
         <div class="producto-info">
           <div class="producto-cat">${cat ? escapeHtml(cat.nombre) : ''}</div>
           <div class="producto-nombre">${escapeHtml(p.nombre)}</div>
-          <div class="producto-precio">${money(p.precio)} <small>${p.moneda || 'USD'}</small></div>
+          <div class="producto-precios">
+            <div class="producto-precio">${money(p.precio)} <small>USD</small></div>
+            <div class="precio-cup">≈ ${fmtCUP(cup)}</div>
+          </div>
           <button class="btn-agregar" onclick="agregarAlCarrito('${p.id}')" ${agotado ? 'disabled' : ''}>
             ${agotado ? '🚫 Agotado' : '🛒 Agregar'}
           </button>
@@ -510,10 +578,10 @@ function renderProductos(){
   }).join('');
 }
 
-/* ===== ACCIONES ===== */
 async function cambiarCategoria(id){
   categoriaActiva = id;
   renderCategoriasBar();
+  renderBannerOverlay();
   $('#productosGrid').innerHTML = '<div class="loading" style="grid-column:1/-1"><div class="spinner"></div>Cargando...</div>';
   await cargarProductosDeCategoria(id);
   renderProductos();
@@ -538,18 +606,19 @@ function renderCarrito(){
     foot.style.display = 'none';
     return;
   }
-  let total = 0;
+  let subtotalUSD = 0;
   body.innerHTML = carrito.map(item => {
     const p = productos.find(x => x.id === item.id);
     if(!p) return '';
-    const sub = p.precio * item.cant;
-    total += sub;
+    const subUSD = p.precio * item.cant;
+    subtotalUSD += subUSD;
+    const subCUP = usdToCUP(subUSD);
     return `
       <div class="carrito-item">
         <img src="${escapeHtml(p.imagen || 'img/placeholder.webp')}" alt="" onerror="this.style.background='#e1e6ec'">
         <div class="carrito-item-info">
           <div class="carrito-item-nombre">${escapeHtml(p.nombre)}</div>
-          <div class="carrito-item-precio">${money(p.precio)} ${p.moneda || 'USD'}</div>
+          <div class="carrito-item-precio">${money(p.precio)} <small>USD · ≈ ${fmtCUP(usdToCUP(p.precio))}</small></div>
           <div class="carrito-item-ctrl">
             <button class="qty-btn" onclick="cambiarCantidad('${p.id}',-1)">−</button>
             <span class="qty-num">${item.cant}</span>
@@ -557,40 +626,60 @@ function renderCarrito(){
           </div>
           <button class="btn-remove" onclick="eliminarDelCarrito('${p.id}')">Eliminar</button>
         </div>
-        <div class="carrito-item-sub">${money(sub)}</div>
+        <div class="carrito-item-sub">${money(subUSD)}<br><small style="color:var(--texto-gris);font-weight:600">≈ ${fmtCUP(subCUP)}</small></div>
       </div>
     `;
   }).join('');
-  $('#carritoTotal').textContent = money(total);
+
+  const subtotalCUP = usdToCUP(subtotalUSD);
+  const comision = calcularComision(subtotalCUP);
+  const totalCUP = subtotalCUP + comision;
+
+  $('#subtotalUSD').textContent = money(subtotalUSD);
+  $('#subtotalCUP').textContent = `≈ ${fmtCUP(subtotalCUP)}`;
+  $('#servicioCUP').textContent = fmtCUP(comision);
+  $('#totalUSD').textContent = money(subtotalUSD) + ' + ' + fmtCUP(comision);
+  $('#totalCUP').textContent = `≈ ${fmtCUP(totalCUP)}`;
   foot.style.display = 'block';
 }
 
 function enviarPedidoWhatsApp(){
   if(!carrito.length){ toast('Tu carrito está vacío'); return; }
-  let total = 0;
+  let subtotalUSD = 0;
   let msg = '🛒 *Nuevo pedido — AllStore*\n\n';
   carrito.forEach(item => {
     const p = productos.find(x => x.id === item.id);
     if(!p) return;
-    const sub = p.precio * item.cant;
-    total += sub;
+    const subUSD = p.precio * item.cant;
+    subtotalUSD += subUSD;
     msg += `• ${p.nombre}\n`;
-    msg += `  ${item.cant} x ${money(p.precio)} = ${money(sub)}\n\n`;
+    msg += `  ${item.cant} x ${money(p.precio)} = ${money(subUSD)}\n`;
+    msg += `  ≈ ${fmtCUP(usdToCUP(subUSD))}\n\n`;
   });
+  const subtotalCUP = usdToCUP(subtotalUSD);
+  const comision = calcularComision(subtotalCUP);
+  const totalCUP = subtotalCUP + comision;
+
   msg += `━━━━━━━━━━━━━━━\n`;
-  msg += `*TOTAL: ${money(total)}*\n\n`;
+  msg += `Subtotal: ${money(subtotalUSD)}\n`;
+  msg += `≈ ${fmtCUP(subtotalCUP)}\n`;
+  msg += `Servicio de plataforma: ${fmtCUP(comision)}\n`;
+  msg += `━━━━━━━━━━━━━━━\n`;
+  msg += `*TOTAL: ${money(subtotalUSD)} + ${fmtCUP(comision)}*\n`;
+  msg += `*≈ ${fmtCUP(totalCUP)}*\n\n`;
   msg += `Por favor confírmame disponibilidad y forma de pago. 🙏`;
 
-  const url = `https://wa.me/${WHATSAPP_NUMERO}?text=${encodeURIComponent(msg)}`;
+  const url = `https://wa.me/${config.whatsapp}?text=${encodeURIComponent(msg)}`;
   window.open(url, '_blank');
 }
 
-/* ===== INIT ===== */
 async function init(){
   cargarCarrito();
   actualizarBadge();
+  await cargarConfig();
   await cargarCategorias();
   renderCategoriasBar();
+  renderBannerOverlay();
   await cargarProductosDeCategoria('todas');
   renderProductos();
 
@@ -603,4 +692,4 @@ async function init(){
 document.addEventListener('DOMContentLoaded', init);
 </script>
 </body>
-</html>
+  </html>
