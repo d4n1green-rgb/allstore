@@ -34,13 +34,6 @@ header{background:#fff;position:sticky;top:0;z-index:100;box-shadow:0 2px 12px r
 .search-box input:focus{outline:none;background:#fff;border-color:var(--azul-brillante)}
 .search-box::before{content:'🔍';position:absolute;left:14px;top:50%;transform:translateY(-50%);font-size:.95rem;opacity:.6}
 
-.banner-categorias{position:relative;width:100%;background:#0a192f;overflow:hidden}
-.banner-categorias img{width:100%;display:block}
-.banner-overlay{position:absolute;inset:0;display:grid;grid-template-columns:repeat(7,1fr);z-index:2}
-.banner-overlay button{background:transparent;border:none;cursor:pointer;transition:background .15s;border-radius:4px}
-.banner-overlay button:active{background:rgba(0,168,255,.2)}
-.banner-overlay button.active{background:rgba(0,168,255,.15);box-shadow:inset 0 0 0 2px rgba(0,168,255,.5)}
-
 .categorias-bar{background:#fff;border-bottom:1px solid var(--gris-medio);overflow-x:auto;white-space:nowrap;padding:10px 16px;-webkit-overflow-scrolling:touch;position:sticky;top:110px;z-index:90}
 .categorias-bar::-webkit-scrollbar{display:none}
 .chip{display:inline-flex;align-items:center;gap:6px;background:var(--gris-claro);border:1px solid var(--gris-medio);color:var(--texto-gris);padding:7px 13px;border-radius:999px;font-size:.78rem;font-weight:700;margin-right:6px;transition:.15s}
@@ -69,7 +62,7 @@ header{background:#fff;position:sticky;top:0;z-index:100;box-shadow:0 2px 12px r
 .producto-precios{margin-bottom:10px;margin-top:auto}
 .producto-precio{font-size:1.1rem;font-weight:900;color:var(--azul-oscuro);line-height:1.1}
 .producto-precio small{font-size:.68rem;color:var(--texto-gris);font-weight:700}
-.precio-secundario{font-size:.72rem;font-weight:700;color:var(--texto-gris);margin-top:3px}
+.precio-cup{font-size:.72rem;font-weight:700;color:var(--texto-gris);margin-top:3px}
 .btn-agregar{width:100%;padding:9px;border-radius:8px;background:linear-gradient(135deg,var(--azul-oscuro),var(--azul-medio));color:#fff;font-weight:800;font-size:.82rem;transition:.15s;display:flex;align-items:center;justify-content:center;gap:5px}
 .btn-agregar:hover{filter:brightness(1.15)}
 .btn-agregar:disabled{background:var(--gris-medio);color:var(--texto-gris);cursor:not-allowed}
@@ -96,7 +89,6 @@ header{background:#fff;position:sticky;top:0;z-index:100;box-shadow:0 2px 12px r
 .btn-remove{background:none;color:var(--rojo);font-size:.72rem;font-weight:700;margin-top:6px;padding:2px 0}
 .carrito-empty{text-align:center;padding:40px 20px;color:var(--texto-gris)}
 .carrito-empty .big{font-size:2.5rem;margin-bottom:10px}
-
 .carrito-foot{padding:16px 20px;border-top:1px solid var(--gris-medio);background:var(--gris-claro)}
 .resumen-linea{display:flex;justify-content:space-between;align-items:center;font-size:.85rem;margin-bottom:6px}
 .resumen-linea .lbl{color:var(--texto-gris);font-weight:700}
@@ -115,14 +107,115 @@ header{background:#fff;position:sticky;top:0;z-index:100;box-shadow:0 2px 12px r
 .spinner{width:36px;height:36px;border:3px solid var(--gris-medio);border-top-color:var(--azul-brillante);border-radius:50%;margin:0 auto 12px;animation:spin 1s linear infinite}
 @keyframes spin{to{transform:rotate(360deg)}}
 
+/* ===== FOOTER ===== */
 footer{background:var(--azul-oscuro);color:rgba(255,255,255,.75);padding:30px 20px;text-align:center;margin-top:40px}
 footer img{height:60px;width:auto;max-width:220px;margin:0 auto 14px;background:#fff;padding:8px 14px;border-radius:10px}
 footer p{font-size:.78rem;margin-bottom:6px}
 footer .credit{font-size:.72rem;opacity:.7;margin-top:14px;line-height:1.7}
 footer .credit strong{color:#2ecc71;font-weight:800}
 
+/* Info del footer (propietario + ubicación) */
+.footer-info{
+  margin: 14px auto 8px;
+  padding: 14px 16px;
+  background: rgba(255,255,255,.05);
+  border-radius: 10px;
+  border: 1px solid rgba(255,255,255,.08);
+  max-width: 480px;
+  text-align: left;
+}
+.footer-info p{
+  font-size: .82rem;
+  color: rgba(255,255,255,.85);
+  margin-bottom: 6px;
+  line-height: 1.6;
+}
+.footer-info p:last-child{ margin-bottom: 0; }
+.footer-info strong{ color:#fff; font-weight:800; }
+
+/* Aviso de WhatsApp */
+.footer-aviso{
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  text-align: left;
+  background: linear-gradient(135deg, rgba(37,211,102,.12), rgba(37,211,102,.04));
+  border: 1px solid rgba(37,211,102,.3);
+  border-left: 3px solid var(--verde);
+  border-radius: 10px;
+  padding: 12px 14px;
+  margin: 12px auto 16px;
+  max-width: 480px;
+}
+.footer-aviso .aviso-icon{
+  font-size: 1.2rem;
+  line-height: 1;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+.footer-aviso p{
+  font-size: .78rem;
+  color: rgba(255,255,255,.8);
+  line-height: 1.6;
+  margin: 0;
+}
+.footer-aviso strong{ color:#2ecc71; font-weight:800; }
+
+/* Botón de comentarios */
+.btn-comentarios{
+  display:inline-flex;align-items:center;gap:8px;
+  background:linear-gradient(135deg,#00a8ff,#0080c7);
+  color:#fff;padding:11px 20px;border-radius:30px;
+  font-weight:800;font-size:.85rem;margin:16px 0 6px;
+  box-shadow:0 4px 15px rgba(0,168,255,.35);
+  transition:.2s;border:none;cursor:pointer;font-family:inherit;
+  max-width:100%;
+}
+.btn-comentarios:hover{transform:translateY(-2px);box-shadow:0 6px 20px rgba(0,168,255,.5);filter:brightness(1.08)}
+
+/* ===== MODAL COMENTARIOS ===== */
+.modal-com-overlay{position:fixed;inset:0;background:rgba(0,0,0,.6);z-index:250;display:none;align-items:flex-end;justify-content:center;backdrop-filter:blur(2px)}
+.modal-com-overlay.open{display:flex}
+.modal-com{background:#fff;width:100%;max-width:520px;border-radius:20px 20px 0 0;max-height:92vh;display:flex;flex-direction:column;animation:slideUp .25s ease}
+@media(min-width:768px){.modal-com-overlay{align-items:center;padding:20px}.modal-com{border-radius:16px;max-height:88vh}}
+.modal-com-head{padding:16px 20px;border-bottom:1px solid var(--gris-medio);display:flex;justify-content:space-between;align-items:center;flex-shrink:0}
+.modal-com-head h3{font-size:1.05rem;color:var(--azul-oscuro)}
+.modal-com-close{background:var(--gris-claro);border-radius:50%;width:32px;height:32px;font-size:1rem;color:var(--texto-gris);display:flex;align-items:center;justify-content:center;cursor:pointer;border:none}
+.modal-com-body{flex:1;overflow-y:auto;padding:18px 20px}
+.modal-com-foot{padding:14px 20px;border-top:1px solid var(--gris-medio);display:flex;gap:8px;flex-shrink:0;background:var(--gris-claro)}
+.modal-com-foot button{flex:1;padding:12px;border-radius:10px;font-weight:800;font-size:.88rem;transition:.15s;border:none;cursor:pointer;font-family:inherit}
+.btn-com-cancel{background:transparent;color:var(--texto);border:1px solid var(--gris-medio) !important}
+.btn-com-cancel:hover{background:var(--gris-claro)}
+.btn-com-send{background:linear-gradient(135deg,#00a8ff,#0080c7);color:#fff}
+.btn-com-send:hover{filter:brightness(1.08)}
+.btn-com-send:disabled{opacity:.55;cursor:not-allowed;filter:none}
+
+.com-intro{font-size:.85rem;color:var(--texto-gris);margin-bottom:16px;line-height:1.6;text-align:center}
+.com-intro .emoji{font-size:1.4rem;display:block;margin-bottom:6px}
+
+.form-group-com{margin-bottom:12px}
+.form-group-com label{display:block;font-size:.7rem;font-weight:800;color:var(--texto-gris);text-transform:uppercase;letter-spacing:.5px;margin-bottom:5px}
+.form-group-com input,
+.form-group-com select,
+.form-group-com textarea{
+  width:100%;padding:10px 12px;border:1px solid var(--gris-medio);border-radius:8px;
+  font-size:.9rem;background:#fff;color:var(--texto);font-family:inherit;
+}
+.form-group-com textarea{resize:vertical;min-height:100px}
+.form-group-com input:focus,
+.form-group-com select:focus,
+.form-group-com textarea:focus{
+  outline:none;border-color:var(--azul-brillante);
+  box-shadow:0 0 0 3px rgba(0,168,255,.15);
+}
+
+.hp-field{position:absolute;left:-9999px;opacity:0;pointer-events:none}
+
+.loader-sm{display:inline-block;width:14px;height:14px;border:2px solid rgba(255,255,255,.3);border-top-color:#fff;border-radius:50%;animation:spin .8s linear infinite;vertical-align:middle;margin-right:6px}
+
 .toast-container{position:fixed;bottom:20px;left:50%;transform:translateX(-50%);z-index:300;display:flex;flex-direction:column;gap:8px;align-items:center;pointer-events:none;max-width:92vw}
 .toast{background:var(--azul-oscuro);color:#fff;padding:11px 18px;border-radius:10px;font-size:.85rem;font-weight:700;box-shadow:0 10px 30px rgba(0,0,0,.3);animation:toastIn .25s ease;border-left:3px solid var(--verde)}
+.toast.err{border-left-color:var(--rojo)}
 @keyframes toastIn{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
 
 @media(min-width:768px){
@@ -132,7 +225,6 @@ footer .credit strong{color:#2ecc71;font-weight:800}
 }
 @media(max-width:520px){
   .logo-header{height:38px;max-width:150px}
-  .banner-overlay button{border-radius:2px}
   .categorias-bar{top:100px}
 }
 </style>
@@ -157,11 +249,6 @@ footer .credit strong{color:#2ecc71;font-weight:800}
   </div>
 </header>
 
-<div class="banner-categorias">
-  <img src="banner-categorias.webp" alt="Categorías AllStore" onerror="this.parentElement.style.display='none'">
-  <div class="banner-overlay" id="bannerOverlay"></div>
-</div>
-
 <div class="categorias-bar" id="categoriasBar"></div>
 
 <div class="hero">
@@ -175,7 +262,10 @@ footer .credit strong{color:#2ecc71;font-weight:800}
     <span class="count" id="contadorProductos"></span>
   </div>
   <div class="productos-grid" id="productosGrid">
-    <div class="loading" style="grid-column:1/-1"><div class="spinner"></div>Cargando productos...</div>
+    <div class="loading" style="grid-column:1/-1">
+      <div class="spinner"></div>
+      Cargando productos...
+    </div>
   </div>
 </div>
 
@@ -188,19 +278,19 @@ footer .credit strong{color:#2ecc71;font-weight:800}
     <div class="carrito-body" id="carritoBody"></div>
     <div class="carrito-foot" id="carritoFoot" style="display:none">
       <div class="resumen-linea subtotal">
-        <span class="lbl">Subtotal CUP</span>
-        <span class="val" id="subtotalCUP">0 CUP</span>
+        <span class="lbl">Subtotal</span>
+        <span class="val" id="subtotalUSD">$0.00</span>
       </div>
-      <div class="resumen-cup" id="subtotalUSD">≈ $0.00 USD</div>
+      <div class="resumen-cup" id="subtotalCUP">≈ 0 CUP</div>
       <div class="resumen-linea servicio">
         <span class="lbl">Servicio de plataforma</span>
         <span class="val" id="servicioCUP">0 CUP</span>
       </div>
       <div class="resumen-linea total">
         <span class="lbl">TOTAL</span>
-        <span class="val" id="totalCUP">0 CUP</span>
+        <span class="val" id="totalUSD">$0.00</span>
       </div>
-      <div class="resumen-cup" id="totalUSD" style="font-size:.85rem;font-weight:800;color:var(--azul-oscuro)">≈ $0.00 USD</div>
+      <div class="resumen-cup" id="totalCUP" style="font-size:.85rem;font-weight:800;color:var(--azul-oscuro)">≈ 0 CUP</div>
       <button class="btn-whatsapp" onclick="enviarPedidoWhatsApp()" style="margin-top:12px">
         💬 Enviar pedido por WhatsApp
       </button>
@@ -208,10 +298,71 @@ footer .credit strong{color:#2ecc71;font-weight:800}
   </div>
 </div>
 
+<!-- MODAL COMENTARIOS Y SUGERENCIAS -->
+<div class="modal-com-overlay" id="modalComentarios" onclick="if(event.target===this)cerrarComentarios()">
+  <div class="modal-com">
+    <div class="modal-com-head">
+      <h3>💬 Comentarios y sugerencias</h3>
+      <button class="modal-com-close" onclick="cerrarComentarios()">✕</button>
+    </div>
+    <div class="modal-com-body">
+      <p class="com-intro">
+        <span class="emoji">📬</span>
+        ¿Tienes alguna queja, sugerencia o buena reseña? Escríbenos. Tu opinión nos ayuda a mejorar.
+      </p>
+
+      <div class="form-group-com">
+        <label>Tu nombre *</label>
+        <input type="text" id="comNombre" placeholder="Ej: Juan Pérez" autocomplete="name">
+      </div>
+
+      <div class="form-group-com">
+        <label>Tu email (opcional)</label>
+        <input type="email" id="comEmail" placeholder="Ej: juan@correo.com" autocomplete="email">
+      </div>
+
+      <div class="form-group-com">
+        <label>Tipo de mensaje</label>
+        <select id="comTipo">
+          <option value="Sugerencia">💡 Sugerencia</option>
+          <option value="Queja">⚠️ Queja</option>
+          <option value="Reseña positiva">⭐ Reseña positiva</option>
+          <option value="Otro">📝 Otro</option>
+        </select>
+      </div>
+
+      <div class="form-group-com">
+        <label>Tu mensaje *</label>
+        <textarea id="comMensaje" placeholder="Escribe aquí tu mensaje..." rows="4"></textarea>
+      </div>
+
+      <input type="text" name="_honey" class="hp-field" tabindex="-1" autocomplete="off">
+    </div>
+    <div class="modal-com-foot">
+      <button class="btn-com-cancel" onclick="cerrarComentarios()">Cancelar</button>
+      <button class="btn-com-send" id="btnEnviarCom" onclick="enviarComentario()">📨 Enviar</button>
+    </div>
+  </div>
+</div>
+
 <footer>
   <img src="logo.webp" alt="AllStore" onerror="this.style.display='none'">
   <p><strong>AllStore</strong> — Todo lo que necesitas, en un solo lugar.</p>
-  <p>Pide por WhatsApp y coordinamos la entrega.</p>
+
+  <div class="footer-info">
+    <p>📍 <strong>Ubicación:</strong> Güira de Melena, Artemisa, Cuba</p>
+    <p>👤 <strong>Propietario:</strong> Anthony Rodriguez Duthil</p>
+  </div>
+
+  <div class="footer-aviso">
+    <span class="aviso-icon">💬</span>
+    <p>La <strong>mensajería</strong>, <strong>disponibilidad</strong> y <strong>precio final</strong> de los productos se acuerdan directamente vía <strong>WhatsApp</strong> con el vendedor.</p>
+  </div>
+
+  <button class="btn-comentarios" onclick="abrirComentarios()">
+    💬 Comentarios y sugerencias
+  </button>
+
   <div class="credit">
     © 2026 AllStore · Todos los derechos reservados<br>
     <strong>Creado por Angel Systems</strong>
@@ -222,7 +373,7 @@ footer .credit strong{color:#2ecc71;font-weight:800}
 
 <script>
 /* ============================================================
-   ALLSTORE — CATÁLOGO PÚBLICO CON SOPORTE USD/CUP
+   ALLSTORE — CATÁLOGO PÚBLICO
    ============================================================ */
 
 let config = {
@@ -246,25 +397,16 @@ function fmtCUP(n){
   const r = Math.round(Number(n) || 0);
   return r.toString().replace(/\B(?=(\d{3})+(?!\d))/g, '.') + ' CUP';
 }
-function precioEnCUP(p){
-  if(!p) return 0;
-  if(p.moneda === 'CUP') return Number(p.precio) || 0;
-  return (Number(p.precio) || 0) * config.tasaUSD;
-}
-function precioEnUSD(p){
-  if(!p) return 0;
-  if(p.moneda === 'CUP') return (Number(p.precio) || 0) / config.tasaUSD;
-  return Number(p.precio) || 0;
-}
+function usdToCUP(usd){ return usd * config.tasaUSD; }
 function calcularComision(subtotalCUP){
   const p = subtotalCUP * (config.comisionPorcentaje / 100);
   return Math.min(p, config.comisionTopeCUP);
 }
 
-function toast(msg){
+function toast(msg, tipo){
   const c = $('#toasts');
   const el = document.createElement('div');
-  el.className = 'toast';
+  el.className = 'toast' + (tipo ? ' ' + tipo : '');
   el.textContent = msg;
   c.appendChild(el);
   setTimeout(() => {
@@ -272,9 +414,10 @@ function toast(msg){
     el.style.opacity = '0';
     el.style.transform = 'translateY(20px)';
     setTimeout(() => el.remove(), 320);
-  }, 2500);
+  }, 2800);
 }
 
+/* ===== CARRITO ===== */
 function cargarCarrito(){
   try{
     const raw = localStorage.getItem('allstore_carrito');
@@ -316,6 +459,7 @@ function actualizarBadge(){
   else badge.style.display = 'none';
 }
 
+/* ===== CARGA DE DATOS ===== */
 async function cargarConfig(){
   try{
     const r = await fetch('data/config.json');
@@ -329,20 +473,29 @@ async function cargarCategorias(){
     categorias = await r.json();
   }catch(e){ categorias = []; }
 }
+async function obtenerProductosDeCategoria(catId){
+  try{
+    const r = await fetch(`data/productos/${catId}.json`);
+    if(!r.ok) return [];
+    const data = await r.json();
+    return Array.isArray(data) ? data : [];
+  }catch(e){
+    console.warn('Error cargando', catId, e);
+    return [];
+  }
+}
 async function cargarProductosDeCategoria(catId){
   if(catId === 'todas'){
-    const promesas = categorias.map(c => cargarProductosDeCategoria(c.id));
-    const resultados = await Promise.all(promesas);
+    const resultados = await Promise.all(
+      categorias.map(c => obtenerProductosDeCategoria(c.id))
+    );
     productos = resultados.flat();
     return;
   }
-  try{
-    const r = await fetch(`data/productos/${catId}.json`);
-    const data = await r.json();
-    productos = data;
-  }catch(e){ productos = []; }
+  productos = await obtenerProductosDeCategoria(catId);
 }
 
+/* ===== RENDER ===== */
 function renderCategoriasBar(){
   const bar = $('#categoriasBar');
   const items = [{id:'todas', nombre:'Todas', icon:'🏠'}, ...categorias];
@@ -350,16 +503,6 @@ function renderCategoriasBar(){
     <button class="chip ${categoriaActiva === c.id ? 'active' : ''}" onclick="cambiarCategoria('${c.id}')">
       <span class="icon">${c.icon || '📦'}</span>${escapeHtml(c.nombre)}
     </button>
-  `).join('');
-}
-function renderBannerOverlay(){
-  const overlay = $('#bannerOverlay');
-  if(!categorias.length){ overlay.innerHTML = ''; return; }
-  overlay.innerHTML = categorias.map(c => `
-    <button type="button" class="${categoriaActiva === c.id ? 'active' : ''}"
-            onclick="cambiarCategoria('${c.id}')"
-            title="${escapeHtml(c.nombre)}"
-            aria-label="${escapeHtml(c.nombre)}"></button>
   `).join('');
 }
 
@@ -385,29 +528,20 @@ function renderProductos(){
   grid.innerHTML = filtrados.map(p => {
     const agotado = p.disponible === false;
     const cat = categorias.find(c => c.id === p.categoria);
-    const esCUP = (p.moneda === 'CUP');
-    // Precio principal y secundario según moneda
-    let precioPrincipal, precioSecundario;
-    if(esCUP){
-      precioPrincipal = `${fmtCUP(p.precio)} <small>CUP</small>`;
-      precioSecundario = `≈ ${money(precioEnUSD(p))} USD`;
-    }else{
-      precioPrincipal = `${money(p.precio)} <small>USD</small>`;
-      precioSecundario = `≈ ${fmtCUP(precioEnCUP(p))}`;
-    }
+    const cup = usdToCUP(p.precio);
     return `
       <div class="producto-card">
         <div class="producto-img-wrap">
           ${agotado ? '<span class="badge-agotado">Agotado</span>' : ''}
           ${p.destacado && !agotado ? '<span class="badge-destacado">★ Destacado</span>' : ''}
-          <img src="${escapeHtml(p.imagen || 'img/placeholder.webp')}" alt="${escapeHtml(p.nombre)}" loading="lazy" onerror="this.src='data:image/svg+xml;utf8,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><rect fill=%22%23e1e6ec%22 width=%22100%22 height=%22100%22/><text x=%2250%22 y=%2255%22 font-size=%2230%22 text-anchor=%22middle%22 fill=%22%23999%22>📷</text></svg>'">
+          <img src="${escapeHtml(p.imagen || 'placeholder')}" alt="${escapeHtml(p.nombre)}" loading="lazy" onerror="this.src='data:image/svg+xml;utf8,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><rect fill=%22%23e1e6ec%22 width=%22100%22 height=%22100%22/><text x=%2250%22 y=%2255%22 font-size=%2230%22 text-anchor=%22middle%22 fill=%22%23999%22>📷</text></svg>'">
         </div>
         <div class="producto-info">
           <div class="producto-cat">${cat ? escapeHtml(cat.nombre) : ''}</div>
           <div class="producto-nombre">${escapeHtml(p.nombre)}</div>
           <div class="producto-precios">
-            <div class="producto-precio">${precioPrincipal}</div>
-            <div class="precio-secundario">${precioSecundario}</div>
+            <div class="producto-precio">${money(p.precio)} <small>USD</small></div>
+            <div class="precio-cup">≈ ${fmtCUP(cup)}</div>
           </div>
           <button class="btn-agregar" onclick="agregarAlCarrito('${p.id}')" ${agotado ? 'disabled' : ''}>
             ${agotado ? '🚫 Agotado' : '🛒 Agregar'}
@@ -421,13 +555,13 @@ function renderProductos(){
 async function cambiarCategoria(id){
   categoriaActiva = id;
   renderCategoriasBar();
-  renderBannerOverlay();
   $('#productosGrid').innerHTML = '<div class="loading" style="grid-column:1/-1"><div class="spinner"></div>Cargando...</div>';
   await cargarProductosDeCategoria(id);
   renderProductos();
   window.scrollTo({top:0, behavior:'smooth'});
 }
 
+/* ===== CARRITO MODAL ===== */
 function abrirCarrito(){
   renderCarrito();
   $('#carritoOverlay').classList.add('open');
@@ -446,27 +580,19 @@ function renderCarrito(){
     foot.style.display = 'none';
     return;
   }
-  let subtotalCUP = 0;
   let subtotalUSD = 0;
   body.innerHTML = carrito.map(item => {
     const p = productos.find(x => x.id === item.id);
     if(!p) return '';
-    const cupUnit = precioEnCUP(p);
-    const usdUnit = precioEnUSD(p);
-    const subCUP = cupUnit * item.cant;
-    const subUSD = usdUnit * item.cant;
-    subtotalCUP += subCUP;
+    const subUSD = p.precio * item.cant;
     subtotalUSD += subUSD;
-    const esCUP = (p.moneda === 'CUP');
-    const precioTxt = esCUP
-      ? `${fmtCUP(p.precio)} CUP`
-      : `${money(p.precio)} USD`;
+    const subCUP = usdToCUP(subUSD);
     return `
       <div class="carrito-item">
-        <img src="${escapeHtml(p.imagen || 'img/placeholder.webp')}" alt="" onerror="this.style.background='#e1e6ec'">
+        <img src="${escapeHtml(p.imagen || 'placeholder')}" alt="" onerror="this.style.background='#e1e6ec'">
         <div class="carrito-item-info">
           <div class="carrito-item-nombre">${escapeHtml(p.nombre)}</div>
-          <div class="carrito-item-precio">${precioTxt} <small>· ≈ ${esCUP ? money(usdUnit) + ' USD' : fmtCUP(cupUnit)}</small></div>
+          <div class="carrito-item-precio">${money(p.precio)} <small>USD · ≈ ${fmtCUP(usdToCUP(p.precio))}</small></div>
           <div class="carrito-item-ctrl">
             <button class="qty-btn" onclick="cambiarCantidad('${p.id}',-1)">−</button>
             <span class="qty-num">${item.cant}</span>
@@ -474,70 +600,134 @@ function renderCarrito(){
           </div>
           <button class="btn-remove" onclick="eliminarDelCarrito('${p.id}')">Eliminar</button>
         </div>
-        <div class="carrito-item-sub">${fmtCUP(subCUP)}<br><small style="color:var(--texto-gris);font-weight:600">≈ ${money(subUSD)}</small></div>
+        <div class="carrito-item-sub">${money(subUSD)}<br><small style="color:var(--texto-gris);font-weight:600">≈ ${fmtCUP(subCUP)}</small></div>
       </div>
     `;
   }).join('');
 
+  const subtotalCUP = usdToCUP(subtotalUSD);
   const comision = calcularComision(subtotalCUP);
   const totalCUP = subtotalCUP + comision;
-  const totalUSD = subtotalUSD + (comision / config.tasaUSD);
 
-  $('#subtotalCUP').textContent = fmtCUP(subtotalCUP);
-  $('#subtotalUSD').textContent = `≈ ${money(subtotalUSD)} USD`;
+  $('#subtotalUSD').textContent = money(subtotalUSD);
+  $('#subtotalCUP').textContent = `≈ ${fmtCUP(subtotalCUP)}`;
   $('#servicioCUP').textContent = fmtCUP(comision);
-  $('#totalCUP').textContent = fmtCUP(totalCUP);
-  $('#totalUSD').textContent = `≈ ${money(totalUSD)} USD`;
+  $('#totalUSD').textContent = money(subtotalUSD) + ' + ' + fmtCUP(comision);
+  $('#totalCUP').textContent = `≈ ${fmtCUP(totalCUP)}`;
   foot.style.display = 'block';
 }
 
 function enviarPedidoWhatsApp(){
   if(!carrito.length){ toast('Tu carrito está vacío'); return; }
-  let subtotalCUP = 0;
   let subtotalUSD = 0;
   let msg = '🛒 *Nuevo pedido — AllStore*\n\n';
   carrito.forEach(item => {
     const p = productos.find(x => x.id === item.id);
     if(!p) return;
-    const cupUnit = precioEnCUP(p);
-    const usdUnit = precioEnUSD(p);
-    const subCUP = cupUnit * item.cant;
-    const subUSD = usdUnit * item.cant;
-    subtotalCUP += subCUP;
+    const subUSD = p.precio * item.cant;
     subtotalUSD += subUSD;
-    const esCUP = (p.moneda === 'CUP');
     msg += `• ${p.nombre}\n`;
-    if(esCUP){
-      msg += `  ${item.cant} x ${fmtCUP(p.precio)} = ${fmtCUP(subCUP)}\n`;
-      msg += `  ≈ ${money(subUSD)} USD\n\n`;
-    }else{
-      msg += `  ${item.cant} x ${money(p.precio)} USD = ${money(subUSD)} USD\n`;
-      msg += `  ≈ ${fmtCUP(subCUP)}\n\n`;
-    }
+    msg += `  ${item.cant} x ${money(p.precio)} = ${money(subUSD)}\n`;
+    msg += `  ≈ ${fmtCUP(usdToCUP(subUSD))}\n\n`;
   });
+  const subtotalCUP = usdToCUP(subtotalUSD);
   const comision = calcularComision(subtotalCUP);
   const totalCUP = subtotalCUP + comision;
-  const totalUSD = subtotalUSD + (comision / config.tasaUSD);
 
   msg += `━━━━━━━━━━━━━━━\n`;
-  msg += `Subtotal: ${fmtCUP(subtotalCUP)} (≈ ${money(subtotalUSD)} USD)\n`;
+  msg += `Subtotal: ${money(subtotalUSD)}\n`;
+  msg += `≈ ${fmtCUP(subtotalCUP)}\n`;
   msg += `Servicio de plataforma: ${fmtCUP(comision)}\n`;
   msg += `━━━━━━━━━━━━━━━\n`;
-  msg += `*TOTAL: ${fmtCUP(totalCUP)}*\n`;
-  msg += `*≈ ${money(totalUSD)} USD*\n\n`;
+  msg += `*TOTAL: ${money(subtotalUSD)} + ${fmtCUP(comision)}*\n`;
+  msg += `*≈ ${fmtCUP(totalCUP)}*\n\n`;
   msg += `Por favor confírmame disponibilidad y forma de pago. 🙏`;
 
   const url = `https://wa.me/${config.whatsapp}?text=${encodeURIComponent(msg)}`;
   window.open(url, '_blank');
 }
 
+/* ===== COMENTARIOS Y SUGERENCIAS ===== */
+const FORM_SUBMIT_EMAIL = 'angel.systems.05@gmail.com';
+
+function abrirComentarios(){
+  $('#modalComentarios').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+function cerrarComentarios(){
+  $('#modalComentarios').classList.remove('open');
+  document.body.style.overflow = '';
+}
+
+async function enviarComentario(){
+  const nombre = $('#comNombre').value.trim();
+  const email = $('#comEmail').value.trim();
+  const tipo = $('#comTipo').value;
+  const mensaje = $('#comMensaje').value.trim();
+
+  const honeypot = document.querySelector('.hp-field');
+  if(honeypot && honeypot.value){
+    toast('✅ Mensaje enviado. ¡Gracias!');
+    cerrarComentarios();
+    return;
+  }
+
+  if(!nombre){ toast('Escribe tu nombre', 'err'); return; }
+  if(!mensaje){ toast('Escribe un mensaje', 'err'); return; }
+  if(mensaje.length < 5){ toast('El mensaje es muy corto', 'err'); return; }
+  if(email && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)){
+    toast('El email no es válido', 'err'); return;
+  }
+
+  const btn = $('#btnEnviarCom');
+  btn.innerHTML = '<span class="loader-sm"></span> Enviando...';
+  btn.disabled = true;
+
+  try{
+    const r = await fetch(`https://formsubmit.co/ajax/${FORM_SUBMIT_EMAIL}`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Accept': 'application/json'
+      },
+      body: JSON.stringify({
+        _subject: `AllStore — ${tipo} de ${nombre}`,
+        _template: 'table',
+        _captcha: 'false',
+        Tipo: tipo,
+        Nombre: nombre,
+        Email: email || 'No proporcionado',
+        Mensaje: mensaje,
+        Fecha: new Date().toLocaleString('es-ES')
+      })
+    });
+
+    if(!r.ok){
+      throw new Error('FormSubmit respondió con estado ' + r.status);
+    }
+
+    toast('✅ Mensaje enviado. ¡Gracias por tu opinión!');
+    $('#comNombre').value = '';
+    $('#comEmail').value = '';
+    $('#comMensaje').value = '';
+    $('#comTipo').value = 'Sugerencia';
+    cerrarComentarios();
+  }catch(err){
+    console.error('Error FormSubmit:', err);
+    toast('No se pudo enviar. Revisa tu conexión e intenta de nuevo.', 'err');
+  }finally{
+    btn.innerHTML = '📨 Enviar';
+    btn.disabled = false;
+  }
+}
+
+/* ===== INIT ===== */
 async function init(){
   cargarCarrito();
   actualizarBadge();
   await cargarConfig();
   await cargarCategorias();
   renderCategoriasBar();
-  renderBannerOverlay();
   await cargarProductosDeCategoria('todas');
   renderProductos();
 
