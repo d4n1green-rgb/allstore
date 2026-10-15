@@ -1,0 +1,603 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AllStore — Todo lo que necesitas, en un solo lugar</title>
+<meta name="description" content="Motos eléctricas, bicimotos, casas, electrodomésticos, consolas, ecoflows y paneles solares. Pide por WhatsApp.">
+<style>
+:root{
+  --azul-oscuro:#0a192f;
+  --azul-medio:#1e3a5f;
+  --azul-brillante:#00a8ff;
+  --celeste:#00d4ff;
+  --blanco:#ffffff;
+  --gris-claro:#f4f6f9;
+  --gris-medio:#e1e6ec;
+  --texto:#1f2937;
+  --texto-gris:#6b7280;
+  --verde:#25D366;
+  --rojo:#e74c3c;
+  --amarillo:#f39c12;
+}
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Segoe UI',Tahoma,Geneva,Verdana,sans-serif}
+body{background:var(--gris-claro);color:var(--texto);line-height:1.5;-webkit-font-smoothing:antialiased}
+a{text-decoration:none;color:inherit}
+img{max-width:100%;display:block}
+button{font-family:inherit;cursor:pointer;border:none}
+
+/* ===== HEADER ===== */
+header{
+  background:linear-gradient(135deg,var(--azul-oscuro) 0%,var(--azul-medio) 100%);
+  color:#fff;position:sticky;top:0;z-index:100;
+  box-shadow:0 2px 12px rgba(0,0,0,.15);
+}
+.header-top{
+  display:flex;align-items:center;justify-content:space-between;
+  padding:12px 16px;gap:12px;
+}
+.logo-header{height:42px;width:auto}
+.header-actions{display:flex;gap:8px;align-items:center}
+.btn-header{
+  background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.2);
+  color:#fff;padding:8px 12px;border-radius:20px;
+  font-weight:700;font-size:.8rem;display:flex;align-items:center;gap:5px;
+  transition:.15s;
+}
+.btn-header:hover{background:rgba(255,255,255,.2)}
+.btn-carrito{background:var(--verde);border-color:var(--verde);color:#fff;position:relative}
+.carrito-badge{
+  position:absolute;top:-6px;right:-6px;
+  background:var(--rojo);color:#fff;font-size:.65rem;font-weight:800;
+  min-width:18px;height:18px;border-radius:9px;
+  display:flex;align-items:center;justify-content:center;padding:0 4px;
+}
+
+/* ===== BUSCADOR ===== */
+.search-wrap{
+  padding:0 16px 12px;
+}
+.search-wrap input{
+  width:100%;padding:11px 14px 11px 40px;
+  border:none;border-radius:10px;
+  background:rgba(255,255,255,.15);
+  color:#fff;font-size:.92rem;
+  transition:.15s;
+}
+.search-wrap input::placeholder{color:rgba(255,255,255,.6)}
+.search-wrap input:focus{outline:none;background:rgba(255,255,255,.25)}
+.search-box{position:relative}
+.search-box::before{
+  content:'🔍';position:absolute;left:14px;top:50%;
+  transform:translateY(-50%);font-size:.95rem;opacity:.7;
+}
+
+/* ===== CATEGORÍAS ===== */
+.categorias-bar{
+  background:#fff;border-bottom:1px solid var(--gris-medio);
+  overflow-x:auto;white-space:nowrap;
+  padding:10px 16px;
+  -webkit-overflow-scrolling:touch;
+}
+.categorias-bar::-webkit-scrollbar{display:none}
+.chip{
+  display:inline-flex;align-items:center;gap:6px;
+  background:var(--gris-claro);border:1px solid var(--gris-medio);
+  color:var(--texto-gris);padding:8px 14px;border-radius:999px;
+  font-size:.82rem;font-weight:700;margin-right:8px;
+  transition:.15s;
+}
+.chip.active{
+  background:linear-gradient(135deg,var(--azul-oscuro),var(--azul-medio));
+  color:#fff;border-color:transparent;
+  box-shadow:0 3px 10px rgba(10,25,47,.25);
+}
+.chip .icon{font-size:1rem}
+
+/* ===== HERO / BANNER ===== */
+.hero{
+  background:linear-gradient(135deg,#0a192f 0%,#1e3a5f 100%);
+  color:#fff;padding:30px 20px;text-align:center;
+}
+.hero h1{font-size:1.4rem;margin-bottom:8px;line-height:1.25}
+.hero h1 span{color:var(--celeste)}
+.hero p{font-size:.88rem;color:rgba(255,255,255,.75);max-width:500px;margin:0 auto}
+
+/* ===== GRID PRODUCTOS ===== */
+.productos-wrap{padding:16px;max-width:1200px;margin:0 auto}
+.productos-header{
+  display:flex;justify-content:space-between;align-items:center;
+  margin-bottom:12px;gap:12px;flex-wrap:wrap;
+}
+.productos-header h2{font-size:1.05rem;color:var(--azul-oscuro)}
+.productos-header .count{font-size:.78rem;color:var(--texto-gris);font-weight:600}
+
+.productos-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fill,minmax(160px,1fr));
+  gap:12px;
+}
+.producto-card{
+  background:#fff;border-radius:12px;overflow:hidden;
+  box-shadow:0 2px 8px rgba(0,0,0,.06);
+  transition:transform .2s,box-shadow .2s;
+  display:flex;flex-direction:column;
+  position:relative;
+}
+.producto-card:hover{transform:translateY(-3px);box-shadow:0 8px 20px rgba(0,0,0,.1)}
+.producto-img-wrap{
+  position:relative;width:100%;aspect-ratio:1/1;
+  background:var(--gris-claro);overflow:hidden;
+}
+.producto-img-wrap img{width:100%;height:100%;object-fit:cover}
+.badge-agotado{
+  position:absolute;top:8px;left:8px;
+  background:var(--rojo);color:#fff;
+  font-size:.62rem;font-weight:800;padding:3px 8px;border-radius:6px;
+  text-transform:uppercase;letter-spacing:.5px;
+}
+.badge-destacado{
+  position:absolute;top:8px;right:8px;
+  background:var(--amarillo);color:#fff;
+  font-size:.62rem;font-weight:800;padding:3px 8px;border-radius:6px;
+  text-transform:uppercase;letter-spacing:.5px;
+}
+.producto-info{padding:10px 12px 12px;display:flex;flex-direction:column;flex:1}
+.producto-cat{
+  font-size:.62rem;font-weight:800;color:var(--azul-brillante);
+  text-transform:uppercase;letter-spacing:.6px;margin-bottom:4px;
+}
+.producto-nombre{
+  font-size:.88rem;font-weight:700;color:var(--texto);
+  line-height:1.3;margin-bottom:6px;
+  display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;
+  overflow:hidden;min-height:2.4em;
+}
+.producto-precio{
+  font-size:1.15rem;font-weight:900;color:var(--azul-oscuro);
+  margin-bottom:8px;margin-top:auto;
+}
+.producto-precio small{font-size:.7rem;color:var(--texto-gris);font-weight:600}
+.btn-agregar{
+  width:100%;padding:9px;border-radius:8px;
+  background:linear-gradient(135deg,var(--azul-oscuro),var(--azul-medio));
+  color:#fff;font-weight:800;font-size:.82rem;
+  transition:.15s;
+  display:flex;align-items:center;justify-content:center;gap:5px;
+}
+.btn-agregar:hover{filter:brightness(1.15)}
+.btn-agregar:disabled{background:var(--gris-medio);color:var(--texto-gris);cursor:not-allowed}
+
+/* ===== CARRITO MODAL ===== */
+.carrito-overlay{
+  position:fixed;inset:0;background:rgba(0,0,0,.5);
+  z-index:200;display:none;align-items:flex-end;justify-content:center;
+}
+.carrito-overlay.open{display:flex}
+.carrito-panel{
+  background:#fff;width:100%;max-width:520px;
+  border-radius:20px 20px 0 0;
+  max-height:88vh;display:flex;flex-direction:column;
+  animation:slideUp .25s ease;
+}
+@keyframes slideUp{from{transform:translateY(100%)}to{transform:translateY(0)}}
+.carrito-head{
+  padding:16px 20px;border-bottom:1px solid var(--gris-medio);
+  display:flex;justify-content:space-between;align-items:center;
+}
+.carrito-head h3{font-size:1.05rem;color:var(--azul-oscuro)}
+.carrito-close{
+  background:var(--gris-claro);border-radius:50%;
+  width:32px;height:32px;font-size:1rem;color:var(--texto-gris);
+  display:flex;align-items:center;justify-content:center;
+}
+.carrito-body{flex:1;overflow-y:auto;padding:12px 20px}
+.carrito-item{
+  display:flex;gap:12px;padding:12px 0;
+  border-bottom:1px solid var(--gris-medio);
+}
+.carrito-item:last-child{border-bottom:none}
+.carrito-item img{
+  width:60px;height:60px;object-fit:cover;border-radius:8px;flex-shrink:0;
+  background:var(--gris-claro);
+}
+.carrito-item-info{flex:1;min-width:0}
+.carrito-item-nombre{font-size:.85rem;font-weight:700;margin-bottom:4px}
+.carrito-item-precio{font-size:.82rem;color:var(--azul-brillante);font-weight:800}
+.carrito-item-ctrl{display:flex;align-items:center;gap:6px;margin-top:6px}
+.qty-btn{
+  background:var(--gris-claro);border:1px solid var(--gris-medio);
+  width:26px;height:26px;border-radius:6px;font-weight:800;
+  display:flex;align-items:center;justify-content:center;
+}
+.qty-num{font-weight:800;min-width:24px;text-align:center;font-size:.85rem}
+.carrito-item-sub{font-size:.82rem;font-weight:800;text-align:right}
+.btn-remove{
+  background:none;color:var(--rojo);font-size:.72rem;
+  font-weight:700;margin-top:6px;padding:2px 0;
+}
+.carrito-empty{text-align:center;padding:40px 20px;color:var(--texto-gris)}
+.carrito-empty .big{font-size:2.5rem;margin-bottom:10px}
+.carrito-foot{
+  padding:16px 20px;border-top:1px solid var(--gris-medio);
+  background:var(--gris-claro);
+}
+.carrito-total{
+  display:flex;justify-content:space-between;align-items:center;
+  margin-bottom:12px;
+}
+.carrito-total .lbl{font-size:.82rem;color:var(--texto-gris);font-weight:700}
+.carrito-total .val{font-size:1.4rem;font-weight:900;color:var(--azul-oscuro)}
+.btn-whatsapp{
+  width:100%;padding:14px;border-radius:10px;
+  background:var(--verde);color:#fff;
+  font-weight:800;font-size:.95rem;
+  display:flex;align-items:center;justify-content:center;gap:8px;
+  box-shadow:0 4px 15px rgba(37,211,102,.35);
+}
+.btn-whatsapp:hover{filter:brightness(1.08)}
+
+/* ===== LOADING & EMPTY ===== */
+.loading{text-align:center;padding:40px;color:var(--texto-gris)}
+.spinner{
+  width:36px;height:36px;border:3px solid var(--gris-medio);
+  border-top-color:var(--azul-brillante);border-radius:50%;
+  margin:0 auto 12px;animation:spin 1s linear infinite;
+}
+@keyframes spin{to{transform:rotate(360deg)}}
+
+/* ===== FOOTER ===== */
+footer{
+  background:var(--azul-oscuro);color:rgba(255,255,255,.7);
+  padding:30px 20px;text-align:center;margin-top:40px;
+}
+footer img{height:40px;margin:0 auto 12px;opacity:.95}
+footer p{font-size:.78rem;margin-bottom:6px}
+footer .credit{font-size:.72rem;opacity:.6;margin-top:14px}
+
+/* ===== TOAST ===== */
+.toast-container{
+  position:fixed;bottom:20px;left:50%;transform:translateX(-50%);
+  z-index:300;display:flex;flex-direction:column;gap:8px;align-items:center;
+  pointer-events:none;max-width:92vw;
+}
+.toast{
+  background:var(--azul-oscuro);color:#fff;
+  padding:11px 18px;border-radius:10px;
+  font-size:.85rem;font-weight:700;
+  box-shadow:0 10px 30px rgba(0,0,0,.3);
+  animation:toastIn .25s ease;
+  border-left:3px solid var(--verde);
+}
+@keyframes toastIn{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+
+@media(min-width:768px){
+  .productos-grid{grid-template-columns:repeat(auto-fill,minmax(200px,1fr))}
+  .hero h1{font-size:1.8rem}
+}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="header-top">
+    <img src="img/logo.webp" alt="AllStore" class="logo-header" onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
+    <div style="display:none;color:#fff;font-weight:900;font-size:1.1rem;letter-spacing:2px">AllStore</div>
+    <div class="header-actions">
+      <button class="btn-header btn-carrito" onclick="abrirCarrito()">
+        🛒 Carrito
+        <span class="carrito-badge" id="carritoBadge" style="display:none">0</span>
+      </button>
+    </div>
+  </div>
+  <div class="search-wrap">
+    <div class="search-box">
+      <input type="text" id="searchInput" placeholder="Buscar productos..." autocomplete="off">
+    </div>
+  </div>
+</header>
+
+<div class="categorias-bar" id="categoriasBar"></div>
+
+<div class="hero">
+  <h1>Todo lo que necesitas, <span>en un solo lugar</span></h1>
+  <p>Motos, casas, electrodomésticos, consolas y más. Pide por WhatsApp.</p>
+</div>
+
+<div class="productos-wrap">
+  <div class="productos-header">
+    <h2 id="tituloCategoria">Todos los productos</h2>
+    <span class="count" id="contadorProductos"></span>
+  </div>
+  <div class="productos-grid" id="productosGrid">
+    <div class="loading" style="grid-column:1/-1">
+      <div class="spinner"></div>
+      Cargando productos...
+    </div>
+  </div>
+</div>
+
+<!-- CARRITO -->
+<div class="carrito-overlay" id="carritoOverlay" onclick="if(event.target===this)cerrarCarrito()">
+  <div class="carrito-panel">
+    <div class="carrito-head">
+      <h3>🛒 Tu pedido</h3>
+      <button class="carrito-close" onclick="cerrarCarrito()">✕</button>
+    </div>
+    <div class="carrito-body" id="carritoBody"></div>
+    <div class="carrito-foot" id="carritoFoot" style="display:none">
+      <div class="carrito-total">
+        <span class="lbl">TOTAL</span>
+        <span class="val" id="carritoTotal">$0.00</span>
+      </div>
+      <button class="btn-whatsapp" onclick="enviarPedidoWhatsApp()">
+        💬 Enviar pedido por WhatsApp
+      </button>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <img src="img/logo.webp" alt="AllStore" onerror="this.style.display='none'">
+  <p><strong>AllStore</strong> — Todo lo que necesitas, en un solo lugar.</p>
+  <p>Pide por WhatsApp y coordinamos la entrega.</p>
+  <div class="credit">© 2026 AllStore</div>
+</footer>
+
+<div class="toast-container" id="toasts"></div>
+
+<script>
+/* ============================================================
+   ALLSTORE — CATÁLOGO PÚBLICO
+   ============================================================
+   Lee categorías y productos desde archivos JSON en /data
+   El carrito se guarda en localStorage
+   El pedido se envía por WhatsApp con mensaje pre-llenado
+   ============================================================ */
+
+const WHATSAPP_NUMERO = '5351188758'; // Cambiar por el número del dueño
+
+let categorias = [];
+let productos = [];
+let categoriaActiva = 'todas';
+let busqueda = '';
+let carrito = [];
+
+/* ===== UTILIDADES ===== */
+const $ = s => document.querySelector(s);
+const money = n => '$' + Number(n || 0).toFixed(2);
+const escapeHtml = s => String(s ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+
+function toast(msg){
+  const c = $('#toasts');
+  const el = document.createElement('div');
+  el.className = 'toast';
+  el.textContent = msg;
+  c.appendChild(el);
+  setTimeout(() => {
+    el.style.transition = 'opacity .3s, transform .3s';
+    el.style.opacity = '0';
+    el.style.transform = 'translateY(20px)';
+    setTimeout(() => el.remove(), 320);
+  }, 2500);
+}
+
+/* ===== CARRITO (localStorage) ===== */
+function cargarCarrito(){
+  try{
+    const raw = localStorage.getItem('allstore_carrito');
+    carrito = raw ? JSON.parse(raw) : [];
+  }catch(e){ carrito = []; }
+}
+function guardarCarrito(){
+  try{ localStorage.setItem('allstore_carrito', JSON.stringify(carrito)); }catch(e){}
+}
+function agregarAlCarrito(id){
+  const prod = productos.find(p => p.id === id);
+  if(!prod || prod.disponible === false) return;
+  const item = carrito.find(i => i.id === id);
+  if(item) item.cant++;
+  else carrito.push({id, cant:1});
+  guardarCarrito();
+  actualizarBadge();
+  toast('✅ Agregado al carrito');
+}
+function cambiarCantidad(id, delta){
+  const item = carrito.find(i => i.id === id);
+  if(!item) return;
+  item.cant += delta;
+  if(item.cant <= 0) carrito = carrito.filter(i => i.id !== id);
+  guardarCarrito();
+  actualizarBadge();
+  renderCarrito();
+}
+function eliminarDelCarrito(id){
+  carrito = carrito.filter(i => i.id !== id);
+  guardarCarrito();
+  actualizarBadge();
+  renderCarrito();
+}
+function actualizarBadge(){
+  const total = carrito.reduce((s,i) => s + i.cant, 0);
+  const badge = $('#carritoBadge');
+  if(total > 0){ badge.textContent = total; badge.style.display = 'flex'; }
+  else badge.style.display = 'none';
+}
+
+/* ===== CARGAR DATOS ===== */
+async function cargarCategorias(){
+  try{
+    const r = await fetch('data/categorias.json');
+    categorias = await r.json();
+  }catch(e){
+    console.warn('Error cargando categorías:', e);
+    categorias = [];
+  }
+}
+
+async function cargarProductosDeCategoria(catId){
+  if(catId === 'todas'){
+    // Cargar todas las categorías en paralelo
+    const promesas = categorias.map(c => cargarProductosDeCategoria(c.id));
+    const resultados = await Promise.all(promesas);
+    productos = resultados.flat();
+    return;
+  }
+  try{
+    const r = await fetch(`data/productos/${catId}.json`);
+    const data = await r.json();
+    productos = data;
+  }catch(e){
+    console.warn('Error cargando productos de', catId, e);
+    productos = [];
+  }
+}
+
+/* ===== RENDER ===== */
+function renderCategoriasBar(){
+  const bar = $('#categoriasBar');
+  const items = [{id:'todas', nombre:'Todas', icon:'🏠'}, ...categorias];
+  bar.innerHTML = items.map(c => `
+    <button class="chip ${categoriaActiva === c.id ? 'active' : ''}" onclick="cambiarCategoria('${c.id}')">
+      <span class="icon">${c.icon || '📦'}</span>${escapeHtml(c.nombre)}
+    </button>
+  `).join('');
+}
+
+function renderProductos(){
+  const grid = $('#productosGrid');
+  const q = busqueda.toLowerCase().trim();
+  const filtrados = productos.filter(p => {
+    if(!q) return true;
+    return p.nombre.toLowerCase().includes(q) ||
+           (p.descripcion || '').toLowerCase().includes(q);
+  });
+
+  const catActual = categorias.find(c => c.id === categoriaActiva);
+  $('#tituloCategoria').textContent = categoriaActiva === 'todas'
+    ? 'Todos los productos'
+    : (catActual ? catActual.nombre : 'Productos');
+  $('#contadorProductos').textContent = `${filtrados.length} producto${filtrados.length===1?'':'s'}`;
+
+  if(!filtrados.length){
+    grid.innerHTML = '<div class="loading" style="grid-column:1/-1"><div class="big" style="font-size:2.5rem;margin-bottom:10px">🔍</div>No hay productos con ese filtro.</div>';
+    return;
+  }
+
+  grid.innerHTML = filtrados.map(p => {
+    const agotado = p.disponible === false;
+    const cat = categorias.find(c => c.id === p.categoria);
+    return `
+      <div class="producto-card">
+        <div class="producto-img-wrap">
+          ${agotado ? '<span class="badge-agotado">Agotado</span>' : ''}
+          ${p.destacado && !agotado ? '<span class="badge-destacado">★ Destacado</span>' : ''}
+          <img src="${escapeHtml(p.imagen || 'img/placeholder.webp')}" alt="${escapeHtml(p.nombre)}" loading="lazy" onerror="this.src='data:image/svg+xml;utf8,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><rect fill=%22%23e1e6ec%22 width=%22100%22 height=%22100%22/><text x=%2250%22 y=%2255%22 font-size=%2230%22 text-anchor=%22middle%22 fill=%22%23999%22>📷</text></svg>'">
+        </div>
+        <div class="producto-info">
+          <div class="producto-cat">${cat ? escapeHtml(cat.nombre) : ''}</div>
+          <div class="producto-nombre">${escapeHtml(p.nombre)}</div>
+          <div class="producto-precio">${money(p.precio)} <small>${p.moneda || 'USD'}</small></div>
+          <button class="btn-agregar" onclick="agregarAlCarrito('${p.id}')" ${agotado ? 'disabled' : ''}>
+            ${agotado ? '🚫 Agotado' : '🛒 Agregar'}
+          </button>
+        </div>
+      </div>
+    `;
+  }).join('');
+}
+
+/* ===== ACCIONES ===== */
+async function cambiarCategoria(id){
+  categoriaActiva = id;
+  renderCategoriasBar();
+  $('#productosGrid').innerHTML = '<div class="loading" style="grid-column:1/-1"><div class="spinner"></div>Cargando...</div>';
+  await cargarProductosDeCategoria(id);
+  renderProductos();
+  window.scrollTo({top:0, behavior:'smooth'});
+}
+
+function abrirCarrito(){
+  renderCarrito();
+  $('#carritoOverlay').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+function cerrarCarrito(){
+  $('#carritoOverlay').classList.remove('open');
+  document.body.style.overflow = '';
+}
+
+function renderCarrito(){
+  const body = $('#carritoBody');
+  const foot = $('#carritoFoot');
+  if(!carrito.length){
+    body.innerHTML = '<div class="carrito-empty"><div class="big">🛒</div><p>Tu carrito está vacío</p><p style="font-size:.8rem;margin-top:6px">Explora el catálogo y agrega productos.</p></div>';
+    foot.style.display = 'none';
+    return;
+  }
+  let total = 0;
+  body.innerHTML = carrito.map(item => {
+    const p = productos.find(x => x.id === item.id);
+    if(!p) return '';
+    const sub = p.precio * item.cant;
+    total += sub;
+    return `
+      <div class="carrito-item">
+        <img src="${escapeHtml(p.imagen || 'img/placeholder.webp')}" alt="" onerror="this.style.background='#e1e6ec'">
+        <div class="carrito-item-info">
+          <div class="carrito-item-nombre">${escapeHtml(p.nombre)}</div>
+          <div class="carrito-item-precio">${money(p.precio)} ${p.moneda || 'USD'}</div>
+          <div class="carrito-item-ctrl">
+            <button class="qty-btn" onclick="cambiarCantidad('${p.id}',-1)">−</button>
+            <span class="qty-num">${item.cant}</span>
+            <button class="qty-btn" onclick="cambiarCantidad('${p.id}',1)">+</button>
+          </div>
+          <button class="btn-remove" onclick="eliminarDelCarrito('${p.id}')">Eliminar</button>
+        </div>
+        <div class="carrito-item-sub">${money(sub)}</div>
+      </div>
+    `;
+  }).join('');
+  $('#carritoTotal').textContent = money(total);
+  foot.style.display = 'block';
+}
+
+function enviarPedidoWhatsApp(){
+  if(!carrito.length){ toast('Tu carrito está vacío'); return; }
+  let total = 0;
+  let msg = '🛒 *Nuevo pedido — AllStore*\n\n';
+  carrito.forEach(item => {
+    const p = productos.find(x => x.id === item.id);
+    if(!p) return;
+    const sub = p.precio * item.cant;
+    total += sub;
+    msg += `• ${p.nombre}\n`;
+    msg += `  ${item.cant} x ${money(p.precio)} = ${money(sub)}\n\n`;
+  });
+  msg += `━━━━━━━━━━━━━━━\n`;
+  msg += `*TOTAL: ${money(total)}*\n\n`;
+  msg += `Por favor confírmame disponibilidad y forma de pago. 🙏`;
+
+  const url = `https://wa.me/${WHATSAPP_NUMERO}?text=${encodeURIComponent(msg)}`;
+  window.open(url, '_blank');
+}
+
+/* ===== INIT ===== */
+async function init(){
+  cargarCarrito();
+  actualizarBadge();
+  await cargarCategorias();
+  renderCategoriasBar();
+  await cargarProductosDeCategoria('todas');
+  renderProductos();
+
+  $('#searchInput').addEventListener('input', e => {
+    busqueda = e.target.value;
+    renderProductos();
+  });
+}
+
+document.addEventListener('DOMContentLoaded', init);
+</script>
+</body>
+</html>
