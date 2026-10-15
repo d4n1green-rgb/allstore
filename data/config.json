@@ -1,5 +1,7 @@
 {
   "tasaUSD": 790,
   "comisionPorcentaje": 3,
-  "comisionTope": 1000
+  "comisionTopeCUP": 1000,
+  "whatsapp": "5351188758",
+  "monedaBase": "USD"
 }
