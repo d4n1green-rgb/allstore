@@ -1,16 +1,5 @@
 [
   {
-    "id": "moto-001",
-    "nombre": "Moto Eléctrica Modelo X",
-    "descripcion": "Moto eléctrica con autonomía de 80 km. Ideal para ciudad.",
-    "precio": 1200,
-    "moneda": "USD",
-    "imagen": "img/productos/moto-001.webp",
-    "categoria": "motos-y-carros",
-    "disponible": true,
-    "destacado": true
-  },
-  {
     "id": "moto-003",
     "nombre": "Scooter Eléctrico Pro",
     "descripcion": "Scooter con batería de litio de larga duración.",
