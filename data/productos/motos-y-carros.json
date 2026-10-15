@@ -1,13 +1,1 @@
-[
-  {
-    "id": "moto-003",
-    "nombre": "Scooter Eléctrico Pro",
-    "descripcion": "Scooter con batería de litio de larga duración.",
-    "precio": 950,
-    "moneda": "USD",
-    "imagen": "img/productos/moto-003.webp",
-    "categoria": "motos-y-carros",
-    "disponible": false,
-    "destacado": false
-  }
-]
+[]
