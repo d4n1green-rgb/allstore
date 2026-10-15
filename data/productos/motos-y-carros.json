@@ -1,1 +1,13 @@
-[]
+[
+  {
+    "id": "moto-electrica-bucatti-a4-740s",
+    "nombre": "Moto Eléctrica Bucatti A4",
+    "descripcion": "🛵 MOTOS ELÉCTRICAS BUCATTI A4\n\n⚙️ ESPECIFICACIONES:\n• 3000w - 72v - 45ah\n• Batería de litio antiexplosiva\n• Hasta 120 km de autonomía\n• Caja VOTOL 50\n• Velocidad máxima 70 km/h\n• Luces LED, Alarma, encendido a distancia\n• Bocina compatible con Bluetooth, memoria USB y micro SD\n\n🎁 INCLUYE: Cargador inteligente, 2 juegos de llaves\n🧾 PAPELES EN REGLA\n🎨 COLOR: Morado",
+    "precio": 2400,
+    "moneda": "USD",
+    "imagen": "img/productos/moto-electrica-bucatti-a4-740s.jpg",
+    "categoria": "motos-y-carros",
+    "disponible": true,
+    "destacado": false
+  }
+]
