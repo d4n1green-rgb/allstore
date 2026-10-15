@@ -19,90 +19,45 @@ input:focus,select:focus,textarea:focus{outline:none;border-color:var(--azul-bri
 img{max-width:100%;display:block}
 a{color:inherit;text-decoration:none}
 
-/* LOGIN */
-.login-screen{
-  min-height:100vh;display:flex;align-items:center;justify-content:center;
-  background:linear-gradient(135deg,#0a192f,#1e3a5f);padding:20px;
-}
-.login-box{
-  background:#fff;border-radius:16px;padding:30px 26px;
-  max-width:420px;width:100%;
-  box-shadow:0 20px 60px rgba(0,0,0,.3);
-}
+.login-screen{min-height:100vh;display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg,#0a192f,#1e3a5f);padding:20px}
+.login-box{background:#fff;border-radius:16px;padding:30px 26px;max-width:420px;width:100%;box-shadow:0 20px 60px rgba(0,0,0,.3)}
 .login-box h1{font-size:1.4rem;color:var(--azul-oscuro);margin-bottom:6px;text-align:center}
 .login-box p{font-size:.82rem;color:var(--texto-gris);text-align:center;margin-bottom:22px}
 .login-box label{display:block;font-size:.72rem;font-weight:800;color:var(--texto-gris);text-transform:uppercase;letter-spacing:.6px;margin-bottom:6px}
-.login-box button{
-  width:100%;padding:13px;border-radius:10px;margin-top:16px;
-  background:linear-gradient(135deg,var(--azul-oscuro),var(--azul-medio));
-  color:#fff;font-weight:800;font-size:.95rem;transition:.15s;
-}
+.login-box button{width:100%;padding:13px;border-radius:10px;margin-top:16px;background:linear-gradient(135deg,var(--azul-oscuro),var(--azul-medio));color:#fff;font-weight:800;font-size:.95rem;transition:.15s}
 .login-box button:hover{filter:brightness(1.1)}
 .login-help{background:var(--gris-claro);border-radius:8px;padding:12px 14px;margin-top:18px;font-size:.75rem;color:var(--texto-gris);line-height:1.6}
 .login-help a{color:var(--azul-brillante);font-weight:700;text-decoration:underline}
 
-/* APP */
 .app{display:none;min-height:100vh;flex-direction:column}
 .app.visible{display:flex}
-
-header.admin-header{
-  background:linear-gradient(135deg,var(--azul-oscuro),var(--azul-medio));
-  color:#fff;padding:12px 16px;
-  display:flex;align-items:center;justify-content:space-between;gap:12px;
-  box-shadow:0 2px 12px rgba(0,0,0,.15);
-  position:sticky;top:0;z-index:100;
-}
+header.admin-header{background:linear-gradient(135deg,var(--azul-oscuro),var(--azul-medio));color:#fff;padding:12px 16px;display:flex;align-items:center;justify-content:space-between;gap:12px;box-shadow:0 2px 12px rgba(0,0,0,.15);position:sticky;top:0;z-index:100}
 .admin-header .brand{display:flex;align-items:center;gap:10px;font-weight:900;font-size:1rem}
 .admin-header .brand img{height:32px;background:#fff;padding:4px 8px;border-radius:6px}
 .admin-header .actions{display:flex;gap:6px}
-.btn-logout{
-  background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.25);
-  color:#fff;padding:7px 12px;border-radius:8px;
-  font-size:.78rem;font-weight:700;transition:.15s;
-}
+.btn-logout{background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.25);color:#fff;padding:7px 12px;border-radius:8px;font-size:.78rem;font-weight:700;transition:.15s}
 .btn-logout:hover{background:rgba(255,255,255,.25)}
 
-.admin-nav{
-  background:#fff;border-bottom:1px solid var(--gris-medio);
-  display:flex;overflow-x:auto;white-space:nowrap;
-  -webkit-overflow-scrolling:touch;
-  position:sticky;top:56px;z-index:90;
-}
+.admin-nav{background:#fff;border-bottom:1px solid var(--gris-medio);display:flex;overflow-x:auto;white-space:nowrap;-webkit-overflow-scrolling:touch;position:sticky;top:56px;z-index:90}
 .admin-nav::-webkit-scrollbar{display:none}
-.nav-tab{
-  background:transparent;color:var(--texto-gris);
-  padding:13px 18px;font-weight:700;font-size:.82rem;
-  border-bottom:3px solid transparent;
-  display:inline-flex;align-items:center;gap:6px;
-  transition:.15s;flex-shrink:0;
-}
+.nav-tab{background:transparent;color:var(--texto-gris);padding:13px 18px;font-weight:700;font-size:.82rem;border-bottom:3px solid transparent;display:inline-flex;align-items:center;gap:6px;transition:.15s;flex-shrink:0}
 .nav-tab.active{color:var(--azul-oscuro);border-bottom-color:var(--azul-brillante)}
 
 .admin-main{flex:1;padding:20px 16px 60px;max-width:1100px;margin:0 auto;width:100%}
 .panel{display:none}
 .panel.active{display:block}
-
-.panel-title{
-  font-size:1.15rem;color:var(--azul-oscuro);
-  margin-bottom:6px;font-weight:900;
-}
+.panel-title{font-size:1.15rem;color:var(--azul-oscuro);margin-bottom:6px;font-weight:900}
 .panel-sub{font-size:.82rem;color:var(--texto-gris);margin-bottom:20px}
 
-.card{
-  background:#fff;border-radius:12px;padding:18px;
-  box-shadow:0 2px 8px rgba(0,0,0,.05);margin-bottom:16px;
-}
+.card{background:#fff;border-radius:12px;padding:18px;box-shadow:0 2px 8px rgba(0,0,0,.05);margin-bottom:16px}
 .card h3{font-size:1rem;color:var(--azul-oscuro);margin-bottom:14px}
 .form-group{margin-bottom:12px}
 .form-group label{display:block;font-size:.7rem;font-weight:800;color:var(--texto-gris);text-transform:uppercase;letter-spacing:.5px;margin-bottom:5px}
 .form-row{display:grid;grid-template-columns:1fr 1fr;gap:12px}
-@media(max-width:600px){.form-row{grid-template-columns:1fr}}
+.form-row-3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px}
+@media(max-width:600px){.form-row{grid-template-columns:1fr}.form-row-3{grid-template-columns:1fr 1fr}}
 
-.btn{
-  padding:11px 18px;border-radius:9px;font-weight:800;font-size:.85rem;
-  display:inline-flex;align-items:center;gap:6px;justify-content:center;
-  transition:.15s;color:#fff;border:none;
-}
+.btn{padding:11px 18px;border-radius:9px;font-weight:800;font-size:.85rem;display:inline-flex;align-items:center;gap:6px;justify-content:center;transition:.15s;color:#fff;border:none}
 .btn:hover{filter:brightness(1.08);transform:translateY(-1px)}
 .btn:disabled{opacity:.5;cursor:not-allowed;transform:none;filter:none}
 .btn-primary{background:linear-gradient(135deg,var(--azul-oscuro),var(--azul-medio))}
@@ -115,115 +70,60 @@ header.admin-header{
 .btn-block{width:100%;margin-bottom:8px}
 
 .prod-list{display:flex;flex-direction:column;gap:10px}
-.prod-row{
-  background:#fff;border:1px solid var(--gris-medio);border-radius:10px;
-  padding:12px;display:flex;gap:12px;align-items:center;
-  transition:.15s;
-}
+.prod-row{background:#fff;border:1px solid var(--gris-medio);border-radius:10px;padding:12px;display:flex;gap:12px;align-items:center;transition:.15s}
 .prod-row:hover{border-color:var(--azul-brillante)}
-.prod-row img{
-  width:60px;height:60px;object-fit:cover;border-radius:8px;
-  background:var(--gris-claro);flex-shrink:0;
-}
+.prod-row img{width:60px;height:60px;object-fit:cover;border-radius:8px;background:var(--gris-claro);flex-shrink:0}
 .prod-row-info{flex:1;min-width:0}
 .prod-row-nombre{font-weight:800;font-size:.9rem;color:var(--texto);margin-bottom:2px;word-break:break-word}
-.prod-row-precio{font-size:.78rem;color:var(--azul-brillante);font-weight:800}
+.prod-row-precio{font-size:.82rem;color:var(--azul-brillante);font-weight:800}
+.prod-row-precio .secundario{color:var(--texto-gris);font-weight:600;font-size:.72rem;margin-left:4px}
 .prod-row-cat{font-size:.68rem;color:var(--texto-gris);margin-top:2px}
 .prod-row-badges{display:flex;gap:5px;flex-wrap:wrap;margin-top:5px}
 .badge{display:inline-block;padding:2px 7px;border-radius:5px;font-size:.6rem;font-weight:800;text-transform:uppercase;letter-spacing:.4px}
 .badge-agotado{background:var(--rojo);color:#fff}
 .badge-destacado{background:var(--amarillo);color:#fff}
 .badge-ok{background:#d4edda;color:#155724}
+.badge-usd{background:#e3f2fd;color:#1976d2}
+.badge-cup{background:#fff3e0;color:#e65100}
 .prod-row-actions{display:flex;flex-direction:column;gap:6px;flex-shrink:0}
 .prod-row-actions button{width:34px;height:34px;padding:0;border-radius:8px;font-size:.9rem;display:flex;align-items:center;justify-content:center}
 
 .empty-msg{text-align:center;padding:30px 20px;color:var(--texto-gris);font-style:italic;font-size:.85rem}
 
-/* MODAL */
-.modal-overlay{
-  position:fixed;inset:0;background:rgba(0,0,0,.6);
-  z-index:200;display:none;align-items:flex-end;justify-content:center;
-}
+.modal-overlay{position:fixed;inset:0;background:rgba(0,0,0,.6);z-index:200;display:none;align-items:flex-end;justify-content:center}
 .modal-overlay.open{display:flex}
-.modal{
-  background:#fff;width:100%;max-width:600px;
-  border-radius:20px 20px 0 0;
-  max-height:92vh;display:flex;flex-direction:column;
-  animation:slideUp .25s ease;
-}
-@media(min-width:768px){
-  .modal-overlay{align-items:center;padding:20px}
-  .modal{border-radius:16px;max-height:88vh}
-}
+.modal{background:#fff;width:100%;max-width:600px;border-radius:20px 20px 0 0;max-height:92vh;display:flex;flex-direction:column;animation:slideUp .25s ease}
+@media(min-width:768px){.modal-overlay{align-items:center;padding:20px}.modal{border-radius:16px;max-height:88vh}}
 @keyframes slideUp{from{transform:translateY(100%)}to{transform:translateY(0)}}
-.modal-head{
-  padding:16px 20px;border-bottom:1px solid var(--gris-medio);
-  display:flex;justify-content:space-between;align-items:center;flex-shrink:0;
-}
+.modal-head{padding:16px 20px;border-bottom:1px solid var(--gris-medio);display:flex;justify-content:space-between;align-items:center;flex-shrink:0}
 .modal-head h3{font-size:1.05rem;color:var(--azul-oscuro)}
-.modal-close{
-  background:var(--gris-claro);border-radius:50%;
-  width:32px;height:32px;font-size:1rem;color:var(--texto-gris);
-  display:flex;align-items:center;justify-content:center;
-}
+.modal-close{background:var(--gris-claro);border-radius:50%;width:32px;height:32px;font-size:1rem;color:var(--texto-gris);display:flex;align-items:center;justify-content:center}
 .modal-body{flex:1;overflow-y:auto;padding:18px 20px}
-.modal-foot{
-  padding:14px 20px;border-top:1px solid var(--gris-medio);
-  display:flex;gap:8px;flex-shrink:0;background:var(--gris-claro);
-}
+.modal-foot{padding:14px 20px;border-top:1px solid var(--gris-medio);display:flex;gap:8px;flex-shrink:0;background:var(--gris-claro)}
 .modal-foot .btn{flex:1}
+.img-preview{width:100%;max-height:220px;object-fit:contain;background:var(--gris-claro);border-radius:8px;margin-bottom:10px}
+input[type="file"]{padding:10px;font-size:.82rem;cursor:pointer;background:var(--gris-claro)}
 
-.img-preview{
-  width:100%;max-height:220px;object-fit:contain;background:var(--gris-claro);
-  border-radius:8px;margin-bottom:10px;
-}
-input[type="file"]{
-  padding:10px;font-size:.82rem;cursor:pointer;
-  background:var(--gris-claro);
-}
-
-/* TOAST */
-.toast-container{
-  position:fixed;bottom:20px;left:50%;transform:translateX(-50%);
-  z-index:400;display:flex;flex-direction:column;gap:8px;align-items:center;
-  pointer-events:none;max-width:92vw;
-}
-.toast{
-  background:var(--azul-oscuro);color:#fff;
-  padding:12px 18px;border-radius:10px;
-  font-size:.85rem;font-weight:700;
-  box-shadow:0 10px 30px rgba(0,0,0,.3);
-  animation:toastIn .25s ease;
-  border-left:3px solid var(--verde);
-  max-width:100%;
-}
+.toast-container{position:fixed;bottom:20px;left:50%;transform:translateX(-50%);z-index:400;display:flex;flex-direction:column;gap:8px;align-items:center;pointer-events:none;max-width:92vw}
+.toast{background:var(--azul-oscuro);color:#fff;padding:12px 18px;border-radius:10px;font-size:.85rem;font-weight:700;box-shadow:0 10px 30px rgba(0,0,0,.3);animation:toastIn .25s ease;border-left:3px solid var(--verde);max-width:100%}
 .toast.err{border-left-color:var(--rojo)}
 .toast.warn{border-left-color:var(--amarillo)}
 @keyframes toastIn{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
 
-/* LOADER */
-.loader{
-  display:inline-block;width:18px;height:18px;
-  border:2px solid rgba(255,255,255,.3);
-  border-top-color:#fff;border-radius:50%;
-  animation:spin .8s linear infinite;vertical-align:middle;
-}
+.loader{display:inline-block;width:18px;height:18px;border:2px solid rgba(255,255,255,.3);border-top-color:#fff;border-radius:50%;animation:spin .8s linear infinite;vertical-align:middle}
 @keyframes spin{to{transform:rotate(360deg)}}
-.loader-dark{
-  border-color:rgba(0,0,0,.1);border-top-color:var(--azul-oscuro);
-}
 
-.status-msg{
-  font-size:.78rem;color:var(--texto-gris);text-align:center;
-  padding:10px;font-weight:600;
+.preview-moneda{
+  background:linear-gradient(135deg,rgba(0,168,255,.08),rgba(0,168,255,.02));
+  border:1px solid rgba(0,168,255,.25);
+  border-radius:8px;padding:10px 12px;margin-top:8px;
+  font-size:.78rem;color:var(--texto);
 }
-.status-msg.err{color:var(--rojo)}
-.status-msg.ok{color:var(--verde)}
+.preview-moneda b{color:var(--azul-oscuro)}
 </style>
 </head>
 <body>
 
-<!-- ============ LOGIN ============ -->
 <div class="login-screen" id="loginScreen">
   <div class="login-box">
     <h1>🔐 AllStore Admin</h1>
@@ -238,7 +138,6 @@ input[type="file"]{
   </div>
 </div>
 
-<!-- ============ APP ============ -->
 <div class="app" id="app">
   <header class="admin-header">
     <div class="brand">
@@ -259,110 +158,54 @@ input[type="file"]{
 
   <main class="admin-main">
 
-    <!-- CONFIG -->
     <div class="panel active" id="panel-config">
       <h2 class="panel-title">⚙️ Configuración</h2>
       <p class="panel-sub">Tasa de cambio, comisión y WhatsApp del dueño</p>
-
       <div class="card">
         <h3>Parámetros generales</h3>
         <div class="form-row">
-          <div class="form-group">
-            <label>Tasa USD → CUP</label>
-            <input type="number" id="cfgTasa" min="1" step="1" placeholder="790">
-          </div>
-          <div class="form-group">
-            <label>Comisión (%)</label>
-            <input type="number" id="cfgComision" min="0" max="100" step="0.1" placeholder="3">
-          </div>
+          <div class="form-group"><label>Tasa USD → CUP</label><input type="number" id="cfgTasa" min="1" step="1"></div>
+          <div class="form-group"><label>Comisión (%)</label><input type="number" id="cfgComision" min="0" max="100" step="0.1"></div>
         </div>
         <div class="form-row">
-          <div class="form-group">
-            <label>Tope comisión (CUP)</label>
-            <input type="number" id="cfgTope" min="0" step="50" placeholder="1000">
-          </div>
-          <div class="form-group">
-            <label>WhatsApp del dueño</label>
-            <input type="text" id="cfgWhatsapp" placeholder="5356686384">
-          </div>
+          <div class="form-group"><label>Tope comisión (CUP)</label><input type="number" id="cfgTope" min="0" step="50"></div>
+          <div class="form-group"><label>WhatsApp del dueño</label><input type="text" id="cfgWhatsapp" placeholder="5356686384"></div>
         </div>
         <button class="btn btn-primary btn-block" id="btnSaveConfig">💾 Guardar configuración</button>
       </div>
     </div>
 
-    <!-- PRODUCTOS -->
     <div class="panel" id="panel-productos">
       <h2 class="panel-title">📦 Productos</h2>
       <p class="panel-sub">Añade, edita o elimina productos del catálogo</p>
-
       <div class="card">
-        <div class="form-group">
-          <label>Filtrar por categoría</label>
-          <select id="prodFilterCat"></select>
-        </div>
+        <div class="form-group"><label>Filtrar por categoría</label><select id="prodFilterCat"></select></div>
         <button class="btn btn-success btn-block" id="btnNewProd">➕ Nuevo producto</button>
       </div>
-
-      <div class="prod-list" id="prodList">
-        <div class="empty-msg">Cargando productos...</div>
-      </div>
+      <div class="prod-list" id="prodList"><div class="empty-msg">Cargando productos...</div></div>
     </div>
 
-    <!-- CATEGORÍAS -->
     <div class="panel" id="panel-categorias">
       <h2 class="panel-title">🏷️ Categorías</h2>
       <p class="panel-sub">Las categorías del menú principal</p>
-
-      <div class="card">
-        <button class="btn btn-success btn-block" id="btnNewCat">➕ Nueva categoría</button>
-      </div>
-
-      <div class="prod-list" id="catList">
-        <div class="empty-msg">Cargando categorías...</div>
-      </div>
+      <div class="card"><button class="btn btn-success btn-block" id="btnNewCat">➕ Nueva categoría</button></div>
+      <div class="prod-list" id="catList"><div class="empty-msg">Cargando categorías...</div></div>
     </div>
 
-    <!-- AYUDA -->
     <div class="panel" id="panel-ayuda">
       <h2 class="panel-title">❓ Cómo usar el panel</h2>
       <p class="panel-sub">Guía rápida</p>
-
-      <div class="card">
-        <h3>📝 Editar un producto</h3>
-        <p style="font-size:.85rem;color:var(--texto-gris);line-height:1.7">
-          Ve a <b>Productos</b>, busca el que quieras y toca el lápiz ✏️. Cambia lo que necesites y guarda.
-        </p>
-      </div>
-      <div class="card">
-        <h3>🖼️ Subir imágenes</h3>
-        <p style="font-size:.85rem;color:var(--texto-gris);line-height:1.7">
-          Al editar un producto, hay un botón para subir la imagen desde tu teléfono. Se guardará automáticamente y se asignará al producto.
-        </p>
-      </div>
-      <div class="card">
-        <h3>🚫 Marcar como agotado</h3>
-        <p style="font-size:.85rem;color:var(--texto-gris);line-height:1.7">
-          En la lista de productos, toca el ícono 🚫 para alternar entre disponible y agotado. Cuando está agotado, el cliente no puede comprarlo.
-        </p>
-      </div>
-      <div class="card">
-        <h3>💱 Cambiar la tasa del dólar</h3>
-        <p style="font-size:.85rem;color:var(--texto-gris);line-height:1.7">
-          En <b>Config</b>, cambia el valor de la tasa USD → CUP. Todos los precios se recalcularán automáticamente en la tienda.
-        </p>
-      </div>
-      <div class="card">
-        <h3>⚠️ Importante</h3>
-        <p style="font-size:.85rem;color:var(--texto-gris);line-height:1.7">
-          Los cambios se guardan en tu repositorio de GitHub y tardan unos <b>30-60 segundos</b> en reflejarse en la tienda pública.
-        </p>
-      </div>
+      <div class="card"><h3>💵 Moneda del producto</h3><p style="font-size:.85rem;color:var(--texto-gris);line-height:1.7">Al crear o editar un producto puedes elegir si el precio es en <b>USD</b> o en <b>CUP</b>. La tienda mostrará el precio en la moneda que elijas y su equivalente en la otra.</p></div>
+      <div class="card"><h3>📝 Editar un producto</h3><p style="font-size:.85rem;color:var(--texto-gris);line-height:1.7">Ve a <b>Productos</b>, busca el que quieras y toca el lápiz ✏️.</p></div>
+      <div class="card"><h3>🖼️ Subir imágenes</h3><p style="font-size:.85rem;color:var(--texto-gris);line-height:1.7">La imagen se comprime automáticamente antes de subirla. Tarda menos de 30 segundos.</p></div>
+      <div class="card"><h3>🚫 Marcar como agotado</h3><p style="font-size:.85rem;color:var(--texto-gris);line-height:1.7">Al editar un producto, cambia el estado a <b>Agotado</b>.</p></div>
+      <div class="card"><h3>💱 Cambiar la tasa del dólar</h3><p style="font-size:.85rem;color:var(--texto-gris);line-height:1.7">En <b>Config</b>, cambia la tasa. Los precios en CUP se recalculan solos.</p></div>
+      <div class="card"><h3>⚠️ Importante</h3><p style="font-size:.85rem;color:var(--texto-gris);line-height:1.7">Los cambios tardan <b>30-60 segundos</b> en reflejarse en la tienda pública.</p></div>
     </div>
 
   </main>
 </div>
 
-<!-- MODAL PRODUCTO -->
 <div class="modal-overlay" id="modalProd">
   <div class="modal">
     <div class="modal-head">
@@ -375,41 +218,28 @@ input[type="file"]{
         <label>Imagen del producto</label>
         <img id="pImgPreview" class="img-preview" src="" alt="" style="display:none" onerror="this.style.display='none'">
         <input type="file" id="pImgFile" accept="image/*">
-        <div style="font-size:.7rem;color:var(--texto-gris);margin-top:5px">Se sube automáticamente al guardar.</div>
+        <div style="font-size:.7rem;color:var(--texto-gris);margin-top:5px">Se comprime automáticamente antes de subir.</div>
       </div>
-      <div class="form-group">
-        <label>Nombre *</label>
-        <input type="text" id="pNombre" placeholder="Ej: Moto Eléctrica Modelo X">
-      </div>
-      <div class="form-group">
-        <label>Descripción</label>
-        <textarea id="pDesc" rows="2" placeholder="Breve descripción (opcional)"></textarea>
-      </div>
-      <div class="form-row">
-        <div class="form-group">
-          <label>Precio (USD) *</label>
-          <input type="number" id="pPrecio" min="0" step="0.01" placeholder="1200">
-        </div>
-        <div class="form-group">
-          <label>Categoría *</label>
-          <select id="pCategoria"></select>
-        </div>
-      </div>
-      <div class="form-row">
-        <div class="form-group">
-          <label>Estado</label>
-          <select id="pDisponible">
-            <option value="true">Disponible</option>
-            <option value="false">Agotado</option>
+      <div class="form-group"><label>Nombre *</label><input type="text" id="pNombre" placeholder="Ej: Moto Eléctrica Modelo X"></div>
+      <div class="form-group"><label>Descripción</label><textarea id="pDesc" rows="3" placeholder="Breve descripción (opcional)"></textarea></div>
+
+      <div class="form-row-3">
+        <div class="form-group" style="grid-column:span 2"><label>Precio *</label><input type="number" id="pPrecio" min="0" step="0.01" placeholder="0.00"></div>
+        <div class="form-group"><label>Moneda *</label>
+          <select id="pMoneda">
+            <option value="USD">USD ($)</option>
+            <option value="CUP">CUP</option>
           </select>
         </div>
-        <div class="form-group">
-          <label>Destacado</label>
-          <select id="pDestacado">
-            <option value="false">No</option>
-            <option value="true">Sí</option>
-          </select>
-        </div>
+      </div>
+      <div class="preview-moneda" id="previewMoneda" style="display:none"></div>
+
+      <div class="form-row" style="margin-top:12px">
+        <div class="form-group"><label>Categoría *</label><select id="pCategoria"></select></div>
+        <div class="form-group"><label>Estado</label><select id="pDisponible"><option value="true">Disponible</option><option value="false">Agotado</option></select></div>
+      </div>
+      <div class="form-row">
+        <div class="form-group"><label>Destacado</label><select id="pDestacado"><option value="false">No</option><option value="true">Sí</option></select></div>
       </div>
     </div>
     <div class="modal-foot">
@@ -419,7 +249,6 @@ input[type="file"]{
   </div>
 </div>
 
-<!-- MODAL CATEGORÍA -->
 <div class="modal-overlay" id="modalCat">
   <div class="modal" style="max-width:460px">
     <div class="modal-head">
@@ -428,19 +257,9 @@ input[type="file"]{
     </div>
     <div class="modal-body">
       <input type="hidden" id="cEditId">
-      <div class="form-group">
-        <label>Nombre *</label>
-        <input type="text" id="cNombre" placeholder="Ej: Motos y Carros">
-      </div>
-      <div class="form-group">
-        <label>Icono (emoji)</label>
-        <input type="text" id="cIcon" placeholder="🏍️" maxlength="4">
-      </div>
-      <div class="form-group">
-        <label>ID interno (sin espacios)</label>
-        <input type="text" id="cId" placeholder="motos-y-carros" pattern="[a-z0-9\-]+">
-        <div style="font-size:.7rem;color:var(--texto-gris);margin-top:5px">Debe coincidir con el nombre del archivo JSON en data/productos/</div>
-      </div>
+      <div class="form-group"><label>Nombre *</label><input type="text" id="cNombre" placeholder="Ej: Motos y Carros"></div>
+      <div class="form-group"><label>Icono (emoji)</label><input type="text" id="cIcon" placeholder="🏍️" maxlength="4"></div>
+      <div class="form-group"><label>ID interno (sin espacios)</label><input type="text" id="cId" placeholder="motos-y-carros"><div style="font-size:.7rem;color:var(--texto-gris);margin-top:5px">Debe coincidir con el archivo JSON en data/productos/</div></div>
     </div>
     <div class="modal-foot">
       <button class="btn btn-ghost" onclick="cerrarModalCat()">Cancelar</button>
@@ -452,10 +271,6 @@ input[type="file"]{
 <div class="toast-container" id="toasts"></div>
 
 <script>
-/* ============================================================
-   ALLSTORE — PANEL DE ADMINISTRACIÓN
-   ============================================================ */
-
 const OWNER = 'd4n1green-rgb';
 const REPO  = 'allstore';
 const BRANCH = 'main';
@@ -463,14 +278,12 @@ const API   = `https://api.github.com/repos/${OWNER}/${REPO}/contents`;
 
 let token = '';
 let categorias = [];
-let productos = [];      // array aplanado
+let productos = [];
 let config = {};
-let shaMap = {};         // ruta -> sha actual del archivo
 
 const $ = s => document.querySelector(s);
 const $$ = s => document.querySelectorAll(s);
 
-/* ============ UTILIDADES ============ */
 function toast(msg, tipo=''){
   const c = $('#toasts');
   const el = document.createElement('div');
@@ -482,14 +295,10 @@ function toast(msg, tipo=''){
     el.style.opacity = '0';
     el.style.transform = 'translateY(20px)';
     setTimeout(() => el.remove(), 320);
-  }, 3200);
+  }, 3500);
 }
-function utf8ToB64(str){
-  return btoa(unescape(encodeURIComponent(str)));
-}
-function b64ToUtf8(b64){
-  return decodeURIComponent(escape(atob(b64.replace(/\s/g,''))));
-}
+function utf8ToB64(str){ return btoa(unescape(encodeURIComponent(str))); }
+function b64ToUtf8(b64){ return decodeURIComponent(escape(atob(b64.replace(/\s/g,'')))); }
 function slugify(str){
   return String(str).toLowerCase()
     .normalize('NFD').replace(/[\u0300-\u036f]/g,'')
@@ -499,118 +308,113 @@ function slugify(str){
 function escapeHtml(s){
   return String(s ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 }
-
-/* ============ GITHUB API ============ */
-async function ghGet(path){
-  const r = await fetch(`${API}/${path}?ref=${BRANCH}`, {
-    headers: {
-      'Authorization': `token ${token}`,
-      'Accept': 'application/vnd.github+json'
-    }
-  });
-  if(r.status === 404) return null;
-  if(!r.ok) throw new Error(`Error ${r.status} al leer ${path}`);
-  return r.json();
+function money(n){ return '$' + Number(n || 0).toFixed(2); }
+function fmtCUP(n){
+  const r = Math.round(Number(n) || 0);
+  return r.toString().replace(/\B(?=(\d{3})+(?!\d))/g, '.') + ' CUP';
 }
 
-async function ghPut(path, contentB64, sha, message){
-  const body = { message: message || `Actualizar ${path}`, content: contentB64, branch: BRANCH };
-  if(sha) body.sha = sha;
-  const r = await fetch(`${API}/${path}`, {
-    method: 'PUT',
-    headers: {
-      'Authorization': `token ${token}`,
-      'Accept': 'application/vnd.github+json',
-      'Content-Type': 'application/json'
-    },
-    body: JSON.stringify(body)
+/* ===== GITHUB API ===== */
+async function ghGet(path){
+  const r = await fetch(`${API}/${path}?ref=${BRANCH}`, {
+    headers: { 'Authorization': `token ${token}`, 'Accept': 'application/vnd.github+json' }
   });
+  if(r.status === 404) return null;
   if(!r.ok){
-    const err = await r.json().catch(() => ({}));
-    throw new Error(err.message || `Error ${r.status} al guardar ${path}`);
+    let msg = `Error ${r.status}`;
+    try{ const e = await r.json(); if(e.message) msg = e.message; }catch(_){}
+    throw new Error(msg + ' al leer ' + path);
   }
   return r.json();
 }
-
+async function ghPut(path, contentB64, sha, message, retry = true){
+  const body = { message: message || `Actualizar ${path}`, content: contentB64, branch: BRANCH };
+  if(sha) body.sha = sha;
+  let r;
+  try{
+    r = await fetch(`${API}/${path}`, {
+      method: 'PUT',
+      headers: { 'Authorization': `token ${token}`, 'Accept': 'application/vnd.github+json', 'Content-Type': 'application/json' },
+      body: JSON.stringify(body)
+    });
+  }catch(netErr){ throw new Error('Sin conexión al guardar. Revisa tu internet e intenta de nuevo.'); }
+  if(!r.ok){
+    let errMsg = `Error ${r.status}`;
+    try{ const e = await r.json(); if(e.message) errMsg = e.message; }catch(_){}
+    if(retry && (r.status === 409 || errMsg.toLowerCase().includes('sha'))){
+      const actual = await ghGet(path).catch(() => null);
+      return ghPut(path, contentB64, actual ? actual.sha : null, message, false);
+    }
+    throw new Error(errMsg + ' (' + r.status + ')');
+  }
+  return r.json();
+}
 async function ghDelete(path, sha, message){
   const r = await fetch(`${API}/${path}`, {
     method: 'DELETE',
-    headers: {
-      'Authorization': `token ${token}`,
-      'Accept': 'application/vnd.github+json',
-      'Content-Type': 'application/json'
-    },
+    headers: { 'Authorization': `token ${token}`, 'Accept': 'application/vnd.github+json', 'Content-Type': 'application/json' },
     body: JSON.stringify({ message: message || `Eliminar ${path}`, sha, branch: BRANCH })
   });
   if(!r.ok){
-    const err = await r.json().catch(() => ({}));
-    throw new Error(err.message || `Error ${r.status} al borrar ${path}`);
+    let errMsg = `Error ${r.status}`;
+    try{ const e = await r.json(); if(e.message) errMsg = e.message; }catch(_){}
+    throw new Error(errMsg);
   }
   return r.json();
 }
-
 async function leerJSON(path){
   const f = await ghGet(path);
   if(!f) return { data: null, sha: null };
-  const contenido = b64ToUtf8(f.content);
-  return { data: JSON.parse(contenido), sha: f.sha };
+  return { data: JSON.parse(b64ToUtf8(f.content)), sha: f.sha };
 }
-
 async function guardarJSON(path, data, message){
-  const existe = await ghGet(path).catch(() => null);
+  let existe = null;
+  try{ existe = await ghGet(path); }catch(e){}
   const b64 = utf8ToB64(JSON.stringify(data, null, 2));
   return ghPut(path, b64, existe ? existe.sha : null, message);
 }
 
-/* ============ LOGIN ============ */
+/* ===== LOGIN ===== */
 async function login(){
   const t = $('#tokenInput').value.trim();
-  if(!t || !t.startsWith('github_pat_') && !t.startsWith('ghp_')){
-    return toast('Token inválido. Debe empezar con github_pat_ o ghp_', 'err');
+  if(!t || (!t.startsWith('github_pat_') && !t.startsWith('ghp_'))){
+    return toast('Token inválido', 'err');
   }
   token = t;
   try{
     $('#btnLogin').innerHTML = '<span class="loader"></span> Verificando...';
     $('#btnLogin').disabled = true;
-
-    // Prueba rápida: leer el repo
     const r = await fetch(`https://api.github.com/repos/${OWNER}/${REPO}`, {
       headers: { 'Authorization': `token ${token}`, 'Accept': 'application/vnd.github+json' }
     });
     if(!r.ok) throw new Error('Token sin acceso al repositorio');
-
     localStorage.setItem('allstore_token', token);
     await iniciarApp();
   }catch(e){
     token = '';
     localStorage.removeItem('allstore_token');
-    toast('Error: ' + e.message, 'err');
+    toast('Error: ' + (e.message || 'desconocido'), 'err');
     $('#btnLogin').innerHTML = 'Entrar al panel';
     $('#btnLogin').disabled = false;
   }
 }
-
 function logout(){
   if(!confirm('¿Cerrar sesión?')) return;
   localStorage.removeItem('allstore_token');
   location.reload();
 }
 
-/* ============ CARGA DE DATOS ============ */
+/* ===== CARGA DE DATOS ===== */
 async function cargarTodo(){
   toast('Cargando datos...');
-  // Config
   try{
     const cfg = await leerJSON('data/config.json');
     config = cfg.data || { tasaUSD: 790, comisionPorcentaje: 3, comisionTopeCUP: 1000, whatsapp: '5356686384' };
   }catch(e){
     config = { tasaUSD: 790, comisionPorcentaje: 3, comisionTopeCUP: 1000, whatsapp: '5356686384' };
   }
-  // Categorías
   const cats = await leerJSON('data/categorias.json');
   categorias = cats.data || [];
-
-  // Productos de todas las categorías
   productos = [];
   for(const c of categorias){
     try{
@@ -618,20 +422,18 @@ async function cargarTodo(){
       if(Array.isArray(p.data)){
         p.data.forEach(prod => productos.push(prod));
       }
-    }catch(e){ /* ignorar */ }
+    }catch(e){}
   }
-  // Ordenar por categoría y nombre
   productos.sort((a,b) => (a.categoria||'').localeCompare(b.categoria||'') || a.nombre.localeCompare(b.nombre));
 }
 
-/* ============ RENDER CONFIG ============ */
+/* ===== RENDER CONFIG ===== */
 function renderConfig(){
   $('#cfgTasa').value = config.tasaUSD ?? 790;
   $('#cfgComision').value = config.comisionPorcentaje ?? 3;
   $('#cfgTope').value = config.comisionTopeCUP ?? 1000;
   $('#cfgWhatsapp').value = config.whatsapp ?? '';
 }
-
 async function guardarConfig(){
   const nueva = {
     tasaUSD: parseInt($('#cfgTasa').value, 10) || 790,
@@ -650,22 +452,32 @@ async function guardarConfig(){
     config = nueva;
     toast('✅ Configuración guardada');
   }catch(e){
-    toast('Error: ' + e.message, 'err');
+    toast('Error: ' + (e.message || 'desconocido'), 'err');
   }finally{
     $('#btnSaveConfig').innerHTML = '💾 Guardar configuración';
     $('#btnSaveConfig').disabled = false;
   }
 }
 
-/* ============ RENDER PRODUCTOS ============ */
+/* ===== RENDER PRODUCTOS ===== */
 function renderFiltroProductos(){
   const sel = $('#prodFilterCat');
+  const actual = sel.value;
   sel.innerHTML = '<option value="todas">Todas las categorías</option>' +
     categorias.map(c => `<option value="${c.id}">${escapeHtml(c.nombre)}</option>`).join('');
+  if(actual) sel.value = actual;
+}
+
+function precioFormateado(p){
+  const esCUP = (p.moneda === 'CUP');
+  if(esCUP){
+    return `<span>${fmtCUP(p.precio)}</span> <span class="secundario">≈ ${money(p.precio / config.tasaUSD)} USD</span>`;
+  }
+  return `<span>${money(p.precio)} USD</span> <span class="secundario">≈ ${fmtCUP(p.precio * config.tasaUSD)}</span>`;
 }
 
 function renderListaProductos(){
-  const filtro = $('#prodFilterCat').value;
+  const filtro = $('#prodFilterCat').value || 'todas';
   const lista = filtro === 'todas' ? productos : productos.filter(p => p.categoria === filtro);
   const cont = $('#prodList');
 
@@ -676,14 +488,16 @@ function renderListaProductos(){
 
   cont.innerHTML = lista.map(p => {
     const cat = categorias.find(c => c.id === p.categoria);
+    const esCUP = (p.moneda === 'CUP');
     return `
       <div class="prod-row">
         <img src="${escapeHtml(p.imagen || 'placeholder')}" alt="" onerror="this.src='data:image/svg+xml;utf8,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><rect fill=%22%23e1e6ec%22 width=%22100%22 height=%22100%22/><text x=%2250%22 y=%2255%22 font-size=%2230%22 text-anchor=%22middle%22 fill=%22%23999%22>📷</text></svg>'">
         <div class="prod-row-info">
           <div class="prod-row-nombre">${escapeHtml(p.nombre)}</div>
-          <div class="prod-row-precio">$${Number(p.precio||0).toFixed(2)} USD</div>
+          <div class="prod-row-precio">${precioFormateado(p)}</div>
           <div class="prod-row-cat">${cat ? escapeHtml(cat.nombre) : 'Sin categoría'}</div>
           <div class="prod-row-badges">
+            <span class="badge ${esCUP ? 'badge-cup' : 'badge-usd'}">${esCUP ? 'CUP' : 'USD'}</span>
             ${p.disponible === false ? '<span class="badge badge-agotado">Agotado</span>' : '<span class="badge badge-ok">Disponible</span>'}
             ${p.destacado ? '<span class="badge badge-destacado">Destacado</span>' : ''}
           </div>
@@ -697,26 +511,95 @@ function renderListaProductos(){
   }).join('');
 }
 
-async function toggleAgotado(id){
-  const p = productos.find(x => x.id === id);
-  if(!p) return;
-  p.disponible = p.disponible === false ? true : false;
-  await guardarCategoriaProducto(p.categoria, `Marcar "${p.nombre}" como ${p.disponible ? 'disponible' : 'agotado'}`);
-  renderListaProductos();
-  toast(p.disponible ? '✅ Marcado como disponible' : '🚫 Marcado como agotado');
-}
-
 async function guardarCategoriaProducto(catId, mensaje){
   const lista = productos.filter(p => p.categoria === catId);
   await guardarJSON(`data/productos/${catId}.json`, lista, mensaje);
 }
 
-/* ============ MODAL PRODUCTO ============ */
+/* ===== COMPRESIÓN DE IMAGEN ===== */
+async function comprimirImagen(file, maxAncho = 1000, calidad = 0.8){
+  return new Promise((resolve, reject) => {
+    if(file.size > 15 * 1024 * 1024){
+      reject(new Error('La imagen supera los 15 MB. Usa una más pequeña.'));
+      return;
+    }
+    const url = URL.createObjectURL(file);
+    const img = new Image();
+    img.onload = () => {
+      try{
+        const canvas = document.createElement('canvas');
+        let w = img.width, h = img.height;
+        if(w > maxAncho){
+          h = Math.round(h * maxAncho / w);
+          w = maxAncho;
+        }
+        canvas.width = w;
+        canvas.height = h;
+        const ctx = canvas.getContext('2d');
+        ctx.fillStyle = '#ffffff';
+        ctx.fillRect(0, 0, w, h);
+        ctx.drawImage(img, 0, 0, w, h);
+        URL.revokeObjectURL(url);
+        canvas.toBlob(blob => {
+          if(!blob){ reject(new Error('Error al comprimir la imagen')); return; }
+          resolve(blob);
+        }, 'image/jpeg', calidad);
+      }catch(err){
+        URL.revokeObjectURL(url);
+        reject(new Error('Error procesando la imagen: ' + err.message));
+      }
+    };
+    img.onerror = () => {
+      URL.revokeObjectURL(url);
+      reject(new Error('El archivo no es una imagen válida'));
+    };
+    img.src = url;
+  });
+}
+function blobToBase64(blob){
+  return new Promise((resolve, reject) => {
+    const reader = new FileReader();
+    reader.onload = () => {
+      const result = reader.result;
+      if(!result || typeof result !== 'string'){ reject(new Error('Error convirtiendo la imagen')); return; }
+      const idx = result.indexOf(',');
+      if(idx < 0){ reject(new Error('Formato de imagen inválido')); return; }
+      resolve(result.slice(idx + 1));
+    };
+    reader.onerror = () => reject(new Error('Error leyendo la imagen comprimida'));
+    reader.readAsDataURL(blob);
+  });
+}
+async function subirImagen(file, productoId){
+  const blob = await comprimirImagen(file);
+  const b64 = await blobToBase64(blob);
+  const ruta = `img/productos/${productoId}.jpg`;
+  let existe = null;
+  try{ existe = await ghGet(ruta); }catch(_){}
+  await ghPut(ruta, b64, existe ? existe.sha : null, `Subir imagen ${productoId}`);
+  return ruta;
+}
+
+/* ===== MODAL PRODUCTO ===== */
+function actualizarPreviewMoneda(){
+  const precio = parseFloat($('#pPrecio').value) || 0;
+  const moneda = $('#pMoneda').value;
+  const prev = $('#previewMoneda');
+  if(precio <= 0){ prev.style.display = 'none'; return; }
+  prev.style.display = 'block';
+  if(moneda === 'CUP'){
+    const usd = precio / config.tasaUSD;
+    prev.innerHTML = `Precio en CUP: <b>${fmtCUP(precio)}</b><br>Equivalente: <b>${money(usd)} USD</b>`;
+  }else{
+    const cup = precio * config.tasaUSD;
+    prev.innerHTML = `Precio en USD: <b>${money(precio)}</b><br>Equivalente: <b>${fmtCUP(cup)}</b>`;
+  }
+}
+
 function abrirModalProd(producto){
   const esNuevo = !producto;
   $('#modalProdTitle').textContent = esNuevo ? '➕ Nuevo producto' : '✏️ Editar producto';
 
-  // Llenar select de categorías
   $('#pCategoria').innerHTML = categorias.map(c =>
     `<option value="${c.id}">${escapeHtml(c.nombre)}</option>`
   ).join('');
@@ -726,6 +609,7 @@ function abrirModalProd(producto){
     $('#pNombre').value = '';
     $('#pDesc').value = '';
     $('#pPrecio').value = '';
+    $('#pMoneda').value = 'USD';
     $('#pCategoria').value = categorias[0]?.id || '';
     $('#pDisponible').value = 'true';
     $('#pDestacado').value = 'false';
@@ -736,6 +620,7 @@ function abrirModalProd(producto){
     $('#pNombre').value = producto.nombre || '';
     $('#pDesc').value = producto.descripcion || '';
     $('#pPrecio').value = producto.precio || '';
+    $('#pMoneda').value = producto.moneda === 'CUP' ? 'CUP' : 'USD';
     $('#pCategoria').value = producto.categoria || categorias[0]?.id || '';
     $('#pDisponible').value = producto.disponible === false ? 'false' : 'true';
     $('#pDestacado').value = producto.destacado ? 'true' : 'false';
@@ -747,32 +632,13 @@ function abrirModalProd(producto){
     }
     $('#pImgFile').value = '';
   }
+  actualizarPreviewMoneda();
   $('#modalProd').classList.add('open');
   document.body.style.overflow = 'hidden';
 }
-
 function cerrarModalProd(){
   $('#modalProd').classList.remove('open');
   document.body.style.overflow = '';
-}
-
-async function subirImagen(file, productoId){
-  const ext = file.name.split('.').pop().toLowerCase() || 'webp';
-  const nombre = `${productoId}.${ext}`;
-  const ruta = `img/productos/${nombre}`;
-
-  // Leer como base64
-  const b64 = await new Promise((resolve, reject) => {
-    const reader = new FileReader();
-    reader.onload = () => resolve(reader.result.split(',')[1]);
-    reader.onerror = reject;
-    reader.readAsDataURL(file);
-  });
-
-  // Ver si ya existe para actualizar
-  const existente = await ghGet(ruta).catch(() => null);
-  await ghPut(ruta, b64, existente ? existente.sha : null, `Subir imagen ${nombre}`);
-  return ruta;
 }
 
 async function guardarProducto(){
@@ -780,12 +646,13 @@ async function guardarProducto(){
   const nombre = $('#pNombre').value.trim();
   const descripcion = $('#pDesc').value.trim();
   const precio = parseFloat($('#pPrecio').value);
+  const moneda = $('#pMoneda').value === 'CUP' ? 'CUP' : 'USD';
   const categoria = $('#pCategoria').value;
   const disponible = $('#pDisponible').value === 'true';
   const destacado = $('#pDestacado').value === 'true';
 
   if(!nombre) return toast('El nombre es obligatorio', 'err');
-  if(!isFinite(precio) || precio < 0) return toast('Precio inválido', 'err');
+  if(!isFinite(precio) || precio <= 0) return toast('Precio inválido', 'err');
   if(!categoria) return toast('Selecciona una categoría', 'err');
 
   const id = editId || slugify(nombre) + '-' + Date.now().toString(36).slice(-4);
@@ -794,33 +661,39 @@ async function guardarProducto(){
     $('#btnSaveProd').innerHTML = '<span class="loader"></span> Guardando...';
     $('#btnSaveProd').disabled = true;
 
-    // ¿Hay imagen nueva?
     let imagen = '';
     const file = $('#pImgFile').files[0];
     if(file){
-      imagen = await subirImagen(file, id);
+      try{
+        toast('Comprimiendo imagen...');
+        imagen = await subirImagen(file, id);
+      }catch(imgErr){
+        const continuar = confirm(
+          'No se pudo subir la imagen:\n\n' +
+          (imgErr.message || 'Error desconocido') +
+          '\n\n¿Guardar el producto SIN imagen?'
+        );
+        if(!continuar) throw imgErr;
+        const old = editId ? productos.find(p => p.id === editId) : null;
+        imagen = old?.imagen || '';
+      }
     } else if(editId){
       const old = productos.find(p => p.id === editId);
       imagen = old?.imagen || '';
     }
 
-    // Determinar categoría anterior (si cambió)
     const oldProd = editId ? productos.find(p => p.id === editId) : null;
     const catAnterior = oldProd?.categoria;
 
-    // Construir nuevo producto
-    const nuevo = { id, nombre, descripcion, precio, moneda: 'USD', imagen, categoria, disponible, destacado };
+    const nuevo = { id, nombre, descripcion, precio, moneda, imagen, categoria, disponible, destacado };
 
-    // Quitar de productos y volver a agregar
     if(editId){
       productos = productos.filter(p => p.id !== editId);
     }
     productos.push(nuevo);
 
-    // Guardar en la categoría nueva
     await guardarCategoriaProducto(categoria, `${editId ? 'Editar' : 'Añadir'} "${nombre}"`);
 
-    // Si cambió de categoría, actualizar la categoría anterior también
     if(editId && catAnterior && catAnterior !== categoria){
       await guardarCategoriaProducto(catAnterior, `Quitar "${nombre}" de categoría anterior`);
     }
@@ -829,7 +702,7 @@ async function guardarProducto(){
     cerrarModalProd();
     renderListaProductos();
   }catch(e){
-    toast('Error: ' + e.message, 'err');
+    toast('Error: ' + (e.message || 'desconocido'), 'err');
   }finally{
     $('#btnSaveProd').innerHTML = '💾 Guardar';
     $('#btnSaveProd').disabled = false;
@@ -841,7 +714,6 @@ async function editarProducto(id){
   if(!p) return toast('Producto no encontrado', 'err');
   abrirModalProd(p);
 }
-
 async function eliminarProducto(id){
   const p = productos.find(x => x.id === id);
   if(!p) return;
@@ -852,13 +724,13 @@ async function eliminarProducto(id){
     toast('🗑️ Producto eliminado');
     renderListaProductos();
   }catch(e){
-    toast('Error: ' + e.message, 'err');
+    toast('Error: ' + (e.message || 'desconocido'), 'err');
     await cargarTodo();
     renderListaProductos();
   }
 }
 
-/* ============ RENDER CATEGORÍAS ============ */
+/* ===== RENDER CATEGORÍAS ===== */
 function renderListaCategorias(){
   const cont = $('#catList');
   if(!categorias.length){
@@ -882,7 +754,6 @@ function renderListaCategorias(){
     `;
   }).join('');
 }
-
 function abrirModalCat(cat){
   const esNueva = !cat;
   $('#modalCatTitle').textContent = esNueva ? '➕ Nueva categoría' : '✏️ Editar categoría';
@@ -900,98 +771,69 @@ function abrirModalCat(cat){
   $('#modalCat').classList.add('open');
   document.body.style.overflow = 'hidden';
 }
-
 function cerrarModalCat(){
   $('#modalCat').classList.remove('open');
   document.body.style.overflow = '';
 }
-
 async function guardarCategoria(){
   const editId = $('#cEditId').value;
   const nombre = $('#cNombre').value.trim();
   const icon = $('#cIcon').value.trim();
   let id = $('#cId').value.trim();
-
   if(!nombre) return toast('El nombre es obligatorio', 'err');
   if(!id) id = slugify(nombre);
   id = slugify(id);
-
   if(!id) return toast('ID inválido', 'err');
-
-  // Verificar duplicados
   const existe = categorias.find(c => c.id === id && c.id !== editId);
   if(existe) return toast('Ya existe una categoría con ese ID', 'err');
-
   try{
     $('#btnSaveCat').innerHTML = '<span class="loader"></span> Guardando...';
     $('#btnSaveCat').disabled = true;
-
     const nueva = { id, nombre, icon };
-
     if(editId){
-      // Editar
       categorias = categorias.map(c => c.id === editId ? nueva : c);
-      // Si el ID cambió, renombrar el archivo y actualizar productos
       if(editId !== id){
         const prods = productos.filter(p => p.categoria === editId);
         prods.forEach(p => p.categoria = id);
-        // Guardar productos con nuevo ID
         await guardarJSON(`data/productos/${id}.json`, prods, `Renombrar categoría a "${id}"`);
-        // Borrar el archivo anterior
         const old = await ghGet(`data/productos/${editId}.json`).catch(() => null);
-        if(old){
-          await ghDelete(`data/productos/${editId}.json`, old.sha, `Eliminar categoría antigua ${editId}`);
-        }
+        if(old){ await ghDelete(`data/productos/${editId}.json`, old.sha, `Eliminar categoría antigua ${editId}`); }
       } else {
-        // Guardar productos con mismo ID
         const prods = productos.filter(p => p.categoria === id);
         await guardarJSON(`data/productos/${id}.json`, prods, `Actualizar categoría "${nombre}"`);
       }
     } else {
-      // Nueva
       categorias.push(nueva);
-      // Crear archivo vacío
       await guardarJSON(`data/productos/${id}.json`, [], `Crear categoría "${nombre}"`);
     }
-
-    // Guardar categorias.json
-    await guardarJSON('data/categorias.json', categorias, `Guardar categorías`);
-
+    await guardarJSON('data/categorias.json', categorias, 'Guardar categorías');
     toast('✅ Categoría guardada');
     cerrarModalCat();
     renderListaCategorias();
     renderFiltroProductos();
     renderListaProductos();
   }catch(e){
-    toast('Error: ' + e.message, 'err');
+    toast('Error: ' + (e.message || 'desconocido'), 'err');
     await cargarTodo();
   }finally{
     $('#btnSaveCat').innerHTML = '💾 Guardar';
     $('#btnSaveCat').disabled = false;
   }
 }
-
 function editarCategoria(id){
   const c = categorias.find(x => x.id === id);
   if(!c) return;
   abrirModalCat(c);
 }
-
 async function eliminarCategoria(id){
   const c = categorias.find(x => x.id === id);
   if(!c) return;
   const count = productos.filter(p => p.categoria === id).length;
-  const msg = count
-    ? `"${c.nombre}" tiene ${count} producto(s). Se eliminarán también. ¿Continuar?`
-    : `¿Eliminar "${c.nombre}"?`;
+  const msg = count ? `"${c.nombre}" tiene ${count} producto(s). Se eliminarán también. ¿Continuar?` : `¿Eliminar "${c.nombre}"?`;
   if(!confirm(msg)) return;
   try{
-    // Borrar archivo de productos
     const old = await ghGet(`data/productos/${id}.json`).catch(() => null);
-    if(old){
-      await ghDelete(`data/productos/${id}.json`, old.sha, `Eliminar categoría "${c.nombre}"`);
-    }
-    // Quitar de la lista
+    if(old){ await ghDelete(`data/productos/${id}.json`, old.sha, `Eliminar categoría "${c.nombre}"`); }
     categorias = categorias.filter(x => x.id !== id);
     productos = productos.filter(p => p.categoria !== id);
     await guardarJSON('data/categorias.json', categorias, `Eliminar categoría "${c.nombre}"`);
@@ -1000,12 +842,12 @@ async function eliminarCategoria(id){
     renderFiltroProductos();
     renderListaProductos();
   }catch(e){
-    toast('Error: ' + e.message, 'err');
+    toast('Error: ' + (e.message || 'desconocido'), 'err');
     await cargarTodo();
   }
 }
 
-/* ============ NAVEGACIÓN ============ */
+/* ===== NAVEGACIÓN ===== */
 function initNavegacion(){
   $$('.nav-tab').forEach(btn => {
     btn.addEventListener('click', () => {
@@ -1018,18 +860,16 @@ function initNavegacion(){
   });
 }
 
-/* ============ INICIO ============ */
+/* ===== INICIO ===== */
 async function iniciarApp(){
   $('#loginScreen').style.display = 'none';
   $('#app').classList.add('visible');
-
   await cargarTodo();
   renderConfig();
   renderFiltroProductos();
   renderListaProductos();
   renderListaCategorias();
 
-  // Listeners
   $('#btnLogout').addEventListener('click', logout);
   $('#btnSaveConfig').addEventListener('click', guardarConfig);
   $('#btnNewProd').addEventListener('click', () => abrirModalProd(null));
@@ -1038,7 +878,9 @@ async function iniciarApp(){
   $('#btnSaveCat').addEventListener('click', guardarCategoria);
   $('#prodFilterCat').addEventListener('change', renderListaProductos);
 
-  // Preview de imagen al seleccionar archivo
+  $('#pPrecio').addEventListener('input', actualizarPreviewMoneda);
+  $('#pMoneda').addEventListener('change', actualizarPreviewMoneda);
+
   $('#pImgFile').addEventListener('change', e => {
     const file = e.target.files[0];
     if(!file) return;
@@ -1047,25 +889,20 @@ async function iniciarApp(){
     $('#pImgPreview').style.display = 'block';
   });
 
-  // Cerrar modales con click fuera
   $('#modalProd').addEventListener('click', e => { if(e.target === $('#modalProd')) cerrarModalProd(); });
   $('#modalCat').addEventListener('click', e => { if(e.target === $('#modalCat')) cerrarModalCat(); });
 
   toast('✅ Panel listo');
 }
 
-/* ============ ARRANQUE ============ */
 document.addEventListener('DOMContentLoaded', () => {
   initNavegacion();
   $('#btnLogin').addEventListener('click', login);
   $('#tokenInput').addEventListener('keypress', e => { if(e.key === 'Enter') login(); });
-
-  // Auto-login si hay token guardado
   const guardado = localStorage.getItem('allstore_token');
   if(guardado){
     token = guardado;
     iniciarApp().catch(err => {
-      console.warn('Auto-login falló:', err);
       token = '';
       localStorage.removeItem('allstore_token');
       $('#loginScreen').style.display = 'flex';
