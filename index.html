@@ -443,7 +443,6 @@ function fmtCUP(n){
 }
 
 /* ===== CONVERSIÓN DE MONEDA ===== */
-/* Convierte el precio de un producto a USD, sin importar su moneda original */
 function precioEnUSD(p){
   if(!p) return 0;
   const precio = Number(p.precio) || 0;
@@ -454,7 +453,6 @@ function precioEnUSD(p){
   }
   return precio;
 }
-/* Convierte el precio de un producto a CUP, sin importar su moneda original */
 function precioEnCUP(p){
   if(!p) return 0;
   const precio = Number(p.precio) || 0;
@@ -545,23 +543,23 @@ function actualizarBadge(){
   else badge.style.display = 'none';
 }
 
-/* ===== CARGA DE DATOS ===== */
+/* ===== CARGA DE DATOS (con cache-busting) ===== */
 async function cargarConfig(){
   try{
-    const r = await fetch('data/config.json');
+    const r = await fetch(`data/config.json?t=${Date.now()}`);
     const data = await r.json();
     config = Object.assign(config, data);
   }catch(e){ console.warn('Usando config por defecto'); }
 }
 async function cargarCategorias(){
   try{
-    const r = await fetch('data/categorias.json');
+    const r = await fetch(`data/categorias.json?t=${Date.now()}`);
     categorias = await r.json();
   }catch(e){ categorias = []; }
 }
 async function obtenerProductosDeCategoria(catId){
   try{
-    const r = await fetch(`data/productos/${catId}.json`);
+    const r = await fetch(`data/productos/${catId}.json?t=${Date.now()}`);
     if(!r.ok) return [];
     const data = await r.json();
     return Array.isArray(data) ? data : [];
@@ -950,4 +948,4 @@ async function init(){
 document.addEventListener('DOMContentLoaded', init);
 </script>
 </body>
-        </html>
+</html>
