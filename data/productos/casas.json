@@ -1,18 +1,13 @@
 [
   {
-    "id": "prueba-1c9o",
+    "id": "prueba-2qzi",
     "nombre": "Prueba",
-    "descripcion": "Hola, es la prueba",
+    "descripcion": "Hola soy la prueba",
     "precio": 2000,
     "moneda": "CUP",
-    "imagen": "blob:https://d4n1green-rgb.github.io/217c8d06-c0da-438b-93e3-edd9ff814b79",
+    "imagen": "blob:https://d4n1green-rgb.github.io/9ef9b25c-913d-4c49-8473-827f87185b6d",
     "imagenes": [
-      "blob:https://d4n1green-rgb.github.io/217c8d06-c0da-438b-93e3-edd9ff814b79",
-      "blob:https://d4n1green-rgb.github.io/0521694c-a888-48fc-a40c-640159d3bcc3",
-      "blob:https://d4n1green-rgb.github.io/de201618-0ba8-4bf8-9d88-1f4a7f3d5081",
-      "blob:https://d4n1green-rgb.github.io/404be7f0-e5ad-4182-a77f-77db4ce54a99",
-      "blob:https://d4n1green-rgb.github.io/5c034ddb-1e89-4b99-acae-20b7d80eb5a7",
-      "blob:https://d4n1green-rgb.github.io/ab1024f3-ab27-4b97-b428-14b3f803133a"
+      "blob:https://d4n1green-rgb.github.io/9ef9b25c-913d-4c49-8473-827f87185b6d"
     ],
     "categoria": "casas",
     "disponible": true,
