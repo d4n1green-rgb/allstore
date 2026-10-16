@@ -127,13 +127,13 @@ input[type="file"]{padding:12px;font-size:.88rem;cursor:pointer;background:var(-
 .upload-progress .bar{height:6px;background:var(--gris-medio);border-radius:3px;overflow:hidden;margin-top:6px}
 .upload-progress .bar-fill{height:100%;background:linear-gradient(90deg,var(--azul-brillante),var(--verde));transition:width .3s;border-radius:3px}
 
-/* Diagnóstico */
-.diagnostico-box{background:#fff8e1;border:2px solid var(--amarillo);border-radius:10px;padding:14px 16px;margin-top:12px;font-size:.85rem;line-height:1.7}
-.diagnostico-box h4{font-size:.9rem;color:#8a5a00;margin-bottom:8px}
-.diagnostico-box .linea{display:flex;gap:8px;padding:3px 0;border-bottom:1px solid rgba(243,156,18,.2);font-family:'Courier New',monospace;font-size:.78rem}
-.diagnostico-box .linea:last-child{border-bottom:none}
-.diagnostico-box .ok{color:#1e8449;font-weight:700}
-.diagnostico-box .err{color:#c0392b;font-weight:700}
+/* Panel de subida manual */
+.manual-panel{background:linear-gradient(135deg,rgba(52,152,219,.08),rgba(52,152,219,.02));border:1px solid rgba(52,152,219,.3);border-radius:10px;padding:14px 16px;margin-top:12px}
+.manual-panel h4{font-size:.85rem;color:var(--azul-oscuro);margin-bottom:8px;font-weight:800}
+.manual-panel p{font-size:.78rem;color:var(--texto-gris);line-height:1.55;margin-bottom:10px}
+.manual-panel .btn-manual{width:100%;padding:11px;border-radius:9px;background:linear-gradient(135deg,#3498db,#2980b9);color:#fff;font-weight:800;font-size:.9rem;display:flex;align-items:center;justify-content:center;gap:6px;cursor:pointer;border:none;margin-bottom:10px}
+.manual-panel .btn-manual:hover{filter:brightness(1.08)}
+.manual-panel input[type="text"]{font-family:'Courier New',monospace;font-size:.85rem}
 
 .retry-banner{
   position:fixed;top:70px;left:50%;transform:translateX(-50%);
@@ -232,9 +232,19 @@ input[type="file"]{padding:12px;font-size:.88rem;cursor:pointer;background:var(-
     <div class="panel" id="panel-ayuda">
       <h2 class="panel-title">❓ Cómo usar el panel</h2>
       <p class="panel-sub">Guía rápida</p>
+
+      <div class="card">
+        <h3>🖼️ Subir imágenes: dos métodos</h3>
+        <p style="font-size:.9rem;color:var(--texto-gris);line-height:1.7;margin-bottom:10px">
+          <b>Método 1 (automático):</b> Selecciona la imagen y guarda. El panel la comprime a 600px y la sube. Puede fallar si la conexión está inestable.
+        </p>
+        <p style="font-size:.9rem;color:var(--texto-gris);line-height:1.7">
+          <b>Método 2 (manual, 100% fiable):</b> Dentro del modal hay un botón azul <b>"📤 Abrir GitHub para subir"</b>. Se abre una pestaña nueva del repositorio. Sube la imagen ahí y escribe el nombre del archivo en el campo del admin.
+        </p>
+      </div>
+
       <div class="card"><h3>📝 Editar un producto</h3><p style="font-size:.9rem;color:var(--texto-gris);line-height:1.7">Ve a <b>Productos</b>, busca el que quieras y toca el lápiz ✏️.</p></div>
       <div class="card"><h3>💵 Elegir moneda del precio</h3><p style="font-size:.9rem;color:var(--texto-gris);line-height:1.7">Puedes elegir entre <b>USD</b> o <b>CUP</b>. La tienda convierte automáticamente.</p></div>
-      <div class="card"><h3>🖼️ Subir imágenes</h3><p style="font-size:.9rem;color:var(--texto-gris);line-height:1.7">Al guardar, verás un panel amarillo con el resultado de cada imagen. Si falla, ahí dice exactamente por qué.</p></div>
       <div class="card"><h3>🗑️ Eliminar productos</h3><p style="font-size:.9rem;color:var(--texto-gris);line-height:1.7">Al eliminar un producto, también se borran sus imágenes del repositorio.</p></div>
     </div>
   </main>
@@ -253,23 +263,37 @@ input[type="file"]{padding:12px;font-size:.88rem;cursor:pointer;background:var(-
     </div>
     <div class="modal-body">
       <input type="hidden" id="pEditId">
+
+      <!-- IMÁGENES EXISTENTES -->
       <div class="form-group">
-        <label>Imágenes del producto</label>
+        <label>Imágenes actuales del producto</label>
+        <div class="img-grid" id="imgGrid"></div>
+      </div>
+
+      <!-- SUBIDA AUTOMÁTICA -->
+      <div class="form-group">
+        <label>➕ Añadir imágenes (modo automático)</label>
         <input type="file" id="pImgFile" accept="image/*" multiple>
-        <div style="font-size:.76rem;color:var(--texto-gris);margin-top:6px">Selecciona una o varias. La primera será la portada.</div>
+        <div style="font-size:.76rem;color:var(--texto-gris);margin-top:6px">Se comprimen a 600px y se suben con 5 reintentos.</div>
         <div class="upload-progress" id="uploadProgress">
           <span id="uploadProgressText">Subiendo...</span>
           <div class="bar"><div class="bar-fill" id="uploadProgressBar" style="width:0%"></div></div>
         </div>
-        <div class="img-grid" id="imgGrid"></div>
-
-        <!-- DIAGNÓSTICO -->
-        <div class="diagnostico-box" id="diagBox" style="display:none">
-          <h4>🩺 Diagnóstico de imágenes</h4>
-          <div id="diagLineas"></div>
-        </div>
       </div>
-      <div class="form-group"><label>Nombre *</label><input type="text" id="pNombre" placeholder="Ej: Moto Eléctrica Modelo X"></div>
+
+      <!-- SUBIDA MANUAL (SIEMPRE FIABLE) -->
+      <div class="manual-panel">
+        <h4>📤 Modo manual (100% fiable)</h4>
+        <p>Si la subida automática falla, sube la imagen directamente a GitHub y escribe el nombre aquí.</p>
+        <button type="button" class="btn-manual" onclick="abrirSubidaManual()">
+          📤 Abrir GitHub para subir
+        </button>
+        <label style="font-size:.72rem;font-weight:800;color:var(--texto-gris);text-transform:uppercase;letter-spacing:.4px;display:block;margin-bottom:5px">Nombre del archivo subido</label>
+        <input type="text" id="pImagenManual" placeholder="ej: moto-bucatti-a4.jpg">
+        <div style="font-size:.72rem;color:var(--texto-gris);margin-top:6px">Pega aquí el nombre del archivo tal como lo subiste. Se añadirá a las imágenes del producto al guardar.</div>
+      </div>
+
+      <div class="form-group" style="margin-top:16px"><label>Nombre *</label><input type="text" id="pNombre" placeholder="Ej: Moto Eléctrica Modelo X"></div>
       <div class="form-group"><label>Descripción</label><textarea id="pDesc" rows="5" placeholder="Especificaciones, materiales, etc."></textarea></div>
 
       <div class="form-group">
@@ -334,6 +358,7 @@ const OWNER = 'd4n1green-rgb';
 const REPO  = 'allstore';
 const BRANCH = 'main';
 const API   = `https://api.github.com/repos/${OWNER}/${REPO}/contents`;
+const CARPETA_IMGS = 'img/productos';
 
 let token = '';
 let categorias = [];
@@ -382,19 +407,10 @@ function fmtCUP(n){
 function fmtUSD(n){ return '$' + Number(n || 0).toFixed(2); }
 function getTasa(){ return Number(config.tasaUSD) || 790; }
 
-/* ===== DIAGNÓSTICO ===== */
-function diagLimpiar(){
-  $('#diagBox').style.display = 'none';
-  $('#diagLineas').innerHTML = '';
-}
-function diagAgregar(etiqueta, mensaje, ok){
-  const box = $('#diagBox');
-  box.style.display = 'block';
-  const lineas = $('#diagLineas');
-  const div = document.createElement('div');
-  div.className = 'linea';
-  div.innerHTML = `<span style="min-width:120px;color:#8a5a00;font-weight:700">${escapeHtml(etiqueta)}</span><span class="${ok ? 'ok' : 'err'}">${escapeHtml(mensaje)}</span>`;
-  lineas.appendChild(div);
+/* Abrir GitHub para subir imágenes manualmente */
+function abrirSubidaManual(){
+  const url = `https://github.com/${OWNER}/${REPO}/upload/${BRANCH}/${CARPETA_IMGS}`;
+  window.open(url, '_blank');
 }
 
 /* ===== FETCH CON REINTENTOS ===== */
@@ -687,8 +703,8 @@ async function guardarCategoriaProducto(catId, mensaje){
   await guardarJSON(`data/productos/${catId}.json`, lista, mensaje);
 }
 
-/* ===== COMPRESIÓN (SOLO SI HACE FALTA) ===== */
-async function comprimirImagen(file, maxAncho = 1000, calidad = 0.78){
+/* ===== COMPRESIÓN (600px, calidad 70%) ===== */
+async function comprimirImagen(file, maxAncho = 600, calidad = 0.7){
   return new Promise((resolve, reject) => {
     const url = URL.createObjectURL(file);
     const img = new Image();
@@ -704,82 +720,62 @@ async function comprimirImagen(file, maxAncho = 1000, calidad = 0.78){
         ctx.drawImage(img, 0, 0, w, h);
         URL.revokeObjectURL(url);
         canvas.toBlob(blob => {
-          if(!blob){ reject(new Error('toBlob devolvió null')); return; }
+          if(!blob){ reject(new Error('toBlob null')); return; }
           resolve(blob);
         }, 'image/jpeg', calidad);
       }catch(err){
         URL.revokeObjectURL(url);
-        reject(new Error('Error en canvas: ' + err.message));
+        reject(new Error('Canvas: ' + err.message));
       }
     };
     img.onerror = () => {
       URL.revokeObjectURL(url);
-      reject(new Error('No se pudo leer la imagen en el navegador'));
+      reject(new Error('No se pudo leer la imagen'));
     };
     img.src = url;
   });
 }
 
-function fileToBase64(file){
+function fileToBase64(fileOrBlob){
   return new Promise((resolve, reject) => {
     const reader = new FileReader();
     reader.onload = () => {
       const result = reader.result;
-      if(!result || typeof result !== 'string'){ reject(new Error('FileReader no devolvió nada')); return; }
+      if(!result || typeof result !== 'string'){ reject(new Error('FileReader vacío')); return; }
       const idx = result.indexOf(',');
-      if(idx < 0){ reject(new Error('Formato base64 inválido')); return; }
+      if(idx < 0){ reject(new Error('Formato inválido')); return; }
       resolve(result.slice(idx + 1));
     };
-    reader.onerror = (e) => reject(new Error('FileReader error: ' + (e.target && e.target.error ? e.target.error.message : 'desconocido')));
-    reader.readAsDataURL(file);
+    reader.onerror = (e) => reject(new Error('FileReader: ' + (e.target && e.target.error ? e.target.error.message : 'error')));
+    reader.readAsDataURL(fileOrBlob);
   });
 }
 
-/* Subida OPTIMIZADA: intenta primero subir el archivo original (si es pequeño y ya está en formato óptimo)
-   si no, comprime primero */
-async function subirImagen(file, productoId, idx, numTotal){
-  const prefijoDiag = `Imagen ${idx+1}/${numTotal}`;
-  diagAgregar(prefijoDiag, `Iniciando (${file.name}, ${Math.round(file.size/1024)} KB, ${file.type})`, true);
-
+/* Subida con compresión 600px + 5 reintentos */
+async function subirImagen(file, productoId, idx){
+  // 1) Comprimir SIEMPRE a 600px, calidad 70% (queda ~25-35 KB)
   let blob;
-  let extension;
-
-  // Si el archivo ya es WebP/JPG y pesa menos de 300 KB, lo subimos tal cual
-  const esFormatoOk = (file.type === 'image/webp' || file.type === 'image/jpeg' || file.type === 'image/jpg');
-  const esPesoOk = file.size < 300 * 1024;
-
-  if(esFormatoOk && esPesoOk){
-    blob = file;
-    extension = file.type === 'image/webp' ? 'webp' : 'jpg';
-    diagAgregar(prefijoDiag, `Ya está optimizada, subiendo sin recomprimir`, true);
-  } else {
-    diagAgregar(prefijoDiag, `Comprimiendo (${Math.round(file.size/1024)} KB → max 1000px, JPEG 78%)`, true);
-    try{
-      blob = await comprimirImagen(file);
-      extension = 'jpg';
-      diagAgregar(prefijoDiag, `Comprimida: ${Math.round(blob.size/1024)} KB`, true);
-    }catch(err){
-      diagAgregar(prefijoDiag, `Error comprimiendo: ${err.message}`, false);
-      throw err;
-    }
+  try{
+    blob = await comprimirImagen(file, 600, 0.7);
+  }catch(err){
+    throw new Error('Comprimiendo: ' + err.message);
   }
 
-  // Convertir a base64
+  // 2) Convertir a base64
   let b64;
   try{
     b64 = await fileToBase64(blob);
-    diagAgregar(prefijoDiag, `Convertida a base64 (${Math.round(b64.length/1024)} KB)`, true);
   }catch(err){
-    diagAgregar(prefijoDiag, `Error base64: ${err.message}`, false);
-    throw err;
+    throw new Error('Base64: ' + err.message);
   }
 
-  // Subir a GitHub
+  // 3) Ruta destino
   const sufijo = idx > 0 ? `-${idx}` : '';
-  const ruta = `img/productos/${productoId}${sufijo}.${extension}`;
+  const ruta = `${CARPETA_IMGS}/${productoId}${sufijo}.jpg`;
 
+  // 4) 5 intentos con pausas crecientes
   let ultimoError;
-  for(let intento = 0; intento < 3; intento++){
+  for(let intento = 0; intento < 5; intento++){
     try{
       let shaActual = null;
       try{
@@ -788,17 +784,16 @@ async function subirImagen(file, productoId, idx, numTotal){
       }catch(e){ /* 404 */ }
 
       await ghPut(ruta, b64, shaActual, `Subir imagen ${productoId} ${idx}`, false);
-      diagAgregar(prefijoDiag, `✅ Subida a ${ruta}`, true);
       return ruta;
     }catch(e){
       ultimoError = e;
-      diagAgregar(prefijoDiag, `Intento ${intento+1}/3 falló: ${e.message}`, false);
-      if(intento < 2){
-        await new Promise(res => setTimeout(res, 1000 * (intento + 1)));
+      console.warn(`Intento ${intento+1}/5 falló:`, e.message);
+      if(intento < 4){
+        await new Promise(res => setTimeout(res, 1500 * (intento + 1)));
       }
     }
   }
-  throw new Error(`No se pudo subir tras 3 intentos. Último error: ${ultimoError.message}`);
+  throw new Error(`5 intentos fallidos. Último: ${ultimoError.message}`);
 }
 
 /* ===== SELECTOR DE MONEDA ===== */
@@ -842,7 +837,6 @@ function abrirModalProd(producto){
   $('#pCategoria').innerHTML = categorias.map(c => `<option value="${c.id}">${escapeHtml(c.nombre)}</option>`).join('');
 
   imagenesEdicion = [];
-  diagLimpiar();
 
   if(esNuevo){
     $('#pEditId').value = '';
@@ -853,6 +847,7 @@ function abrirModalProd(producto){
     $('#pDisponible').value = 'true';
     $('#pDestacado').value = 'false';
     $('#pImgFile').value = '';
+    $('#pImagenManual').value = '';
     monedaSeleccionada = 'USD';
   }else{
     $('#pEditId').value = producto.id;
@@ -863,6 +858,7 @@ function abrirModalProd(producto){
     $('#pDisponible').value = producto.disponible === false ? 'false' : 'true';
     $('#pDestacado').value = producto.destacado ? 'true' : 'false';
     $('#pImgFile').value = '';
+    $('#pImagenManual').value = '';
     imagenesEdicion = getImagenesProd(producto).slice();
     monedaSeleccionada = (producto.moneda === 'CUP') ? 'CUP' : 'USD';
   }
@@ -877,7 +873,7 @@ function abrirModalProd(producto){
 function renderImgGrid(){
   const grid = $('#imgGrid');
   if(!imagenesEdicion.length){
-    grid.innerHTML = '<div style="grid-column:1/-1;text-align:center;color:var(--texto-gris);font-size:.85rem;padding:14px;font-style:italic">Sin imágenes. Selecciona una o varias.</div>';
+    grid.innerHTML = '<div style="grid-column:1/-1;text-align:center;color:var(--texto-gris);font-size:.85rem;padding:14px;font-style:italic">Sin imágenes. Sube una o usa el modo manual.</div>';
     return;
   }
   grid.innerHTML = imagenesEdicion.map((url, i) => `
@@ -910,6 +906,7 @@ async function guardarProducto(){
   const disponible = $('#pDisponible').value === 'true';
   const destacado = $('#pDestacado').value === 'true';
   const moneda = monedaSeleccionada;
+  const imagenManual = $('#pImagenManual').value.trim();
 
   if(!nombre) return toast('El nombre es obligatorio', 'err');
   if(!isFinite(precio) || precio < 0) return toast('Precio inválido', 'err');
@@ -920,14 +917,23 @@ async function guardarProducto(){
   const btn = $('#btnSaveProd');
   btn.innerHTML = '<span class="loader"></span> Guardando...';
   btn.disabled = true;
-  diagLimpiar();
 
   let erroresImagenes = [];
 
   try{
-    const files = Array.from($('#pImgFile').files || []);
     let imagenesFinales = imagenesEdicion.slice();
 
+    // 1) Añadir imagen manual si el usuario escribió el nombre
+    if(imagenManual){
+      let ruta = imagenManual;
+      if(!ruta.startsWith('img/')) ruta = `${CARPETA_IMGS}/${imagenManual}`;
+      if(!imagenesFinales.includes(ruta)){
+        imagenesFinales.push(ruta);
+      }
+    }
+
+    // 2) Subir archivos seleccionados (modo automático)
+    const files = Array.from($('#pImgFile').files || []);
     if(files.length){
       $('#uploadProgress').classList.add('visible');
       for(let i = 0; i < files.length; i++){
@@ -935,7 +941,7 @@ async function guardarProducto(){
         $('#uploadProgressBar').style.width = Math.round((i / files.length) * 100) + '%';
 
         try{
-          const ruta = await subirImagen(files[i], id, imagenesFinales.length, files.length);
+          const ruta = await subirImagen(files[i], id, imagenesFinales.length);
           imagenesFinales.push(ruta);
           $('#uploadProgressBar').style.width = Math.round(((i+1) / files.length) * 100) + '%';
         }catch(err){
@@ -946,11 +952,11 @@ async function guardarProducto(){
       $('#uploadProgress').classList.remove('visible');
     }
 
-    if(!imagenesFinales.length && files.length){
-      const detalle = erroresImagenes.join('\n');
+    if(!imagenesFinales.length && (files.length || imagenManual)){
+      const detalle = erroresImagenes.length ? erroresImagenes.join('\n') : 'No se especificó ninguna imagen';
       const continuar = confirm(
         `No se pudo subir ninguna imagen:\n\n${detalle}\n\n` +
-        `¿Guardar el producto SIN imágenes?`
+        `Puedes guardar el producto sin imagen y usar el modo manual. ¿Guardar igual?`
       );
       if(!continuar){
         btn.innerHTML = '💾 Guardar';
@@ -980,7 +986,7 @@ async function guardarProducto(){
     }
 
     if(erroresImagenes.length){
-      toast(`⚠️ Producto guardado · ${erroresImagenes.length} imagen(es) fallaron`, 'warn', 5000);
+      toast(`⚠️ Guardado · ${erroresImagenes.length} imagen(es) fallaron. Usa el modo manual.`, 'warn', 6000);
     } else {
       toast('✅ Producto guardado');
     }
@@ -1255,4 +1261,4 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 </script>
 </body>
-                                                                                  </html>
+  </html>
