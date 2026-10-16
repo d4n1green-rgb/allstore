@@ -18,7 +18,8 @@
     "moneda": "USD",
     "imagen": "img/productos/IMG-20260831-WA0015.jpg",
     "imagenes": [
-      "img/productos/IMG-20260831-WA0015.jpg"
+      "img/productos/IMG-20260831-WA0015.jpg",
+      "img/productos/IMG-20260831-WA0011.jpg"
     ],
     "categoria": "motos-y-carros",
     "disponible": true,
