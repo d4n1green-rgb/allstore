@@ -5,9 +5,8 @@
     "descripcion": "Otro ejemplo",
     "precio": 20000,
     "moneda": "CUP",
-    "imagen": "blob:https://d4n1green-rgb.github.io/f85c668e-0b4c-4802-9aed-bde3799bbc30",
+    "imagen": "img/productos/ejemplo-2-c4lo-1.jpg",
     "imagenes": [
-      "blob:https://d4n1green-rgb.github.io/f85c668e-0b4c-4802-9aed-bde3799bbc30",
       "img/productos/ejemplo-2-c4lo-1.jpg"
     ],
     "categoria": "ecoflow-baterias",
