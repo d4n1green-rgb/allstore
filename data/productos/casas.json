@@ -5,9 +5,9 @@
     "descripcion": "Hola soy la prueba",
     "precio": 2000,
     "moneda": "CUP",
-    "imagen": "blob:https://d4n1green-rgb.github.io/3479535e-5710-4a68-b72c-f2f5102116e8",
+    "imagen": "img/productos/prueba-2qzi-1.jpg",
     "imagenes": [
-      "blob:https://d4n1green-rgb.github.io/3479535e-5710-4a68-b72c-f2f5102116e8"
+      "img/productos/prueba-2qzi-1.jpg"
     ],
     "categoria": "casas",
     "disponible": true,
