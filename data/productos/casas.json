@@ -5,10 +5,8 @@
     "descripcion": "Hola soy la prueba",
     "precio": 2000,
     "moneda": "CUP",
-    "imagen": "img/productos/prueba-2qzi-1.jpg",
-    "imagenes": [
-      "img/productos/prueba-2qzi-1.jpg"
-    ],
+    "imagen": "",
+    "imagenes": [],
     "categoria": "casas",
     "disponible": true,
     "destacado": false
