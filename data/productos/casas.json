@@ -1,16 +1,1 @@
-[
-  {
-    "id": "ejemplo-y34a",
-    "nombre": "Ejemplo",
-    "descripcion": "Hola soy ejemplo de nuevo",
-    "precio": 2000,
-    "moneda": "CUP",
-    "imagen": "blob:https://d4n1green-rgb.github.io/8786f971-e1a5-44f4-8773-9d9d7a414cb4",
-    "imagenes": [
-      "blob:https://d4n1green-rgb.github.io/8786f971-e1a5-44f4-8773-9d9d7a414cb4"
-    ],
-    "categoria": "casas",
-    "disponible": true,
-    "destacado": false
-  }
-]
+[]
