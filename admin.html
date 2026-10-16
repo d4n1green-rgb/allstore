@@ -83,6 +83,8 @@ header.admin-header{background:linear-gradient(135deg,var(--azul-oscuro),var(--a
 .badge-destacado{background:var(--amarillo);color:#fff}
 .badge-ok{background:#d4edda;color:#155724}
 .badge-multi{background:var(--azul-brillante);color:#fff}
+.badge-moneda{background:var(--azul-oscuro);color:#fff}
+.badge-moneda.cup{background:var(--verde)}
 .prod-row-actions{display:flex;flex-direction:column;gap:8px;flex-shrink:0}
 .prod-row-actions button{width:40px;height:40px;padding:0;border-radius:9px;font-size:1rem;display:flex;align-items:center;justify-content:center}
 
@@ -109,6 +111,42 @@ input[type="file"]{padding:12px;font-size:.88rem;cursor:pointer;background:var(-
 .img-slot .etiqueta{position:absolute;bottom:0;left:0;right:0;background:rgba(10,25,47,.75);color:#fff;font-size:.62rem;font-weight:800;text-align:center;padding:3px;letter-spacing:.4px;text-transform:uppercase}
 .img-slot.principal{border:2px solid var(--azul-brillante)}
 .img-slot.principal .etiqueta{background:var(--azul-brillante)}
+
+/* Selector de moneda */
+.moneda-selector{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:10px}
+.moneda-opt{
+  background:var(--gris-claro);
+  border:2px solid var(--gris-medio);
+  border-radius:10px;
+  padding:12px 14px;
+  cursor:pointer;
+  text-align:center;
+  font-weight:800;
+  font-size:.95rem;
+  color:var(--texto-gris);
+  transition:.15s;
+  user-select:none;
+}
+.moneda-opt:hover{border-color:var(--line-strong,#cfd6de)}
+.moneda-opt.active{
+  border-color:var(--azul-brillante);
+  background:#fff;
+  color:var(--azul-oscuro);
+  box-shadow:0 0 0 3px rgba(0,168,255,.15);
+}
+.moneda-opt .emoji{display:block;font-size:1.4rem;margin-bottom:4px}
+
+.conversion-info{
+  font-size:.8rem;
+  color:var(--texto-gris);
+  background:linear-gradient(135deg,rgba(0,168,255,.08),rgba(0,168,255,.02));
+  border:1px solid rgba(0,168,255,.25);
+  border-radius:9px;
+  padding:10px 12px;
+  margin-top:8px;
+  line-height:1.6;
+}
+.conversion-info strong{color:var(--azul-brillante)}
 
 .toast-container{position:fixed;bottom:20px;left:50%;transform:translateX(-50%);z-index:400;display:flex;flex-direction:column;gap:8px;align-items:center;pointer-events:none;max-width:92vw}
 .toast{background:var(--azul-oscuro);color:#fff;padding:13px 20px;border-radius:11px;font-size:.9rem;font-weight:700;box-shadow:0 10px 30px rgba(0,0,0,.3);animation:toastIn .25s ease;border-left:4px solid var(--verde);max-width:100%}
@@ -193,9 +231,10 @@ input[type="file"]{padding:12px;font-size:.88rem;cursor:pointer;background:var(-
       <h2 class="panel-title">❓ Cómo usar el panel</h2>
       <p class="panel-sub">Guía rápida</p>
       <div class="card"><h3>📝 Editar un producto</h3><p style="font-size:.9rem;color:var(--texto-gris);line-height:1.7">Ve a <b>Productos</b>, busca el que quieras y toca el lápiz ✏️.</p></div>
+      <div class="card"><h3>💵 Elegir moneda del precio</h3><p style="font-size:.9rem;color:var(--texto-gris);line-height:1.7">Al crear o editar un producto puedes elegir si el precio está en <b>USD</b> o en <b>CUP</b>. La tienda convierte automáticamente al otro valor según la tasa configurada.</p></div>
       <div class="card"><h3>🖼️ Subir varias imágenes</h3><p style="font-size:.9rem;color:var(--texto-gris);line-height:1.7">Puedes seleccionar varias imágenes de una vez. La primera será la portada del producto en el catálogo. Puedes eliminarlas con la X roja. Se comprimen automáticamente antes de subir.</p></div>
       <div class="card"><h3>🚫 Marcar como agotado</h3><p style="font-size:.9rem;color:var(--texto-gris);line-height:1.7">Al editar un producto, cambia el estado a <b>Agotado</b>.</p></div>
-      <div class="card"><h3>💱 Cambiar la tasa del dólar</h3><p style="font-size:.9rem;color:var(--texto-gris);line-height:1.7">En <b>Config</b>, cambia la tasa. Los precios en CUP se recalculan solos.</p></div>
+      <div class="card"><h3>💱 Cambiar la tasa del dólar</h3><p style="font-size:.9rem;color:var(--texto-gris);line-height:1.7">En <b>Config</b>, cambia la tasa. Los precios en CUP y USD se recalculan solos.</p></div>
       <div class="card"><h3>⚠️ Importante</h3><p style="font-size:.9rem;color:var(--texto-gris);line-height:1.7">Los cambios tardan <b>30-60 segundos</b> en reflejarse en la tienda pública.</p></div>
     </div>
   </main>
@@ -217,11 +256,33 @@ input[type="file"]{padding:12px;font-size:.88rem;cursor:pointer;background:var(-
       </div>
       <div class="form-group"><label>Nombre *</label><input type="text" id="pNombre" placeholder="Ej: Moto Eléctrica Modelo X"></div>
       <div class="form-group"><label>Descripción</label><textarea id="pDesc" rows="5" placeholder="Especificaciones, materiales, etc."></textarea></div>
+
+      <!-- SELECTOR DE MONEDA -->
+      <div class="form-group">
+        <label>Moneda del precio *</label>
+        <div class="moneda-selector" id="monedaSelector">
+          <div class="moneda-opt active" data-moneda="USD">
+            <span class="emoji">💵</span>
+            USD (dólar)
+          </div>
+          <div class="moneda-opt" data-moneda="CUP">
+            <span class="emoji">💴</span>
+            CUP (peso)
+          </div>
+        </div>
+      </div>
+
       <div class="form-row">
-        <div class="form-group"><label>Precio (USD) *</label><input type="number" id="pPrecio" min="0" step="0.01"></div>
+        <div class="form-group">
+          <label id="pPrecioLabel">Precio (USD) *</label>
+          <input type="number" id="pPrecio" min="0" step="0.01" placeholder="0.00">
+        </div>
         <div class="form-group"><label>Categoría *</label><select id="pCategoria"></select></div>
       </div>
-      <div class="form-row">
+
+      <div class="conversion-info" id="conversionInfo" style="display:none"></div>
+
+      <div class="form-row" style="margin-top:14px">
         <div class="form-group"><label>Estado</label><select id="pDisponible"><option value="true">Disponible</option><option value="false">Agotado</option></select></div>
         <div class="form-group"><label>Destacado</label><select id="pDestacado"><option value="false">No</option><option value="true">Sí</option></select></div>
       </div>
@@ -264,8 +325,8 @@ let token = '';
 let categorias = [];
 let productos = [];
 let config = {};
-let imagenesEdicion = [];  // Array de URLs existentes + blobs nuevos
-let blobsNuevos = [];      // Blobs nuevos pendientes de subir
+let imagenesEdicion = [];
+let monedaSeleccionada = 'USD';
 
 const $ = s => document.querySelector(s);
 const $$ = s => document.querySelectorAll(s);
@@ -300,6 +361,14 @@ function getImagenesProd(p){
   if(p.imagen) return [p.imagen];
   return [];
 }
+function fmtCUP(n){
+  const r = Math.round(Number(n) || 0);
+  return r.toString().replace(/\B(?=(\d{3})+(?!\d))/g, '.') + ' CUP';
+}
+function fmtUSD(n){
+  return '$' + Number(n || 0).toFixed(2);
+}
+function getTasa(){ return Number(config.tasaUSD) || 790; }
 
 /* ===== GITHUB API ===== */
 async function ghGet(path){
@@ -318,7 +387,6 @@ async function ghGet(path){
 async function ghPut(path, contentB64, sha, message, retry = true){
   const body = { message: message || `Actualizar ${path}`, content: contentB64, branch: BRANCH };
   if(sha) body.sha = sha;
-
   let r;
   try{
     r = await fetch(`${API}/${path}`, {
@@ -331,9 +399,8 @@ async function ghPut(path, contentB64, sha, message, retry = true){
       body: JSON.stringify(body)
     });
   }catch(netErr){
-    throw new Error('Sin conexión al guardar. Revisa tu internet e intenta de nuevo.');
+    throw new Error('Sin conexión al guardar. Revisa tu internet.');
   }
-
   if(!r.ok){
     let errMsg = `Error ${r.status}`;
     try{ const e = await r.json(); if(e.message) errMsg = e.message; }catch(_){}
@@ -481,16 +548,20 @@ function renderListaProductos(){
     const cat = categorias.find(c => c.id === p.categoria);
     const imgs = getImagenesProd(p);
     const portada = imgs[0] || 'placeholder';
+    const moneda = p.moneda || 'USD';
+    const precio = Number(p.precio || 0);
+    const precioMostrar = moneda === 'CUP' ? fmtCUP(precio) : fmtUSD(precio);
     return `
       <div class="prod-row">
         <img src="${escapeHtml(portada)}" alt="" onerror="this.src='data:image/svg+xml;utf8,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><rect fill=%22%23e1e6ec%22 width=%22100%22 height=%22100%22/><text x=%2250%22 y=%2255%22 font-size=%2230%22 text-anchor=%22middle%22 fill=%22%23999%22>📷</text></svg>'">
         <div class="prod-row-info">
           <div class="prod-row-nombre">${escapeHtml(p.nombre)}</div>
-          <div class="prod-row-precio">$${Number(p.precio||0).toFixed(2)} USD</div>
+          <div class="prod-row-precio">${precioMostrar}</div>
           <div class="prod-row-cat">${cat ? escapeHtml(cat.nombre) : 'Sin categoría'}</div>
           <div class="prod-row-badges">
             ${p.disponible === false ? '<span class="badge badge-agotado">Agotado</span>' : '<span class="badge badge-ok">Disponible</span>'}
             ${p.destacado ? '<span class="badge badge-destacado">Destacado</span>' : ''}
+            <span class="badge badge-moneda ${moneda === 'CUP' ? 'cup' : ''}">${moneda}</span>
             ${imgs.length > 1 ? `<span class="badge badge-multi">${imgs.length} fotos</span>` : ''}
           </div>
         </div>
@@ -567,6 +638,43 @@ async function subirImagenBlob(blob, productoId, idx){
   return ruta;
 }
 
+/* ===== SELECTOR DE MONEDA ===== */
+function actualizarMonedaSelectorUI(){
+  $$('#monedaSelector .moneda-opt').forEach(opt => {
+    opt.classList.toggle('active', opt.dataset.moneda === monedaSeleccionada);
+  });
+  const label = $('#pPrecioLabel');
+  const input = $('#pPrecio');
+  if(monedaSeleccionada === 'CUP'){
+    label.textContent = 'Precio (CUP) *';
+    input.placeholder = '0';
+    input.step = '1';
+  } else {
+    label.textContent = 'Precio (USD) *';
+    input.placeholder = '0.00';
+    input.step = '0.01';
+  }
+  actualizarConversion();
+}
+
+function actualizarConversion(){
+  const info = $('#conversionInfo');
+  const valor = parseFloat($('#pPrecio').value);
+  const tasa = getTasa();
+  if(!isFinite(valor) || valor <= 0){
+    info.style.display = 'none';
+    return;
+  }
+  info.style.display = 'block';
+  if(monedaSeleccionada === 'USD'){
+    const cup = valor * tasa;
+    info.innerHTML = `📊 <strong>Equivalente:</strong> ${fmtUSD(valor)} ≈ ${fmtCUP(cup)} <span style="color:var(--texto-gris)">(tasa: ${tasa})</span>`;
+  } else {
+    const usd = valor / tasa;
+    info.innerHTML = `📊 <strong>Equivalente:</strong> ${fmtCUP(valor)} ≈ ${fmtUSD(usd)} <span style="color:var(--texto-gris)">(tasa: ${tasa})</span>`;
+  }
+}
+
 /* ===== MODAL PRODUCTO ===== */
 function abrirModalProd(producto){
   const esNuevo = !producto;
@@ -574,7 +682,6 @@ function abrirModalProd(producto){
   $('#pCategoria').innerHTML = categorias.map(c => `<option value="${c.id}">${escapeHtml(c.nombre)}</option>`).join('');
 
   imagenesEdicion = [];
-  blobsNuevos = [];
 
   if(esNuevo){
     $('#pEditId').value = '';
@@ -585,6 +692,7 @@ function abrirModalProd(producto){
     $('#pDisponible').value = 'true';
     $('#pDestacado').value = 'false';
     $('#pImgFile').value = '';
+    monedaSeleccionada = 'USD';
   }else{
     $('#pEditId').value = producto.id;
     $('#pNombre').value = producto.nombre || '';
@@ -595,8 +703,10 @@ function abrirModalProd(producto){
     $('#pDestacado').value = producto.destacado ? 'true' : 'false';
     $('#pImgFile').value = '';
     imagenesEdicion = getImagenesProd(producto).slice();
+    monedaSeleccionada = (producto.moneda === 'CUP') ? 'CUP' : 'USD';
   }
 
+  actualizarMonedaSelectorUI();
   renderImgGrid();
   $('#modalProd').classList.add('open');
   document.body.style.overflow = 'hidden';
@@ -627,7 +737,6 @@ function cerrarModalProd(){
   $('#modalProd').classList.remove('open');
   document.body.style.overflow = '';
   imagenesEdicion = [];
-  blobsNuevos = [];
 }
 
 async function guardarProducto(){
@@ -638,6 +747,7 @@ async function guardarProducto(){
   const categoria = $('#pCategoria').value;
   const disponible = $('#pDisponible').value === 'true';
   const destacado = $('#pDestacado').value === 'true';
+  const moneda = monedaSeleccionada;
 
   if(!nombre) return toast('El nombre es obligatorio', 'err');
   if(!isFinite(precio) || precio < 0) return toast('Precio inválido', 'err');
@@ -649,10 +759,7 @@ async function guardarProducto(){
     $('#btnSaveProd').innerHTML = '<span class="loader"></span> Guardando...';
     $('#btnSaveProd').disabled = true;
 
-    // Detectar blobs nuevos pendientes
-    const fileInput = $('#pImgFile');
-    const files = Array.from(fileInput.files || []);
-
+    const files = Array.from($('#pImgFile').files || []);
     let imagenesFinales = imagenesEdicion.slice();
 
     if(files.length){
@@ -660,13 +767,12 @@ async function guardarProducto(){
       for(let i = 0; i < files.length; i++){
         try{
           const blob = await comprimirImagen(files[i]);
-          // Subir con índice temporal
           const idx = imagenesFinales.length;
           const ruta = await subirImagenBlob(blob, id, idx);
           imagenesFinales.push(ruta);
         }catch(err){
-          console.error('Error con imagen', i, err);
-          toast('Imagen ' + (i+1) + ' no se pudo subir: ' + (err.message || 'error'), 'err');
+          console.error('Error imagen', i, err);
+          toast('Imagen ' + (i+1) + ' no se pudo subir', 'err');
         }
       }
     }
@@ -679,9 +785,10 @@ async function guardarProducto(){
     const oldProd = editId ? productos.find(p => p.id === editId) : null;
     const catAnterior = oldProd?.categoria;
 
-    // Guardamos como "imagenes" array (y mantenemos "imagen" con la primera para compatibilidad)
     const nuevo = {
-      id, nombre, descripcion, precio, moneda: 'USD',
+      id, nombre, descripcion,
+      precio,
+      moneda,
       imagen: imagenesFinales[0] || '',
       imagenes: imagenesFinales,
       categoria, disponible, destacado
@@ -883,7 +990,17 @@ async function iniciarApp(){
   $('#btnSaveCat').addEventListener('click', guardarCategoria);
   $('#prodFilterCat').addEventListener('change', renderListaProductos);
 
-  // Al seleccionar archivos, mostrar previews temporales (no se suben hasta guardar)
+  // Selector de moneda
+  $$('#monedaSelector .moneda-opt').forEach(opt => {
+    opt.addEventListener('click', () => {
+      monedaSeleccionada = opt.dataset.moneda;
+      actualizarMonedaSelectorUI();
+    });
+  });
+
+  // Actualizar la conversión cuando cambia el precio
+  $('#pPrecio').addEventListener('input', actualizarConversion);
+
   $('#pImgFile').addEventListener('change', e => {
     const files = Array.from(e.target.files || []);
     if(!files.length) return;
@@ -919,4 +1036,4 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 </script>
 </body>
-  </html>
+        </html>
