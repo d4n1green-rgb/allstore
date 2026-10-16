@@ -1,1 +1,30 @@
-[]
+[
+  {
+    "id": "ejemplo-6v3u",
+    "nombre": "Ejemplo",
+    "descripcion": "Hola soy el ejemplo",
+    "precio": 2000,
+    "moneda": "CUP",
+    "imagen": "blob:https://d4n1green-rgb.github.io/f266f842-f3f1-4b39-a74c-bba0d7981830",
+    "imagenes": [
+      "blob:https://d4n1green-rgb.github.io/f266f842-f3f1-4b39-a74c-bba0d7981830"
+    ],
+    "categoria": "casas",
+    "disponible": true,
+    "destacado": false
+  },
+  {
+    "id": "ejemplo-76c9",
+    "nombre": "Ejemplo",
+    "descripcion": "Hola soy el ejemplo",
+    "precio": 2000,
+    "moneda": "CUP",
+    "imagen": "blob:https://d4n1green-rgb.github.io/f266f842-f3f1-4b39-a74c-bba0d7981830",
+    "imagenes": [
+      "blob:https://d4n1green-rgb.github.io/f266f842-f3f1-4b39-a74c-bba0d7981830"
+    ],
+    "categoria": "casas",
+    "disponible": true,
+    "destacado": false
+  }
+]
