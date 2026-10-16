@@ -9,19 +9,5 @@
     "categoria": "motos-y-carros",
     "disponible": true,
     "destacado": false
-  },
-  {
-    "id": "ejemplo-3-dnxu",
-    "nombre": "Ejemplo 3",
-    "descripcion": "Más ejemplos",
-    "precio": 50000,
-    "moneda": "USD",
-    "imagen": "blob:https://d4n1green-rgb.github.io/f7435fc3-1fbf-44f2-acb9-e8357fb43209",
-    "imagenes": [
-      "blob:https://d4n1green-rgb.github.io/f7435fc3-1fbf-44f2-acb9-e8357fb43209"
-    ],
-    "categoria": "motos-y-carros",
-    "disponible": true,
-    "destacado": true
   }
 ]
