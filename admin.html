@@ -121,29 +121,25 @@ input[type="file"]{padding:12px;font-size:.88rem;cursor:pointer;background:var(-
 .conversion-info{font-size:.8rem;color:var(--texto-gris);background:linear-gradient(135deg,rgba(0,168,255,.08),rgba(0,168,255,.02));border:1px solid rgba(0,168,255,.25);border-radius:9px;padding:10px 12px;margin-top:8px;line-height:1.6}
 .conversion-info strong{color:var(--azul-brillante)}
 
-/* Barra de progreso de subida */
-.upload-progress{
-  background:var(--gris-claro);
-  border-radius:8px;
-  padding:10px 12px;
-  margin-top:10px;
-  font-size:.82rem;
-  color:var(--texto-gris);
-  display:none;
-}
+.upload-progress{background:var(--gris-claro);border-radius:8px;padding:10px 12px;margin-top:10px;font-size:.82rem;color:var(--texto-gris);display:none}
 .upload-progress.visible{display:block}
-.upload-progress .bar{
-  height:6px;
-  background:var(--gris-medio);
-  border-radius:3px;
-  overflow:hidden;
-  margin-top:6px;
+.upload-progress .bar{height:6px;background:var(--gris-medio);border-radius:3px;overflow:hidden;margin-top:6px}
+.upload-progress .bar-fill{height:100%;background:linear-gradient(90deg,var(--azul-brillante),var(--verde));transition:width .3s;border-radius:3px}
+
+/* Banner de reintento */
+.retry-banner{
+  position:fixed;top:70px;left:50%;transform:translateX(-50%);
+  background:#fff;border:2px solid var(--amarillo);
+  border-radius:12px;padding:14px 18px;z-index:150;
+  box-shadow:0 8px 25px rgba(0,0,0,.15);
+  max-width:90vw;text-align:center;display:none;
 }
-.upload-progress .bar-fill{
-  height:100%;
-  background:linear-gradient(90deg,var(--azul-brillante),var(--verde));
-  transition:width .3s;
-  border-radius:3px;
+.retry-banner.visible{display:block}
+.retry-banner p{font-size:.92rem;color:var(--texto);margin-bottom:10px;font-weight:700}
+.retry-banner button{
+  background:linear-gradient(135deg,var(--azul-oscuro),var(--azul-medio));
+  color:#fff;padding:10px 20px;border-radius:9px;
+  font-weight:800;font-size:.9rem;cursor:pointer;border:none;
 }
 
 .toast-container{position:fixed;bottom:20px;left:50%;transform:translateX(-50%);z-index:400;display:flex;flex-direction:column;gap:8px;align-items:center;pointer-events:none;max-width:92vw}
@@ -236,6 +232,11 @@ input[type="file"]{padding:12px;font-size:.88rem;cursor:pointer;background:var(-
   </main>
 </div>
 
+<div class="retry-banner" id="retryBanner">
+  <p>⚠️ No se pudo conectar con GitHub</p>
+  <button id="btnRetry">🔄 Reintentar</button>
+</div>
+
 <div class="modal-overlay" id="modalProd">
   <div class="modal">
     <div class="modal-head">
@@ -325,7 +326,6 @@ let categorias = [];
 let productos = [];
 let config = {};
 let imagenesEdicion = [];
-let blobsNuevos = [];  // {blob, nombreArchivo, preview}
 let monedaSeleccionada = 'USD';
 
 const $ = s => document.querySelector(s);
@@ -368,13 +368,31 @@ function fmtCUP(n){
 function fmtUSD(n){ return '$' + Number(n || 0).toFixed(2); }
 function getTasa(){ return Number(config.tasaUSD) || 790; }
 
+/* ===== FETCH CON REINTENTOS ===== */
+async function fetchConReintentos(url, options, intentos = 3){
+  let ultimoError;
+  for(let i = 0; i < intentos; i++){
+    try{
+      const r = await fetch(url, options);
+      return r;
+    }catch(e){
+      ultimoError = e;
+      console.warn(`Intento ${i+1}/${intentos} falló:`, e.message);
+      if(i < intentos - 1){
+        await new Promise(res => setTimeout(res, 800 * (i + 1)));
+      }
+    }
+  }
+  throw ultimoError;
+}
+
 /* ===== GITHUB API ===== */
 async function ghGet(path){
-  const r = await fetch(`${API}/${path}?ref=${BRANCH}&t=${Date.now()}`, {
+  const url = `${API}/${path}?ref=${BRANCH}`;
+  const r = await fetchConReintentos(url, {
     headers: {
       'Authorization': `token ${token}`,
-      'Accept': 'application/vnd.github+json',
-      'Cache-Control': 'no-cache'
+      'Accept': 'application/vnd.github+json'
     }
   });
   if(r.status === 404) return null;
@@ -392,7 +410,7 @@ async function ghPut(path, contentB64, sha, message, retry = true){
 
   let r;
   try{
-    r = await fetch(`${API}/${path}`, {
+    r = await fetchConReintentos(`${API}/${path}`, {
       method: 'PUT',
       headers: {
         'Authorization': `token ${token}`,
@@ -409,7 +427,6 @@ async function ghPut(path, contentB64, sha, message, retry = true){
     let errMsg = `Error ${r.status}`;
     try{ const e = await r.json(); if(e.message) errMsg = e.message; }catch(_){}
 
-    // Detectar CUALQUIER conflicto de SHA para reintentar
     const esConflicto =
       r.status === 409 ||
       errMsg.toLowerCase().includes('sha') ||
@@ -418,7 +435,7 @@ async function ghPut(path, contentB64, sha, message, retry = true){
 
     if(retry && esConflicto){
       console.warn('Conflicto de SHA, reintentando con el actual...');
-      await new Promise(res => setTimeout(res, 600));
+      await new Promise(res => setTimeout(res, 800));
       const actual = await ghGet(path).catch(() => null);
       return ghPut(path, contentB64, actual ? actual.sha : null, message, false);
     }
@@ -428,7 +445,7 @@ async function ghPut(path, contentB64, sha, message, retry = true){
 }
 
 async function ghDelete(path, sha, message){
-  const r = await fetch(`${API}/${path}`, {
+  const r = await fetchConReintentos(`${API}/${path}`, {
     method: 'DELETE',
     headers: {
       'Authorization': `token ${token}`,
@@ -458,6 +475,13 @@ async function guardarJSON(path, data, message){
   return ghPut(path, b64, existe ? existe.sha : null, message);
 }
 
+/* ===== BANNER DE REINTENTO ===== */
+function mostrarRetryBanner(mostrar){
+  const b = $('#retryBanner');
+  if(mostrar) b.classList.add('visible');
+  else b.classList.remove('visible');
+}
+
 /* ===== LOGIN ===== */
 async function login(){
   const t = $('#tokenInput').value.trim();
@@ -468,19 +492,11 @@ async function login(){
   try{
     $('#btnLogin').innerHTML = '<span class="loader"></span> Verificando...';
     $('#btnLogin').disabled = true;
-    const r = await fetch(`https://api.github.com/repos/${OWNER}/${REPO}`, {
+
+    const r = await fetchConReintentos(`https://api.github.com/repos/${OWNER}/${REPO}`, {
       headers: { 'Authorization': `token ${token}`, 'Accept': 'application/vnd.github+json' }
     });
     if(!r.ok) throw new Error('Token sin acceso al repositorio');
-
-    // Verificar permisos de escritura con una petición de prueba
-    const test = await fetch(`https://api.github.com/repos/${OWNER}/${REPO}`, {
-      headers: { 'Authorization': `token ${token}`, 'Accept': 'application/vnd.github+json' }
-    });
-    const data = await test.json();
-    if(data.permissions && !data.permissions.push){
-      throw new Error('Tu token no tiene permiso de escritura. Edítalo y pon Contents: Read and write.');
-    }
 
     localStorage.setItem('allstore_token', token);
     await iniciarApp();
@@ -500,15 +516,31 @@ function logout(){
 
 /* ===== CARGA ===== */
 async function cargarTodo(){
+  mostrarRetryBanner(false);
   toast('Cargando datos...');
+  let huboError = false;
+
+  // Config
   try{
     const cfg = await leerJSON('data/config.json');
     config = cfg.data || { tasaUSD: 790, comisionPorcentaje: 3, comisionTopeCUP: 1000, whatsapp: '5356686384' };
   }catch(e){
+    console.warn('Error leyendo config:', e);
+    huboError = true;
     config = { tasaUSD: 790, comisionPorcentaje: 3, comisionTopeCUP: 1000, whatsapp: '5356686384' };
   }
-  const cats = await leerJSON('data/categorias.json');
-  categorias = cats.data || [];
+
+  // Categorías
+  try{
+    const cats = await leerJSON('data/categorias.json');
+    categorias = cats.data || [];
+  }catch(e){
+    console.warn('Error leyendo categorías:', e);
+    huboError = true;
+    categorias = [];
+  }
+
+  // Productos
   productos = [];
   for(const c of categorias){
     try{
@@ -516,9 +548,15 @@ async function cargarTodo(){
       if(Array.isArray(p.data)){
         p.data.forEach(prod => productos.push(prod));
       }
-    }catch(e){ console.warn('Error leyendo', c.id); }
+    }catch(e){
+      console.warn('Error leyendo productos de', c.id, e);
+      huboError = true;
+    }
   }
   productos.sort((a,b) => (a.categoria||'').localeCompare(b.categoria||'') || a.nombre.localeCompare(b.nombre));
+
+  if(huboError) mostrarRetryBanner(true);
+  return !huboError;
 }
 
 /* ===== CONFIG ===== */
@@ -661,14 +699,12 @@ async function subirImagenBlob(blob, productoId, idx){
   const sufijo = idx > 0 ? `-${idx}` : '';
   const ruta = `img/productos/${productoId}${sufijo}.jpg`;
 
-  // Intentar leer el SHA actual del archivo (si existe)
   let shaActual = null;
   try{
     const existente = await ghGet(ruta);
     if(existente && existente.sha) shaActual = existente.sha;
   }catch(e){ console.warn('No se pudo leer SHA de', ruta, e); }
 
-  // Subir con o sin SHA
   await ghPut(ruta, b64, shaActual, `Subir imagen ${productoId} ${idx}`);
   return ruta;
 }
@@ -714,7 +750,6 @@ function abrirModalProd(producto){
   $('#pCategoria').innerHTML = categorias.map(c => `<option value="${c.id}">${escapeHtml(c.nombre)}</option>`).join('');
 
   imagenesEdicion = [];
-  blobsNuevos = [];
 
   if(esNuevo){
     $('#pEditId').value = '';
@@ -771,7 +806,6 @@ function cerrarModalProd(){
   $('#modalProd').classList.remove('open');
   document.body.style.overflow = '';
   imagenesEdicion = [];
-  blobsNuevos = [];
 }
 
 async function guardarProducto(){
@@ -821,7 +855,6 @@ async function guardarProducto(){
       $('#uploadProgress').classList.remove('visible');
     }
 
-    // Si todas las imágenes fallaron y no hay previas, preguntar
     if(!imagenesFinales.length && files.length){
       const continuar = confirm(
         `No se pudo subir ninguna imagen (${imagenesFallidas} fallaron).\n\n` +
@@ -864,7 +897,6 @@ async function guardarProducto(){
       toast('✅ Producto guardado');
     }
     cerrarModalProd();
-    // Recargar productos para tener los SHA actualizados
     await cargarTodo();
     renderListaProductos();
   }catch(e){
@@ -878,7 +910,6 @@ async function guardarProducto(){
 }
 
 async function editarProducto(id){
-  // Recargar para tener SHA frescos
   await cargarTodo();
   const p = productos.find(x => x.id === id);
   if(!p) return toast('Producto no encontrado', 'err');
@@ -1043,11 +1074,15 @@ async function iniciarApp(){
   $('#loginScreen').style.display = 'none';
   $('#app').classList.add('visible');
 
-  await cargarTodo();
+  const exito = await cargarTodo();
   renderConfig();
   renderFiltroProductos();
   renderListaProductos();
   renderListaCategorias();
+
+  if(!exito){
+    toast('No se pudieron cargar todos los datos. Toca "🔄 Reintentar".', 'warn', 5000);
+  }
 
   $('#btnLogout').addEventListener('click', logout);
   $('#btnSaveConfig').addEventListener('click', guardarConfig);
@@ -1056,6 +1091,16 @@ async function iniciarApp(){
   $('#btnNewCat').addEventListener('click', () => abrirModalCat(null));
   $('#btnSaveCat').addEventListener('click', guardarCategoria);
   $('#prodFilterCat').addEventListener('change', renderListaProductos);
+
+  $('#btnRetry').addEventListener('click', async () => {
+    mostrarRetryBanner(false);
+    const exito = await cargarTodo();
+    renderConfig();
+    renderFiltroProductos();
+    renderListaProductos();
+    renderListaCategorias();
+    if(exito) toast('✅ Datos cargados correctamente');
+  });
 
   $$('#monedaSelector .moneda-opt').forEach(opt => {
     opt.addEventListener('click', () => {
@@ -1101,4 +1146,4 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 </script>
 </body>
-        </html>
+  </html>
