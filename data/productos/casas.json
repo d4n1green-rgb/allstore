@@ -1,14 +1,1 @@
-[
-  {
-    "id": "prueba-2qzi",
-    "nombre": "Prueba",
-    "descripcion": "Hola soy la prueba",
-    "precio": 2000,
-    "moneda": "CUP",
-    "imagen": "",
-    "imagenes": [],
-    "categoria": "casas",
-    "disponible": true,
-    "destacado": false
-  }
-]
+[]
