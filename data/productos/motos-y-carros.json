@@ -9,5 +9,19 @@
     "categoria": "motos-y-carros",
     "disponible": true,
     "destacado": false
+  },
+  {
+    "id": "top-max-8id2",
+    "nombre": "Top Max",
+    "descripcion": "Es una moto xd",
+    "precio": 9000,
+    "moneda": "USD",
+    "imagen": "img/productos/IMG-20260831-WA0015.jpg",
+    "imagenes": [
+      "img/productos/IMG-20260831-WA0015.jpg"
+    ],
+    "categoria": "motos-y-carros",
+    "disponible": true,
+    "destacado": true
   }
 ]
