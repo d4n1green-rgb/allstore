@@ -12,52 +12,52 @@
   --texto:#1f2937;--texto-gris:#6b7280;--verde:#25D366;--rojo:#e74c3c;--amarillo:#f39c12;
 }
 *{margin:0;padding:0;box-sizing:border-box;font-family:'Segoe UI',Tahoma,Geneva,Verdana,sans-serif}
+html{font-size:16px}
 body{background:var(--gris-claro);color:var(--texto);line-height:1.5;-webkit-font-smoothing:antialiased}
 button{font-family:inherit;cursor:pointer;border:none}
-input,select,textarea{font-family:inherit;width:100%;padding:10px 12px;border:1px solid var(--gris-medio);border-radius:8px;font-size:.9rem;background:#fff;color:var(--texto)}
+input,select,textarea{font-family:inherit;width:100%;padding:11px 13px;border:1px solid var(--gris-medio);border-radius:9px;font-size:.95rem;background:#fff;color:var(--texto)}
 input:focus,select:focus,textarea:focus{outline:none;border-color:var(--azul-brillante);box-shadow:0 0 0 3px rgba(0,168,255,.15)}
 img{max-width:100%;display:block}
 a{color:inherit;text-decoration:none}
 
 .login-screen{min-height:100vh;display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg,#0a192f,#1e3a5f);padding:20px}
-.login-box{background:#fff;border-radius:16px;padding:30px 26px;max-width:420px;width:100%;box-shadow:0 20px 60px rgba(0,0,0,.3)}
-.login-box h1{font-size:1.4rem;color:var(--azul-oscuro);margin-bottom:6px;text-align:center}
-.login-box p{font-size:.82rem;color:var(--texto-gris);text-align:center;margin-bottom:22px}
-.login-box label{display:block;font-size:.72rem;font-weight:800;color:var(--texto-gris);text-transform:uppercase;letter-spacing:.6px;margin-bottom:6px}
-.login-box button{width:100%;padding:13px;border-radius:10px;margin-top:16px;background:linear-gradient(135deg,var(--azul-oscuro),var(--azul-medio));color:#fff;font-weight:800;font-size:.95rem;transition:.15s}
+.login-box{background:#fff;border-radius:16px;padding:32px 28px;max-width:440px;width:100%;box-shadow:0 20px 60px rgba(0,0,0,.3)}
+.login-box h1{font-size:1.5rem;color:var(--azul-oscuro);margin-bottom:6px;text-align:center}
+.login-box p{font-size:.9rem;color:var(--texto-gris);text-align:center;margin-bottom:24px}
+.login-box label{display:block;font-size:.78rem;font-weight:800;color:var(--texto-gris);text-transform:uppercase;letter-spacing:.6px;margin-bottom:7px}
+.login-box button{width:100%;padding:14px;border-radius:10px;margin-top:18px;background:linear-gradient(135deg,var(--azul-oscuro),var(--azul-medio));color:#fff;font-weight:800;font-size:1rem;transition:.15s}
 .login-box button:hover{filter:brightness(1.1)}
-.login-help{background:var(--gris-claro);border-radius:8px;padding:12px 14px;margin-top:18px;font-size:.75rem;color:var(--texto-gris);line-height:1.6}
+.login-help{background:var(--gris-claro);border-radius:9px;padding:14px 16px;margin-top:20px;font-size:.82rem;color:var(--texto-gris);line-height:1.65}
 .login-help a{color:var(--azul-brillante);font-weight:700;text-decoration:underline}
 
 .app{display:none;min-height:100vh;flex-direction:column}
 .app.visible{display:flex}
-header.admin-header{background:linear-gradient(135deg,var(--azul-oscuro),var(--azul-medio));color:#fff;padding:12px 16px;display:flex;align-items:center;justify-content:space-between;gap:12px;box-shadow:0 2px 12px rgba(0,0,0,.15);position:sticky;top:0;z-index:100}
-.admin-header .brand{display:flex;align-items:center;gap:10px;font-weight:900;font-size:1rem}
-.admin-header .brand img{height:32px;background:#fff;padding:4px 8px;border-radius:6px}
+header.admin-header{background:linear-gradient(135deg,var(--azul-oscuro),var(--azul-medio));color:#fff;padding:14px 18px;display:flex;align-items:center;justify-content:space-between;gap:12px;box-shadow:0 2px 12px rgba(0,0,0,.15);position:sticky;top:0;z-index:100}
+.admin-header .brand{display:flex;align-items:center;gap:10px;font-weight:900;font-size:1.05rem}
+.admin-header .brand img{height:34px;background:#fff;padding:4px 8px;border-radius:7px}
 .admin-header .actions{display:flex;gap:6px}
-.btn-logout{background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.25);color:#fff;padding:7px 12px;border-radius:8px;font-size:.78rem;font-weight:700;transition:.15s}
+.btn-logout{background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.25);color:#fff;padding:8px 13px;border-radius:9px;font-size:.85rem;font-weight:700;transition:.15s}
 .btn-logout:hover{background:rgba(255,255,255,.25)}
 
-.admin-nav{background:#fff;border-bottom:1px solid var(--gris-medio);display:flex;overflow-x:auto;white-space:nowrap;-webkit-overflow-scrolling:touch;position:sticky;top:56px;z-index:90}
+.admin-nav{background:#fff;border-bottom:1px solid var(--gris-medio);display:flex;overflow-x:auto;white-space:nowrap;-webkit-overflow-scrolling:touch;position:sticky;top:60px;z-index:90}
 .admin-nav::-webkit-scrollbar{display:none}
-.nav-tab{background:transparent;color:var(--texto-gris);padding:13px 18px;font-weight:700;font-size:.82rem;border-bottom:3px solid transparent;display:inline-flex;align-items:center;gap:6px;transition:.15s;flex-shrink:0}
+.nav-tab{background:transparent;color:var(--texto-gris);padding:14px 20px;font-weight:700;font-size:.9rem;border-bottom:3px solid transparent;display:inline-flex;align-items:center;gap:6px;transition:.15s;flex-shrink:0}
 .nav-tab.active{color:var(--azul-oscuro);border-bottom-color:var(--azul-brillante)}
 
-.admin-main{flex:1;padding:20px 16px 60px;max-width:1100px;margin:0 auto;width:100%}
+.admin-main{flex:1;padding:22px 16px 70px;max-width:1100px;margin:0 auto;width:100%}
 .panel{display:none}
 .panel.active{display:block}
-.panel-title{font-size:1.15rem;color:var(--azul-oscuro);margin-bottom:6px;font-weight:900}
-.panel-sub{font-size:.82rem;color:var(--texto-gris);margin-bottom:20px}
+.panel-title{font-size:1.25rem;color:var(--azul-oscuro);margin-bottom:6px;font-weight:900}
+.panel-sub{font-size:.88rem;color:var(--texto-gris);margin-bottom:22px}
 
-.card{background:#fff;border-radius:12px;padding:18px;box-shadow:0 2px 8px rgba(0,0,0,.05);margin-bottom:16px}
-.card h3{font-size:1rem;color:var(--azul-oscuro);margin-bottom:14px}
-.form-group{margin-bottom:12px}
-.form-group label{display:block;font-size:.7rem;font-weight:800;color:var(--texto-gris);text-transform:uppercase;letter-spacing:.5px;margin-bottom:5px}
-.form-row{display:grid;grid-template-columns:1fr 1fr;gap:12px}
-.form-row-3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px}
-@media(max-width:600px){.form-row{grid-template-columns:1fr}.form-row-3{grid-template-columns:1fr 1fr}}
+.card{background:#fff;border-radius:13px;padding:20px;box-shadow:0 2px 10px rgba(0,0,0,.05);margin-bottom:18px}
+.card h3{font-size:1.05rem;color:var(--azul-oscuro);margin-bottom:16px}
+.form-group{margin-bottom:14px}
+.form-group label{display:block;font-size:.75rem;font-weight:800;color:var(--texto-gris);text-transform:uppercase;letter-spacing:.5px;margin-bottom:6px}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+@media(max-width:600px){.form-row{grid-template-columns:1fr}}
 
-.btn{padding:11px 18px;border-radius:9px;font-weight:800;font-size:.85rem;display:inline-flex;align-items:center;gap:6px;justify-content:center;transition:.15s;color:#fff;border:none}
+.btn{padding:12px 20px;border-radius:10px;font-weight:800;font-size:.9rem;display:inline-flex;align-items:center;gap:7px;justify-content:center;transition:.15s;color:#fff;border:none}
 .btn:hover{filter:brightness(1.08);transform:translateY(-1px)}
 .btn:disabled{opacity:.5;cursor:not-allowed;transform:none;filter:none}
 .btn-primary{background:linear-gradient(135deg,var(--azul-oscuro),var(--azul-medio))}
@@ -66,60 +66,58 @@ header.admin-header{background:linear-gradient(135deg,var(--azul-oscuro),var(--a
 .btn-warning{background:linear-gradient(135deg,#f39c12,#d68910)}
 .btn-ghost{background:transparent;color:var(--texto);border:1px solid var(--gris-medio)}
 .btn-ghost:hover{background:var(--gris-claro)}
-.btn-sm{padding:7px 12px;font-size:.78rem}
-.btn-block{width:100%;margin-bottom:8px}
+.btn-sm{padding:8px 14px;font-size:.82rem}
+.btn-block{width:100%;margin-bottom:10px}
 
-.prod-list{display:flex;flex-direction:column;gap:10px}
-.prod-row{background:#fff;border:1px solid var(--gris-medio);border-radius:10px;padding:12px;display:flex;gap:12px;align-items:center;transition:.15s}
+.prod-list{display:flex;flex-direction:column;gap:12px}
+.prod-row{background:#fff;border:1px solid var(--gris-medio);border-radius:11px;padding:14px;display:flex;gap:14px;align-items:center;transition:.15s}
 .prod-row:hover{border-color:var(--azul-brillante)}
-.prod-row img{width:60px;height:60px;object-fit:cover;border-radius:8px;background:var(--gris-claro);flex-shrink:0}
+.prod-row img{width:70px;height:70px;object-fit:cover;border-radius:9px;background:var(--gris-claro);flex-shrink:0}
 .prod-row-info{flex:1;min-width:0}
-.prod-row-nombre{font-weight:800;font-size:.9rem;color:var(--texto);margin-bottom:2px;word-break:break-word}
-.prod-row-precio{font-size:.82rem;color:var(--azul-brillante);font-weight:800}
-.prod-row-precio .secundario{color:var(--texto-gris);font-weight:600;font-size:.72rem;margin-left:4px}
-.prod-row-cat{font-size:.68rem;color:var(--texto-gris);margin-top:2px}
-.prod-row-badges{display:flex;gap:5px;flex-wrap:wrap;margin-top:5px}
-.badge{display:inline-block;padding:2px 7px;border-radius:5px;font-size:.6rem;font-weight:800;text-transform:uppercase;letter-spacing:.4px}
+.prod-row-nombre{font-weight:800;font-size:1rem;color:var(--texto);margin-bottom:3px;word-break:break-word}
+.prod-row-precio{font-size:.88rem;color:var(--azul-brillante);font-weight:800}
+.prod-row-cat{font-size:.78rem;color:var(--texto-gris);margin-top:3px}
+.prod-row-badges{display:flex;gap:6px;flex-wrap:wrap;margin-top:6px}
+.badge{display:inline-block;padding:3px 9px;border-radius:6px;font-size:.68rem;font-weight:800;text-transform:uppercase;letter-spacing:.4px}
 .badge-agotado{background:var(--rojo);color:#fff}
 .badge-destacado{background:var(--amarillo);color:#fff}
 .badge-ok{background:#d4edda;color:#155724}
-.badge-usd{background:#e3f2fd;color:#1976d2}
-.badge-cup{background:#fff3e0;color:#e65100}
-.prod-row-actions{display:flex;flex-direction:column;gap:6px;flex-shrink:0}
-.prod-row-actions button{width:34px;height:34px;padding:0;border-radius:8px;font-size:.9rem;display:flex;align-items:center;justify-content:center}
+.badge-multi{background:var(--azul-brillante);color:#fff}
+.prod-row-actions{display:flex;flex-direction:column;gap:8px;flex-shrink:0}
+.prod-row-actions button{width:40px;height:40px;padding:0;border-radius:9px;font-size:1rem;display:flex;align-items:center;justify-content:center}
 
-.empty-msg{text-align:center;padding:30px 20px;color:var(--texto-gris);font-style:italic;font-size:.85rem}
+.empty-msg{text-align:center;padding:36px 20px;color:var(--texto-gris);font-style:italic;font-size:.92rem}
 
 .modal-overlay{position:fixed;inset:0;background:rgba(0,0,0,.6);z-index:200;display:none;align-items:flex-end;justify-content:center}
 .modal-overlay.open{display:flex}
-.modal{background:#fff;width:100%;max-width:600px;border-radius:20px 20px 0 0;max-height:92vh;display:flex;flex-direction:column;animation:slideUp .25s ease}
-@media(min-width:768px){.modal-overlay{align-items:center;padding:20px}.modal{border-radius:16px;max-height:88vh}}
+.modal{background:#fff;width:100%;max-width:640px;border-radius:22px 22px 0 0;max-height:94vh;display:flex;flex-direction:column;animation:slideUp .25s ease}
+@media(min-width:768px){.modal-overlay{align-items:center;padding:20px}.modal{border-radius:18px;max-height:90vh}}
 @keyframes slideUp{from{transform:translateY(100%)}to{transform:translateY(0)}}
-.modal-head{padding:16px 20px;border-bottom:1px solid var(--gris-medio);display:flex;justify-content:space-between;align-items:center;flex-shrink:0}
-.modal-head h3{font-size:1.05rem;color:var(--azul-oscuro)}
-.modal-close{background:var(--gris-claro);border-radius:50%;width:32px;height:32px;font-size:1rem;color:var(--texto-gris);display:flex;align-items:center;justify-content:center}
-.modal-body{flex:1;overflow-y:auto;padding:18px 20px}
-.modal-foot{padding:14px 20px;border-top:1px solid var(--gris-medio);display:flex;gap:8px;flex-shrink:0;background:var(--gris-claro)}
+.modal-head{padding:18px 22px;border-bottom:1px solid var(--gris-medio);display:flex;justify-content:space-between;align-items:center;flex-shrink:0}
+.modal-head h3{font-size:1.1rem;color:var(--azul-oscuro)}
+.modal-close{background:var(--gris-claro);border-radius:50%;width:38px;height:38px;font-size:1.1rem;color:var(--texto-gris);display:flex;align-items:center;justify-content:center}
+.modal-body{flex:1;overflow-y:auto;padding:20px 22px}
+.modal-foot{padding:16px 22px;border-top:1px solid var(--gris-medio);display:flex;gap:10px;flex-shrink:0;background:var(--gris-claro)}
 .modal-foot .btn{flex:1}
-.img-preview{width:100%;max-height:220px;object-fit:contain;background:var(--gris-claro);border-radius:8px;margin-bottom:10px}
-input[type="file"]{padding:10px;font-size:.82rem;cursor:pointer;background:var(--gris-claro)}
+input[type="file"]{padding:12px;font-size:.88rem;cursor:pointer;background:var(--gris-claro)}
+
+.img-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(90px,1fr));gap:10px;margin-top:10px}
+.img-slot{position:relative;aspect-ratio:1/1;border-radius:10px;overflow:hidden;background:var(--gris-claro);border:1px solid var(--gris-medio)}
+.img-slot img{width:100%;height:100%;object-fit:cover}
+.img-slot .btn-x{position:absolute;top:5px;right:5px;width:26px;height:26px;border-radius:50%;background:rgba(231,76,60,.95);color:#fff;font-weight:800;font-size:.85rem;display:flex;align-items:center;justify-content:center;cursor:pointer;border:none;box-shadow:0 2px 6px rgba(0,0,0,.3)}
+.img-slot .btn-x:hover{background:var(--rojo)}
+.img-slot .etiqueta{position:absolute;bottom:0;left:0;right:0;background:rgba(10,25,47,.75);color:#fff;font-size:.62rem;font-weight:800;text-align:center;padding:3px;letter-spacing:.4px;text-transform:uppercase}
+.img-slot.principal{border:2px solid var(--azul-brillante)}
+.img-slot.principal .etiqueta{background:var(--azul-brillante)}
 
 .toast-container{position:fixed;bottom:20px;left:50%;transform:translateX(-50%);z-index:400;display:flex;flex-direction:column;gap:8px;align-items:center;pointer-events:none;max-width:92vw}
-.toast{background:var(--azul-oscuro);color:#fff;padding:12px 18px;border-radius:10px;font-size:.85rem;font-weight:700;box-shadow:0 10px 30px rgba(0,0,0,.3);animation:toastIn .25s ease;border-left:3px solid var(--verde);max-width:100%}
+.toast{background:var(--azul-oscuro);color:#fff;padding:13px 20px;border-radius:11px;font-size:.9rem;font-weight:700;box-shadow:0 10px 30px rgba(0,0,0,.3);animation:toastIn .25s ease;border-left:4px solid var(--verde);max-width:100%}
 .toast.err{border-left-color:var(--rojo)}
 .toast.warn{border-left-color:var(--amarillo)}
 @keyframes toastIn{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
 
 .loader{display:inline-block;width:18px;height:18px;border:2px solid rgba(255,255,255,.3);border-top-color:#fff;border-radius:50%;animation:spin .8s linear infinite;vertical-align:middle}
 @keyframes spin{to{transform:rotate(360deg)}}
-
-.preview-moneda{
-  background:linear-gradient(135deg,rgba(0,168,255,.08),rgba(0,168,255,.02));
-  border:1px solid rgba(0,168,255,.25);
-  border-radius:8px;padding:10px 12px;margin-top:8px;
-  font-size:.78rem;color:var(--texto);
-}
-.preview-moneda b{color:var(--azul-oscuro)}
 </style>
 </head>
 <body>
@@ -157,7 +155,6 @@ input[type="file"]{padding:10px;font-size:.82rem;cursor:pointer;background:var(-
   </nav>
 
   <main class="admin-main">
-
     <div class="panel active" id="panel-config">
       <h2 class="panel-title">⚙️ Configuración</h2>
       <p class="panel-sub">Tasa de cambio, comisión y WhatsApp del dueño</p>
@@ -195,14 +192,12 @@ input[type="file"]{padding:10px;font-size:.82rem;cursor:pointer;background:var(-
     <div class="panel" id="panel-ayuda">
       <h2 class="panel-title">❓ Cómo usar el panel</h2>
       <p class="panel-sub">Guía rápida</p>
-      <div class="card"><h3>💵 Moneda del producto</h3><p style="font-size:.85rem;color:var(--texto-gris);line-height:1.7">Al crear o editar un producto puedes elegir si el precio es en <b>USD</b> o en <b>CUP</b>. La tienda mostrará el precio en la moneda que elijas y su equivalente en la otra.</p></div>
-      <div class="card"><h3>📝 Editar un producto</h3><p style="font-size:.85rem;color:var(--texto-gris);line-height:1.7">Ve a <b>Productos</b>, busca el que quieras y toca el lápiz ✏️.</p></div>
-      <div class="card"><h3>🖼️ Subir imágenes</h3><p style="font-size:.85rem;color:var(--texto-gris);line-height:1.7">La imagen se comprime automáticamente antes de subirla. Tarda menos de 30 segundos.</p></div>
-      <div class="card"><h3>🚫 Marcar como agotado</h3><p style="font-size:.85rem;color:var(--texto-gris);line-height:1.7">Al editar un producto, cambia el estado a <b>Agotado</b>.</p></div>
-      <div class="card"><h3>💱 Cambiar la tasa del dólar</h3><p style="font-size:.85rem;color:var(--texto-gris);line-height:1.7">En <b>Config</b>, cambia la tasa. Los precios en CUP se recalculan solos.</p></div>
-      <div class="card"><h3>⚠️ Importante</h3><p style="font-size:.85rem;color:var(--texto-gris);line-height:1.7">Los cambios tardan <b>30-60 segundos</b> en reflejarse en la tienda pública.</p></div>
+      <div class="card"><h3>📝 Editar un producto</h3><p style="font-size:.9rem;color:var(--texto-gris);line-height:1.7">Ve a <b>Productos</b>, busca el que quieras y toca el lápiz ✏️.</p></div>
+      <div class="card"><h3>🖼️ Subir varias imágenes</h3><p style="font-size:.9rem;color:var(--texto-gris);line-height:1.7">Puedes seleccionar varias imágenes de una vez. La primera será la portada del producto en el catálogo. Puedes eliminarlas con la X roja. Se comprimen automáticamente antes de subir.</p></div>
+      <div class="card"><h3>🚫 Marcar como agotado</h3><p style="font-size:.9rem;color:var(--texto-gris);line-height:1.7">Al editar un producto, cambia el estado a <b>Agotado</b>.</p></div>
+      <div class="card"><h3>💱 Cambiar la tasa del dólar</h3><p style="font-size:.9rem;color:var(--texto-gris);line-height:1.7">En <b>Config</b>, cambia la tasa. Los precios en CUP se recalculan solos.</p></div>
+      <div class="card"><h3>⚠️ Importante</h3><p style="font-size:.9rem;color:var(--texto-gris);line-height:1.7">Los cambios tardan <b>30-60 segundos</b> en reflejarse en la tienda pública.</p></div>
     </div>
-
   </main>
 </div>
 
@@ -215,30 +210,19 @@ input[type="file"]{padding:10px;font-size:.82rem;cursor:pointer;background:var(-
     <div class="modal-body">
       <input type="hidden" id="pEditId">
       <div class="form-group">
-        <label>Imagen del producto</label>
-        <img id="pImgPreview" class="img-preview" src="" alt="" style="display:none" onerror="this.style.display='none'">
-        <input type="file" id="pImgFile" accept="image/*">
-        <div style="font-size:.7rem;color:var(--texto-gris);margin-top:5px">Se comprime automáticamente antes de subir.</div>
+        <label>Imágenes del producto</label>
+        <input type="file" id="pImgFile" accept="image/*" multiple>
+        <div style="font-size:.76rem;color:var(--texto-gris);margin-top:6px">Puedes seleccionar varias. La primera será la portada. Se comprimen automáticamente.</div>
+        <div class="img-grid" id="imgGrid"></div>
       </div>
       <div class="form-group"><label>Nombre *</label><input type="text" id="pNombre" placeholder="Ej: Moto Eléctrica Modelo X"></div>
-      <div class="form-group"><label>Descripción</label><textarea id="pDesc" rows="3" placeholder="Breve descripción (opcional)"></textarea></div>
-
-      <div class="form-row-3">
-        <div class="form-group" style="grid-column:span 2"><label>Precio *</label><input type="number" id="pPrecio" min="0" step="0.01" placeholder="0.00"></div>
-        <div class="form-group"><label>Moneda *</label>
-          <select id="pMoneda">
-            <option value="USD">USD ($)</option>
-            <option value="CUP">CUP</option>
-          </select>
-        </div>
-      </div>
-      <div class="preview-moneda" id="previewMoneda" style="display:none"></div>
-
-      <div class="form-row" style="margin-top:12px">
+      <div class="form-group"><label>Descripción</label><textarea id="pDesc" rows="5" placeholder="Especificaciones, materiales, etc."></textarea></div>
+      <div class="form-row">
+        <div class="form-group"><label>Precio (USD) *</label><input type="number" id="pPrecio" min="0" step="0.01"></div>
         <div class="form-group"><label>Categoría *</label><select id="pCategoria"></select></div>
-        <div class="form-group"><label>Estado</label><select id="pDisponible"><option value="true">Disponible</option><option value="false">Agotado</option></select></div>
       </div>
       <div class="form-row">
+        <div class="form-group"><label>Estado</label><select id="pDisponible"><option value="true">Disponible</option><option value="false">Agotado</option></select></div>
         <div class="form-group"><label>Destacado</label><select id="pDestacado"><option value="false">No</option><option value="true">Sí</option></select></div>
       </div>
     </div>
@@ -250,7 +234,7 @@ input[type="file"]{padding:10px;font-size:.82rem;cursor:pointer;background:var(-
 </div>
 
 <div class="modal-overlay" id="modalCat">
-  <div class="modal" style="max-width:460px">
+  <div class="modal" style="max-width:480px">
     <div class="modal-head">
       <h3 id="modalCatTitle">Categoría</h3>
       <button class="modal-close" onclick="cerrarModalCat()">✕</button>
@@ -259,7 +243,7 @@ input[type="file"]{padding:10px;font-size:.82rem;cursor:pointer;background:var(-
       <input type="hidden" id="cEditId">
       <div class="form-group"><label>Nombre *</label><input type="text" id="cNombre" placeholder="Ej: Motos y Carros"></div>
       <div class="form-group"><label>Icono (emoji)</label><input type="text" id="cIcon" placeholder="🏍️" maxlength="4"></div>
-      <div class="form-group"><label>ID interno (sin espacios)</label><input type="text" id="cId" placeholder="motos-y-carros"><div style="font-size:.7rem;color:var(--texto-gris);margin-top:5px">Debe coincidir con el archivo JSON en data/productos/</div></div>
+      <div class="form-group"><label>ID interno (sin espacios)</label><input type="text" id="cId" placeholder="motos-y-carros"><div style="font-size:.76rem;color:var(--texto-gris);margin-top:6px">Debe coincidir con el archivo JSON en data/productos/</div></div>
     </div>
     <div class="modal-foot">
       <button class="btn btn-ghost" onclick="cerrarModalCat()">Cancelar</button>
@@ -280,6 +264,8 @@ let token = '';
 let categorias = [];
 let productos = [];
 let config = {};
+let imagenesEdicion = [];  // Array de URLs existentes + blobs nuevos
+let blobsNuevos = [];      // Blobs nuevos pendientes de subir
 
 const $ = s => document.querySelector(s);
 const $$ = s => document.querySelectorAll(s);
@@ -308,10 +294,11 @@ function slugify(str){
 function escapeHtml(s){
   return String(s ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 }
-function money(n){ return '$' + Number(n || 0).toFixed(2); }
-function fmtCUP(n){
-  const r = Math.round(Number(n) || 0);
-  return r.toString().replace(/\B(?=(\d{3})+(?!\d))/g, '.') + ' CUP';
+function getImagenesProd(p){
+  if(!p) return [];
+  if(Array.isArray(p.imagenes) && p.imagenes.length) return p.imagenes.filter(Boolean);
+  if(p.imagen) return [p.imagen];
+  return [];
 }
 
 /* ===== GITHUB API ===== */
@@ -327,17 +314,26 @@ async function ghGet(path){
   }
   return r.json();
 }
+
 async function ghPut(path, contentB64, sha, message, retry = true){
   const body = { message: message || `Actualizar ${path}`, content: contentB64, branch: BRANCH };
   if(sha) body.sha = sha;
+
   let r;
   try{
     r = await fetch(`${API}/${path}`, {
       method: 'PUT',
-      headers: { 'Authorization': `token ${token}`, 'Accept': 'application/vnd.github+json', 'Content-Type': 'application/json' },
+      headers: {
+        'Authorization': `token ${token}`,
+        'Accept': 'application/vnd.github+json',
+        'Content-Type': 'application/json'
+      },
       body: JSON.stringify(body)
     });
-  }catch(netErr){ throw new Error('Sin conexión al guardar. Revisa tu internet e intenta de nuevo.'); }
+  }catch(netErr){
+    throw new Error('Sin conexión al guardar. Revisa tu internet e intenta de nuevo.');
+  }
+
   if(!r.ok){
     let errMsg = `Error ${r.status}`;
     try{ const e = await r.json(); if(e.message) errMsg = e.message; }catch(_){}
@@ -349,10 +345,15 @@ async function ghPut(path, contentB64, sha, message, retry = true){
   }
   return r.json();
 }
+
 async function ghDelete(path, sha, message){
   const r = await fetch(`${API}/${path}`, {
     method: 'DELETE',
-    headers: { 'Authorization': `token ${token}`, 'Accept': 'application/vnd.github+json', 'Content-Type': 'application/json' },
+    headers: {
+      'Authorization': `token ${token}`,
+      'Accept': 'application/vnd.github+json',
+      'Content-Type': 'application/json'
+    },
     body: JSON.stringify({ message: message || `Eliminar ${path}`, sha, branch: BRANCH })
   });
   if(!r.ok){
@@ -362,11 +363,13 @@ async function ghDelete(path, sha, message){
   }
   return r.json();
 }
+
 async function leerJSON(path){
   const f = await ghGet(path);
   if(!f) return { data: null, sha: null };
   return { data: JSON.parse(b64ToUtf8(f.content)), sha: f.sha };
 }
+
 async function guardarJSON(path, data, message){
   let existe = null;
   try{ existe = await ghGet(path); }catch(e){}
@@ -404,7 +407,7 @@ function logout(){
   location.reload();
 }
 
-/* ===== CARGA DE DATOS ===== */
+/* ===== CARGA ===== */
 async function cargarTodo(){
   toast('Cargando datos...');
   try{
@@ -427,7 +430,7 @@ async function cargarTodo(){
   productos.sort((a,b) => (a.categoria||'').localeCompare(b.categoria||'') || a.nombre.localeCompare(b.nombre));
 }
 
-/* ===== RENDER CONFIG ===== */
+/* ===== CONFIG ===== */
 function renderConfig(){
   $('#cfgTasa').value = config.tasaUSD ?? 790;
   $('#cfgComision').value = config.comisionPorcentaje ?? 3;
@@ -442,9 +445,7 @@ async function guardarConfig(){
     whatsapp: $('#cfgWhatsapp').value.trim(),
     monedaBase: 'USD'
   };
-  if(!nueva.whatsapp || nueva.whatsapp.length < 8){
-    return toast('WhatsApp inválido', 'err');
-  }
+  if(!nueva.whatsapp || nueva.whatsapp.length < 8) return toast('WhatsApp inválido', 'err');
   try{
     $('#btnSaveConfig').innerHTML = '<span class="loader"></span> Guardando...';
     $('#btnSaveConfig').disabled = true;
@@ -459,7 +460,7 @@ async function guardarConfig(){
   }
 }
 
-/* ===== RENDER PRODUCTOS ===== */
+/* ===== PRODUCTOS ===== */
 function renderFiltroProductos(){
   const sel = $('#prodFilterCat');
   const actual = sel.value;
@@ -468,38 +469,29 @@ function renderFiltroProductos(){
   if(actual) sel.value = actual;
 }
 
-function precioFormateado(p){
-  const esCUP = (p.moneda === 'CUP');
-  if(esCUP){
-    return `<span>${fmtCUP(p.precio)}</span> <span class="secundario">≈ ${money(p.precio / config.tasaUSD)} USD</span>`;
-  }
-  return `<span>${money(p.precio)} USD</span> <span class="secundario">≈ ${fmtCUP(p.precio * config.tasaUSD)}</span>`;
-}
-
 function renderListaProductos(){
   const filtro = $('#prodFilterCat').value || 'todas';
   const lista = filtro === 'todas' ? productos : productos.filter(p => p.categoria === filtro);
   const cont = $('#prodList');
-
   if(!lista.length){
     cont.innerHTML = '<div class="empty-msg">No hay productos. Toca "➕ Nuevo producto" para añadir uno.</div>';
     return;
   }
-
   cont.innerHTML = lista.map(p => {
     const cat = categorias.find(c => c.id === p.categoria);
-    const esCUP = (p.moneda === 'CUP');
+    const imgs = getImagenesProd(p);
+    const portada = imgs[0] || 'placeholder';
     return `
       <div class="prod-row">
-        <img src="${escapeHtml(p.imagen || 'placeholder')}" alt="" onerror="this.src='data:image/svg+xml;utf8,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><rect fill=%22%23e1e6ec%22 width=%22100%22 height=%22100%22/><text x=%2250%22 y=%2255%22 font-size=%2230%22 text-anchor=%22middle%22 fill=%22%23999%22>📷</text></svg>'">
+        <img src="${escapeHtml(portada)}" alt="" onerror="this.src='data:image/svg+xml;utf8,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><rect fill=%22%23e1e6ec%22 width=%22100%22 height=%22100%22/><text x=%2250%22 y=%2255%22 font-size=%2230%22 text-anchor=%22middle%22 fill=%22%23999%22>📷</text></svg>'">
         <div class="prod-row-info">
           <div class="prod-row-nombre">${escapeHtml(p.nombre)}</div>
-          <div class="prod-row-precio">${precioFormateado(p)}</div>
+          <div class="prod-row-precio">$${Number(p.precio||0).toFixed(2)} USD</div>
           <div class="prod-row-cat">${cat ? escapeHtml(cat.nombre) : 'Sin categoría'}</div>
           <div class="prod-row-badges">
-            <span class="badge ${esCUP ? 'badge-cup' : 'badge-usd'}">${esCUP ? 'CUP' : 'USD'}</span>
             ${p.disponible === false ? '<span class="badge badge-agotado">Agotado</span>' : '<span class="badge badge-ok">Disponible</span>'}
             ${p.destacado ? '<span class="badge badge-destacado">Destacado</span>' : ''}
+            ${imgs.length > 1 ? `<span class="badge badge-multi">${imgs.length} fotos</span>` : ''}
           </div>
         </div>
         <div class="prod-row-actions">
@@ -516,11 +508,11 @@ async function guardarCategoriaProducto(catId, mensaje){
   await guardarJSON(`data/productos/${catId}.json`, lista, mensaje);
 }
 
-/* ===== COMPRESIÓN DE IMAGEN ===== */
-async function comprimirImagen(file, maxAncho = 1000, calidad = 0.8){
+/* ===== COMPRESIÓN ===== */
+async function comprimirImagen(file, maxAncho = 1100, calidad = 0.82){
   return new Promise((resolve, reject) => {
-    if(file.size > 15 * 1024 * 1024){
-      reject(new Error('La imagen supera los 15 MB. Usa una más pequeña.'));
+    if(file.size > 20 * 1024 * 1024){
+      reject(new Error('La imagen supera los 20 MB'));
       return;
     }
     const url = URL.createObjectURL(file);
@@ -529,116 +521,113 @@ async function comprimirImagen(file, maxAncho = 1000, calidad = 0.8){
       try{
         const canvas = document.createElement('canvas');
         let w = img.width, h = img.height;
-        if(w > maxAncho){
-          h = Math.round(h * maxAncho / w);
-          w = maxAncho;
-        }
-        canvas.width = w;
-        canvas.height = h;
+        if(w > maxAncho){ h = Math.round(h * maxAncho / w); w = maxAncho; }
+        canvas.width = w; canvas.height = h;
         const ctx = canvas.getContext('2d');
         ctx.fillStyle = '#ffffff';
         ctx.fillRect(0, 0, w, h);
         ctx.drawImage(img, 0, 0, w, h);
         URL.revokeObjectURL(url);
         canvas.toBlob(blob => {
-          if(!blob){ reject(new Error('Error al comprimir la imagen')); return; }
+          if(!blob){ reject(new Error('Error al comprimir')); return; }
           resolve(blob);
         }, 'image/jpeg', calidad);
       }catch(err){
         URL.revokeObjectURL(url);
-        reject(new Error('Error procesando la imagen: ' + err.message));
+        reject(new Error('Error procesando imagen'));
       }
     };
-    img.onerror = () => {
-      URL.revokeObjectURL(url);
-      reject(new Error('El archivo no es una imagen válida'));
-    };
+    img.onerror = () => { URL.revokeObjectURL(url); reject(new Error('Archivo no válido')); };
     img.src = url;
   });
 }
+
 function blobToBase64(blob){
   return new Promise((resolve, reject) => {
     const reader = new FileReader();
     reader.onload = () => {
       const result = reader.result;
-      if(!result || typeof result !== 'string'){ reject(new Error('Error convirtiendo la imagen')); return; }
+      if(!result || typeof result !== 'string'){ reject(new Error('Error convirtiendo')); return; }
       const idx = result.indexOf(',');
-      if(idx < 0){ reject(new Error('Formato de imagen inválido')); return; }
+      if(idx < 0){ reject(new Error('Formato inválido')); return; }
       resolve(result.slice(idx + 1));
     };
-    reader.onerror = () => reject(new Error('Error leyendo la imagen comprimida'));
+    reader.onerror = () => reject(new Error('Error leyendo'));
     reader.readAsDataURL(blob);
   });
 }
-async function subirImagen(file, productoId){
-  const blob = await comprimirImagen(file);
+
+async function subirImagenBlob(blob, productoId, idx){
   const b64 = await blobToBase64(blob);
-  const ruta = `img/productos/${productoId}.jpg`;
+  const sufijo = idx > 0 ? `-${idx}` : '';
+  const ruta = `img/productos/${productoId}${sufijo}.jpg`;
   let existe = null;
   try{ existe = await ghGet(ruta); }catch(_){}
-  await ghPut(ruta, b64, existe ? existe.sha : null, `Subir imagen ${productoId}`);
+  await ghPut(ruta, b64, existe ? existe.sha : null, `Subir imagen ${productoId} ${idx}`);
   return ruta;
 }
 
 /* ===== MODAL PRODUCTO ===== */
-function actualizarPreviewMoneda(){
-  const precio = parseFloat($('#pPrecio').value) || 0;
-  const moneda = $('#pMoneda').value;
-  const prev = $('#previewMoneda');
-  if(precio <= 0){ prev.style.display = 'none'; return; }
-  prev.style.display = 'block';
-  if(moneda === 'CUP'){
-    const usd = precio / config.tasaUSD;
-    prev.innerHTML = `Precio en CUP: <b>${fmtCUP(precio)}</b><br>Equivalente: <b>${money(usd)} USD</b>`;
-  }else{
-    const cup = precio * config.tasaUSD;
-    prev.innerHTML = `Precio en USD: <b>${money(precio)}</b><br>Equivalente: <b>${fmtCUP(cup)}</b>`;
-  }
-}
-
 function abrirModalProd(producto){
   const esNuevo = !producto;
   $('#modalProdTitle').textContent = esNuevo ? '➕ Nuevo producto' : '✏️ Editar producto';
+  $('#pCategoria').innerHTML = categorias.map(c => `<option value="${c.id}">${escapeHtml(c.nombre)}</option>`).join('');
 
-  $('#pCategoria').innerHTML = categorias.map(c =>
-    `<option value="${c.id}">${escapeHtml(c.nombre)}</option>`
-  ).join('');
+  imagenesEdicion = [];
+  blobsNuevos = [];
 
   if(esNuevo){
     $('#pEditId').value = '';
     $('#pNombre').value = '';
     $('#pDesc').value = '';
     $('#pPrecio').value = '';
-    $('#pMoneda').value = 'USD';
     $('#pCategoria').value = categorias[0]?.id || '';
     $('#pDisponible').value = 'true';
     $('#pDestacado').value = 'false';
-    $('#pImgPreview').style.display = 'none';
     $('#pImgFile').value = '';
   }else{
     $('#pEditId').value = producto.id;
     $('#pNombre').value = producto.nombre || '';
     $('#pDesc').value = producto.descripcion || '';
     $('#pPrecio').value = producto.precio || '';
-    $('#pMoneda').value = producto.moneda === 'CUP' ? 'CUP' : 'USD';
     $('#pCategoria').value = producto.categoria || categorias[0]?.id || '';
     $('#pDisponible').value = producto.disponible === false ? 'false' : 'true';
     $('#pDestacado').value = producto.destacado ? 'true' : 'false';
-    if(producto.imagen){
-      $('#pImgPreview').src = producto.imagen;
-      $('#pImgPreview').style.display = 'block';
-    }else{
-      $('#pImgPreview').style.display = 'none';
-    }
     $('#pImgFile').value = '';
+    imagenesEdicion = getImagenesProd(producto).slice();
   }
-  actualizarPreviewMoneda();
+
+  renderImgGrid();
   $('#modalProd').classList.add('open');
   document.body.style.overflow = 'hidden';
 }
+
+function renderImgGrid(){
+  const grid = $('#imgGrid');
+  if(!imagenesEdicion.length){
+    grid.innerHTML = '<div style="grid-column:1/-1;text-align:center;color:var(--texto-gris);font-size:.85rem;padding:14px;font-style:italic">Sin imágenes. Selecciona una o varias.</div>';
+    return;
+  }
+  grid.innerHTML = imagenesEdicion.map((url, i) => `
+    <div class="img-slot ${i === 0 ? 'principal' : ''}">
+      <img src="${escapeHtml(url)}" alt="" onerror="this.src='data:image/svg+xml;utf8,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><rect fill=%22%23e1e6ec%22 width=%22100%22 height=%22100%22/><text x=%2250%22 y=%2255%22 font-size=%2230%22 text-anchor=%22middle%22 fill=%22%23999%22>📷</text></svg>'">
+      ${i === 0 ? '<div class="etiqueta">Portada</div>' : ''}
+      <button class="btn-x" onclick="quitarImagen(${i})" title="Quitar">✕</button>
+    </div>
+  `).join('');
+}
+
+function quitarImagen(i){
+  if(i < 0 || i >= imagenesEdicion.length) return;
+  imagenesEdicion.splice(i, 1);
+  renderImgGrid();
+}
+
 function cerrarModalProd(){
   $('#modalProd').classList.remove('open');
   document.body.style.overflow = '';
+  imagenesEdicion = [];
+  blobsNuevos = [];
 }
 
 async function guardarProducto(){
@@ -646,13 +635,12 @@ async function guardarProducto(){
   const nombre = $('#pNombre').value.trim();
   const descripcion = $('#pDesc').value.trim();
   const precio = parseFloat($('#pPrecio').value);
-  const moneda = $('#pMoneda').value === 'CUP' ? 'CUP' : 'USD';
   const categoria = $('#pCategoria').value;
   const disponible = $('#pDisponible').value === 'true';
   const destacado = $('#pDestacado').value === 'true';
 
   if(!nombre) return toast('El nombre es obligatorio', 'err');
-  if(!isFinite(precio) || precio <= 0) return toast('Precio inválido', 'err');
+  if(!isFinite(precio) || precio < 0) return toast('Precio inválido', 'err');
   if(!categoria) return toast('Selecciona una categoría', 'err');
 
   const id = editId || slugify(nombre) + '-' + Date.now().toString(36).slice(-4);
@@ -661,39 +649,48 @@ async function guardarProducto(){
     $('#btnSaveProd').innerHTML = '<span class="loader"></span> Guardando...';
     $('#btnSaveProd').disabled = true;
 
-    let imagen = '';
-    const file = $('#pImgFile').files[0];
-    if(file){
-      try{
-        toast('Comprimiendo imagen...');
-        imagen = await subirImagen(file, id);
-      }catch(imgErr){
-        const continuar = confirm(
-          'No se pudo subir la imagen:\n\n' +
-          (imgErr.message || 'Error desconocido') +
-          '\n\n¿Guardar el producto SIN imagen?'
-        );
-        if(!continuar) throw imgErr;
-        const old = editId ? productos.find(p => p.id === editId) : null;
-        imagen = old?.imagen || '';
+    // Detectar blobs nuevos pendientes
+    const fileInput = $('#pImgFile');
+    const files = Array.from(fileInput.files || []);
+
+    let imagenesFinales = imagenesEdicion.slice();
+
+    if(files.length){
+      toast('Comprimiendo ' + files.length + ' imagen(es)...');
+      for(let i = 0; i < files.length; i++){
+        try{
+          const blob = await comprimirImagen(files[i]);
+          // Subir con índice temporal
+          const idx = imagenesFinales.length;
+          const ruta = await subirImagenBlob(blob, id, idx);
+          imagenesFinales.push(ruta);
+        }catch(err){
+          console.error('Error con imagen', i, err);
+          toast('Imagen ' + (i+1) + ' no se pudo subir: ' + (err.message || 'error'), 'err');
+        }
       }
-    } else if(editId){
-      const old = productos.find(p => p.id === editId);
-      imagen = old?.imagen || '';
+    }
+
+    if(!imagenesFinales.length){
+      const continuar = confirm('El producto no tiene imágenes. ¿Guardar igual?');
+      if(!continuar){ $('#btnSaveProd').innerHTML = '💾 Guardar'; $('#btnSaveProd').disabled = false; return; }
     }
 
     const oldProd = editId ? productos.find(p => p.id === editId) : null;
     const catAnterior = oldProd?.categoria;
 
-    const nuevo = { id, nombre, descripcion, precio, moneda, imagen, categoria, disponible, destacado };
+    // Guardamos como "imagenes" array (y mantenemos "imagen" con la primera para compatibilidad)
+    const nuevo = {
+      id, nombre, descripcion, precio, moneda: 'USD',
+      imagen: imagenesFinales[0] || '',
+      imagenes: imagenesFinales,
+      categoria, disponible, destacado
+    };
 
-    if(editId){
-      productos = productos.filter(p => p.id !== editId);
-    }
+    if(editId) productos = productos.filter(p => p.id !== editId);
     productos.push(nuevo);
 
     await guardarCategoriaProducto(categoria, `${editId ? 'Editar' : 'Añadir'} "${nombre}"`);
-
     if(editId && catAnterior && catAnterior !== categoria){
       await guardarCategoriaProducto(catAnterior, `Quitar "${nombre}" de categoría anterior`);
     }
@@ -702,6 +699,7 @@ async function guardarProducto(){
     cerrarModalProd();
     renderListaProductos();
   }catch(e){
+    console.error('Error guardarProducto:', e);
     toast('Error: ' + (e.message || 'desconocido'), 'err');
   }finally{
     $('#btnSaveProd').innerHTML = '💾 Guardar';
@@ -714,6 +712,7 @@ async function editarProducto(id){
   if(!p) return toast('Producto no encontrado', 'err');
   abrirModalProd(p);
 }
+
 async function eliminarProducto(id){
   const p = productos.find(x => x.id === id);
   if(!p) return;
@@ -730,7 +729,7 @@ async function eliminarProducto(id){
   }
 }
 
-/* ===== RENDER CATEGORÍAS ===== */
+/* ===== CATEGORÍAS ===== */
 function renderListaCategorias(){
   const cont = $('#catList');
   if(!categorias.length){
@@ -741,7 +740,7 @@ function renderListaCategorias(){
     const count = productos.filter(p => p.categoria === c.id).length;
     return `
       <div class="prod-row">
-        <div style="width:60px;height:60px;display:flex;align-items:center;justify-content:center;font-size:2rem;background:var(--gris-claro);border-radius:8px;flex-shrink:0">${c.icon || '📦'}</div>
+        <div style="width:70px;height:70px;display:flex;align-items:center;justify-content:center;font-size:2.2rem;background:var(--gris-claro);border-radius:9px;flex-shrink:0">${c.icon || '📦'}</div>
         <div class="prod-row-info">
           <div class="prod-row-nombre">${escapeHtml(c.nombre)}</div>
           <div class="prod-row-cat">ID: <code>${escapeHtml(c.id)}</code> · ${count} producto${count===1?'':'s'}</div>
@@ -754,6 +753,7 @@ function renderListaCategorias(){
     `;
   }).join('');
 }
+
 function abrirModalCat(cat){
   const esNueva = !cat;
   $('#modalCatTitle').textContent = esNueva ? '➕ Nueva categoría' : '✏️ Editar categoría';
@@ -775,6 +775,7 @@ function cerrarModalCat(){
   $('#modalCat').classList.remove('open');
   document.body.style.overflow = '';
 }
+
 async function guardarCategoria(){
   const editId = $('#cEditId').value;
   const nombre = $('#cNombre').value.trim();
@@ -786,6 +787,7 @@ async function guardarCategoria(){
   if(!id) return toast('ID inválido', 'err');
   const existe = categorias.find(c => c.id === id && c.id !== editId);
   if(existe) return toast('Ya existe una categoría con ese ID', 'err');
+
   try{
     $('#btnSaveCat').innerHTML = '<span class="loader"></span> Guardando...';
     $('#btnSaveCat').disabled = true;
@@ -795,16 +797,16 @@ async function guardarCategoria(){
       if(editId !== id){
         const prods = productos.filter(p => p.categoria === editId);
         prods.forEach(p => p.categoria = id);
-        await guardarJSON(`data/productos/${id}.json`, prods, `Renombrar categoría a "${id}"`);
+        await guardarJSON(`data/productos/${id}.json`, prods, `Renombrar categoría`);
         const old = await ghGet(`data/productos/${editId}.json`).catch(() => null);
-        if(old){ await ghDelete(`data/productos/${editId}.json`, old.sha, `Eliminar categoría antigua ${editId}`); }
+        if(old) await ghDelete(`data/productos/${editId}.json`, old.sha, `Eliminar categoría antigua`);
       } else {
         const prods = productos.filter(p => p.categoria === id);
-        await guardarJSON(`data/productos/${id}.json`, prods, `Actualizar categoría "${nombre}"`);
+        await guardarJSON(`data/productos/${id}.json`, prods, `Actualizar categoría`);
       }
     } else {
       categorias.push(nueva);
-      await guardarJSON(`data/productos/${id}.json`, [], `Crear categoría "${nombre}"`);
+      await guardarJSON(`data/productos/${id}.json`, [], `Crear categoría`);
     }
     await guardarJSON('data/categorias.json', categorias, 'Guardar categorías');
     toast('✅ Categoría guardada');
@@ -820,11 +822,13 @@ async function guardarCategoria(){
     $('#btnSaveCat').disabled = false;
   }
 }
+
 function editarCategoria(id){
   const c = categorias.find(x => x.id === id);
   if(!c) return;
   abrirModalCat(c);
 }
+
 async function eliminarCategoria(id){
   const c = categorias.find(x => x.id === id);
   if(!c) return;
@@ -833,10 +837,10 @@ async function eliminarCategoria(id){
   if(!confirm(msg)) return;
   try{
     const old = await ghGet(`data/productos/${id}.json`).catch(() => null);
-    if(old){ await ghDelete(`data/productos/${id}.json`, old.sha, `Eliminar categoría "${c.nombre}"`); }
+    if(old) await ghDelete(`data/productos/${id}.json`, old.sha, `Eliminar categoría`);
     categorias = categorias.filter(x => x.id !== id);
     productos = productos.filter(p => p.categoria !== id);
-    await guardarJSON('data/categorias.json', categorias, `Eliminar categoría "${c.nombre}"`);
+    await guardarJSON('data/categorias.json', categorias, `Eliminar categoría`);
     toast('🗑️ Categoría eliminada');
     renderListaCategorias();
     renderFiltroProductos();
@@ -864,6 +868,7 @@ function initNavegacion(){
 async function iniciarApp(){
   $('#loginScreen').style.display = 'none';
   $('#app').classList.add('visible');
+
   await cargarTodo();
   renderConfig();
   renderFiltroProductos();
@@ -878,15 +883,15 @@ async function iniciarApp(){
   $('#btnSaveCat').addEventListener('click', guardarCategoria);
   $('#prodFilterCat').addEventListener('change', renderListaProductos);
 
-  $('#pPrecio').addEventListener('input', actualizarPreviewMoneda);
-  $('#pMoneda').addEventListener('change', actualizarPreviewMoneda);
-
+  // Al seleccionar archivos, mostrar previews temporales (no se suben hasta guardar)
   $('#pImgFile').addEventListener('change', e => {
-    const file = e.target.files[0];
-    if(!file) return;
-    const url = URL.createObjectURL(file);
-    $('#pImgPreview').src = url;
-    $('#pImgPreview').style.display = 'block';
+    const files = Array.from(e.target.files || []);
+    if(!files.length) return;
+    for(const file of files){
+      const url = URL.createObjectURL(file);
+      imagenesEdicion.push(url);
+    }
+    renderImgGrid();
   });
 
   $('#modalProd').addEventListener('click', e => { if(e.target === $('#modalProd')) cerrarModalProd(); });
@@ -899,10 +904,12 @@ document.addEventListener('DOMContentLoaded', () => {
   initNavegacion();
   $('#btnLogin').addEventListener('click', login);
   $('#tokenInput').addEventListener('keypress', e => { if(e.key === 'Enter') login(); });
+
   const guardado = localStorage.getItem('allstore_token');
   if(guardado){
     token = guardado;
     iniciarApp().catch(err => {
+      console.warn('Auto-login falló:', err);
       token = '';
       localStorage.removeItem('allstore_token');
       $('#loginScreen').style.display = 'flex';
