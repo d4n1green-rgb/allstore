@@ -14,19 +14,36 @@
 }
 *{margin:0;padding:0;box-sizing:border-box;font-family:'Segoe UI',Tahoma,Geneva,Verdana,sans-serif}
 html{font-size:17px;height:100%}
-body{
-  background:var(--gris-claro);
-  color:var(--texto);
-  line-height:1.55;
-  -webkit-font-smoothing:antialiased;
-  min-height:100vh;
-  min-height:100dvh;
-  display:flex;
-  flex-direction:column;
-}
+body{background:var(--gris-claro);color:var(--texto);line-height:1.55;-webkit-font-smoothing:antialiased;min-height:100vh;min-height:100dvh;display:flex;flex-direction:column}
 a{text-decoration:none;color:inherit}
 img{max-width:100%;display:block}
 button{font-family:inherit;cursor:pointer;border:none;-webkit-tap-highlight-color:transparent}
+
+/* ===== BANNER INAUGURACIÓN ===== */
+.inauguracion-banner{
+  background:linear-gradient(90deg,#f39c12,#d68910);
+  color:#fff;padding:12px 16px;text-align:center;font-weight:800;
+  line-height:1.4;box-shadow:0 3px 12px rgba(243,156,18,.35);
+  display:flex;flex-direction:column;gap:5px;align-items:center;
+  transition:background .4s ease;
+}
+.inauguracion-banner.ya-abrimos{
+  background:linear-gradient(90deg,#27ae60,#1e8449);
+  box-shadow:0 3px 12px rgba(39,174,96,.35);
+}
+.inauguracion-banner .titulo{
+  font-size:1rem;display:flex;align-items:center;gap:6px;
+  flex-wrap:wrap;justify-content:center;
+}
+.inauguracion-banner .fecha{
+  background:rgba(255,255,255,.22);padding:3px 12px;border-radius:20px;
+  font-weight:900;letter-spacing:.3px;font-size:.92rem;
+}
+.inauguracion-banner .sub{font-size:.8rem;font-weight:600;opacity:.95;max-width:600px}
+.inauguracion-banner .countdown{
+  background:rgba(0,0,0,.25);padding:3px 12px;border-radius:20px;
+  font-weight:900;font-variant-numeric:tabular-nums;font-size:.82rem;
+}
 
 header{background:#fff;position:sticky;top:0;z-index:100;box-shadow:0 2px 12px rgba(0,0,0,.08);border-bottom:1px solid var(--gris-medio)}
 .header-top{display:flex;align-items:center;justify-content:space-between;padding:14px 16px;gap:12px}
@@ -47,13 +64,12 @@ header{background:#fff;position:sticky;top:0;z-index:100;box-shadow:0 2px 12px r
 
 .categorias-bar{background:#fff;border-bottom:1px solid var(--gris-medio);overflow-x:auto;white-space:nowrap;padding:14px 14px 16px;-webkit-overflow-scrolling:touch;position:sticky;top:150px;z-index:90;scrollbar-width:none}
 .categorias-bar::-webkit-scrollbar{display:none}
-.chip{display:inline-flex;align-items:center;gap:10px;background:var(--gris-claro);border:1px solid var(--gris-medio);color:var(--texto-gris);padding:14px 22px;border-radius:999px;font-size:1.05rem;font-weight:800;margin-right:10px;transition:.15s;min-height:52px;-webkit-tap-highlight-color:transparent}
+.chip{display:inline-flex;align-items:center;gap:10px;background:var(--gris-claro);border:1px solid var(--gris-medio);color:var(--texto-gris);padding:14px 22px;border-radius:999px;font-size:1.05rem;font-weight:800;margin-right:10px;transition:.15s;min-height:52px}
 .chip:active{transform:scale(.97)}
 .chip.active{background:linear-gradient(135deg,var(--azul-oscuro),var(--azul-medio));color:#fff;border-color:transparent;box-shadow:0 5px 14px rgba(10,25,47,.3)}
 .chip .icon{font-size:1.4rem}
 
 .contenido-principal{flex:1;display:flex;flex-direction:column}
-
 .hero{background:linear-gradient(135deg,#0a192f 0%,#1e3a5f 100%);color:#fff;padding:32px 22px;text-align:center}
 .hero h1{font-size:1.6rem;margin-bottom:10px;line-height:1.25}
 .hero h1 span{color:var(--celeste)}
@@ -83,6 +99,7 @@ header{background:#fff;position:sticky;top:0;z-index:100;box-shadow:0 2px 12px r
 .btn-agregar{width:100%;padding:13px;border-radius:10px;background:linear-gradient(135deg,var(--azul-oscuro),var(--azul-medio));color:#fff;font-weight:800;font-size:1rem;transition:.15s;display:flex;align-items:center;justify-content:center;gap:6px;min-height:48px}
 .btn-agregar:active{transform:scale(.97);filter:brightness(1.15)}
 .btn-agregar:disabled{background:var(--gris-medio);color:var(--texto-gris);cursor:not-allowed}
+.btn-agregar.proximamente{background:linear-gradient(135deg,#f39c12,#d68910);color:#fff;opacity:1}
 
 .carrito-overlay{position:fixed;inset:0;background:rgba(0,0,0,.5);z-index:200;display:none;align-items:flex-end;justify-content:center}
 .carrito-overlay.open{display:flex}
@@ -110,6 +127,7 @@ header{background:#fff;position:sticky;top:0;z-index:100;box-shadow:0 2px 12px r
 .btn-remove{background:none;color:var(--rojo);font-size:.88rem;font-weight:700;margin-top:8px;padding:3px 0}
 .carrito-empty{text-align:center;padding:50px 20px;color:var(--texto-gris)}
 .carrito-empty .big{font-size:3.4rem;margin-bottom:14px}
+.carrito-empty .prox-title{font-size:1.15rem;font-weight:800;color:#d68910;margin-bottom:8px}
 .carrito-foot{padding:20px 22px;border-top:1px solid var(--gris-medio);background:var(--gris-claro)}
 .resumen-linea{display:flex;justify-content:space-between;align-items:center;font-size:1rem;margin-bottom:8px}
 .resumen-linea .lbl{color:var(--texto-gris);font-weight:700}
@@ -133,7 +151,6 @@ header{background:#fff;position:sticky;top:0;z-index:100;box-shadow:0 2px 12px r
 .modal-prod-head{position:absolute;top:16px;right:16px;z-index:5}
 .modal-prod-close{background:rgba(255,255,255,.95);border-radius:50%;width:46px;height:46px;font-size:1.3rem;color:var(--azul-oscuro);display:flex;align-items:center;justify-content:center;box-shadow:0 3px 12px rgba(0,0,0,.2);cursor:pointer}
 .modal-prod-body{flex:1;overflow-y:auto;display:flex;flex-direction:column}
-
 .prod-galeria{position:relative;background:var(--gris-claro);width:100%}
 .prod-main-img-wrap{position:relative;width:100%;aspect-ratio:1/1;overflow:hidden;background:var(--gris-claro)}
 .prod-main-img{width:100%;height:100%;object-fit:contain;padding:10px}
@@ -146,7 +163,6 @@ header{background:#fff;position:sticky;top:0;z-index:100;box-shadow:0 2px 12px r
 .galeria-thumbs::-webkit-scrollbar-thumb{background:var(--gris-medio);border-radius:3px}
 .thumb{width:68px;height:68px;object-fit:cover;border-radius:10px;border:3px solid var(--gris-medio);cursor:pointer;flex-shrink:0;transition:.15s;background:var(--gris-claro)}
 .thumb.active{border-color:var(--azul-brillante);box-shadow:0 0 0 3px rgba(0,168,255,.2)}
-
 .prod-detalle{padding:22px 24px 28px}
 .prod-cat-detalle{font-size:.8rem;font-weight:800;color:var(--azul-brillante);text-transform:uppercase;letter-spacing:.7px;margin-bottom:8px}
 .prod-nombre-detalle{font-size:1.45rem;font-weight:800;color:var(--azul-oscuro);line-height:1.3;margin-bottom:16px}
@@ -154,7 +170,6 @@ header{background:#fff;position:sticky;top:0;z-index:100;box-shadow:0 2px 12px r
 .prod-precio-usd{font-size:1.75rem;font-weight:900;color:var(--azul-oscuro);line-height:1.1}
 .prod-precio-usd small{font-size:.95rem;color:var(--texto-gris);font-weight:700;margin-left:4px}
 .prod-precio-cup{font-size:1.1rem;font-weight:800;color:var(--azul-brillante);margin-top:6px}
-
 .prod-cant-detalle{margin-bottom:20px}
 .prod-cant-detalle label{display:block;font-size:.82rem;font-weight:800;color:var(--texto-gris);text-transform:uppercase;letter-spacing:.5px;margin-bottom:10px}
 .cant-control-detalle{display:flex;align-items:center;gap:12px}
@@ -163,11 +178,10 @@ header{background:#fff;position:sticky;top:0;z-index:100;box-shadow:0 2px 12px r
 .cant-control-detalle input{width:100px;height:52px;text-align:center;font-size:1.35rem;font-weight:800;border:1px solid var(--gris-medio);border-radius:12px;background:#fff;color:var(--azul-oscuro);font-family:inherit;-moz-appearance:textfield}
 .cant-control-detalle input::-webkit-outer-spin-button,.cant-control-detalle input::-webkit-inner-spin-button{-webkit-appearance:none;margin:0}
 .cant-control-detalle input:focus{outline:none;border-color:var(--azul-brillante);box-shadow:0 0 0 3px rgba(0,168,255,.15)}
-
 .btn-add-detalle{width:100%;padding:18px;border-radius:14px;background:linear-gradient(135deg,var(--verde),#1e8449);color:#fff;font-weight:800;font-size:1.15rem;display:flex;align-items:center;justify-content:center;gap:8px;box-shadow:0 5px 18px rgba(37,211,102,.35);cursor:pointer;transition:.15s;margin-bottom:22px;min-height:58px}
 .btn-add-detalle:active{transform:scale(.98);filter:brightness(1.08)}
 .btn-add-detalle:disabled{background:var(--gris-medio);color:var(--texto-gris);cursor:not-allowed;box-shadow:none;transform:none;filter:none}
-
+.btn-add-detalle.proximamente{background:linear-gradient(135deg,#f39c12,#d68910);color:#fff;box-shadow:0 5px 18px rgba(243,156,18,.35)}
 .prod-desc-wrap{background:var(--gris-claro);border-radius:14px;padding:18px 20px}
 .prod-desc-wrap h3{font-size:.82rem;font-weight:800;color:var(--texto-gris);text-transform:uppercase;letter-spacing:.6px;margin-bottom:12px}
 .prod-desc-wrap p{font-size:1.02rem;color:var(--texto);white-space:pre-wrap;line-height:1.75;word-break:break-word}
@@ -224,6 +238,7 @@ footer .credit strong{color:#2ecc71;font-weight:800}
 .toast-container{position:fixed;bottom:24px;left:50%;transform:translateX(-50%);z-index:400;display:flex;flex-direction:column;gap:8px;align-items:center;pointer-events:none;max-width:92vw}
 .toast{background:var(--azul-oscuro);color:#fff;padding:15px 22px;border-radius:12px;font-size:1rem;font-weight:700;box-shadow:0 10px 30px rgba(0,0,0,.3);animation:toastIn .25s ease;border-left:4px solid var(--verde)}
 .toast.err{border-left-color:var(--rojo)}
+.toast.warn{border-left-color:var(--amarillo)}
 @keyframes toastIn{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
 
 @media(max-width:520px){
@@ -255,10 +270,23 @@ footer .credit strong{color:#2ecc71;font-weight:800}
   .prod-desc-wrap p{font-size:1rem}
   footer{padding:32px 16px}
   footer img{height:110px;max-width:260px}
+  .inauguracion-banner{padding:10px 12px}
+  .inauguracion-banner .titulo{font-size:.92rem}
+  .inauguracion-banner .fecha{font-size:.85rem;padding:2px 10px}
 }
 </style>
 </head>
 <body>
+
+<!-- BANNER INAUGURACIÓN -->
+<div class="inauguracion-banner" id="inauguracionBanner">
+  <div class="titulo">
+    🎉 <strong id="bannerTitulo">INAUGURACIÓN</strong>
+    <span class="fecha" id="bannerFecha">Lunes 19 de octubre de 2026</span>
+    <span class="countdown" id="countdown">—</span>
+  </div>
+  <div class="sub" id="bannerSub">Los pedidos estarán disponibles a partir de esa fecha. ¡Te esperamos!</div>
+</div>
 
 <header>
   <div class="header-top">
@@ -433,6 +461,51 @@ let productoActual = null;
 let imagenesActuales = [];
 let indiceImagen = 0;
 
+/* ============================================================
+   FECHAS CLAVE
+   - 19 oct 2026: apertura (los botones de compra se activan)
+   - 26 oct 2026: el banner desaparece (7 días después)
+   ============================================================ */
+const FECHA_INAUGURACION = new Date('2026-10-19T00:00:00');
+const FECHA_FIN_BANNER = new Date('2026-10-26T00:00:00');
+
+function estaAbierta(){
+  return new Date() >= FECHA_INAUGURACION;
+}
+
+function actualizarBanner(){
+  const banner = document.getElementById('inauguracionBanner');
+  const el = document.getElementById('countdown');
+  if(!banner || !el) return;
+
+  const ahora = new Date();
+
+  // Caso 3: después del 26 oct → ocultar banner
+  if(ahora >= FECHA_FIN_BANNER){
+    banner.style.display = 'none';
+    return;
+  }
+
+  // Caso 2: entre el 19 y el 26 oct → "¡Ya abrimos!"
+  if(ahora >= FECHA_INAUGURACION){
+    banner.classList.add('ya-abrimos');
+    document.getElementById('bannerTitulo').textContent = '¡YA ABRIMOS!';
+    document.getElementById('bannerFecha').textContent = 'Bienvenido a AllStore';
+    el.textContent = '🎉';
+    document.getElementById('bannerSub').textContent = 'Ya puedes hacer tus pedidos. ¡Gracias por esperarnos!';
+    return;
+  }
+
+  // Caso 1: antes del 19 oct → countdown
+  const falta = FECHA_INAUGURACION - ahora;
+  const d = Math.floor(falta / (1000*60*60*24));
+  const h = Math.floor((falta % (1000*60*60*24)) / (1000*60*60));
+  const m = Math.floor((falta % (1000*60*60)) / (1000*60));
+  if(d > 0) el.textContent = `⏳ ${d}d ${h}h ${m}m`;
+  else if(h > 0) el.textContent = `⏳ ${h}h ${m}m`;
+  else el.textContent = `⏳ ${m}m`;
+}
+
 const $ = s => document.querySelector(s);
 const money = n => '$' + Number(n || 0).toFixed(2);
 const escapeHtml = s => String(s ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
@@ -495,6 +568,10 @@ function toast(msg, tipo){
 /* ===== CARRITO ===== */
 function cargarCarrito(){ carrito = []; }
 function agregarAlCarrito(id, cant = 1){
+  if(!estaAbierta()){
+    toast('Los pedidos estarán disponibles a partir del 19 de octubre', 'warn');
+    return;
+  }
   const prod = productos.find(p => p.id === id);
   if(!prod || prod.disponible === false) return;
   cant = parseInt(cant, 10) || 1;
@@ -543,7 +620,7 @@ function actualizarBadge(){
   else badge.style.display = 'none';
 }
 
-/* ===== CARGA DE DATOS (con cache-busting) ===== */
+/* ===== CARGA DE DATOS ===== */
 async function cargarConfig(){
   try{
     const r = await fetch(`data/config.json?t=${Date.now()}`);
@@ -605,6 +682,8 @@ function renderProductos(){
     return;
   }
 
+  const abierta = estaAbierta();
+
   grid.innerHTML = filtrados.map(p => {
     const agotado = p.disponible === false;
     const cat = categorias.find(c => c.id === p.categoria);
@@ -612,6 +691,16 @@ function renderProductos(){
     const imgPrincipal = imgs[0] || PLACEHOLDER;
     const usd = precioEnUSD(p);
     const cup = precioEnCUP(p);
+
+    let boton;
+    if(!abierta){
+      boton = `<button class="btn-agregar proximamente" type="button">⏳ Próximamente</button>`;
+    } else if(agotado){
+      boton = `<button class="btn-agregar" disabled>🚫 Agotado</button>`;
+    } else {
+      boton = `<button class="btn-agregar" onclick="event.stopPropagation();agregarAlCarrito('${escapeHtml(p.id)}')">🛒 Agregar</button>`;
+    }
+
     return `
       <div class="producto-card" onclick="abrirProducto('${escapeHtml(p.id)}')">
         <div class="producto-img-wrap">
@@ -627,9 +716,7 @@ function renderProductos(){
             <div class="producto-precio">${money(usd)} <small>USD</small></div>
             <div class="precio-cup">≈ ${fmtCUP(cup)}</div>
           </div>
-          <button class="btn-agregar" onclick="event.stopPropagation();agregarAlCarrito('${escapeHtml(p.id)}')" ${agotado ? 'disabled' : ''}>
-            ${agotado ? '🚫 Agotado' : '🛒 Agregar'}
-          </button>
+          ${boton}
         </div>
       </div>
     `;
@@ -655,6 +742,7 @@ function abrirProducto(id){
 
   const cat = categorias.find(c => c.id === p.categoria);
   const agotado = p.disponible === false;
+  const abierta = estaAbierta();
   const usd = precioEnUSD(p);
   const cup = precioEnCUP(p);
 
@@ -673,7 +761,12 @@ function abrirProducto(id){
   }
 
   const btnAdd = $('#btnAddDetalle');
-  if(agotado){
+  btnAdd.classList.remove('proximamente');
+  if(!abierta){
+    btnAdd.disabled = true;
+    btnAdd.innerHTML = '⏳ Disponible el 19 de octubre';
+    btnAdd.classList.add('proximamente');
+  } else if(agotado){
     btnAdd.disabled = true;
     btnAdd.innerHTML = '🚫 Producto agotado';
   } else {
@@ -716,23 +809,15 @@ function actualizarContadorImagen(){
   const total = imagenesActuales.length || 1;
   const actual = total > 0 ? indiceImagen + 1 : 1;
   const cont = $('#galeriaContador');
-  if(total > 1){
-    cont.textContent = `${actual} / ${total}`;
-    cont.style.display = 'block';
-  } else {
-    cont.style.display = 'none';
-  }
+  if(total > 1){ cont.textContent = `${actual} / ${total}`; cont.style.display = 'block'; }
+  else cont.style.display = 'none';
 }
-
 function cambiarImagen(dir){
   if(imagenesActuales.length < 2) return;
   indiceImagen = (indiceImagen + dir + imagenesActuales.length) % imagenesActuales.length;
   actualizarGaleria();
 }
-function seleccionarImagen(i){
-  indiceImagen = i;
-  actualizarGaleria();
-}
+function seleccionarImagen(i){ indiceImagen = i; actualizarGaleria(); }
 function actualizarGaleria(){
   const mainImg = $('#prodMainImg');
   mainImg.src = imagenesActuales[indiceImagen] || PLACEHOLDER;
@@ -741,7 +826,6 @@ function actualizarGaleria(){
   });
   actualizarContadorImagen();
 }
-
 function prodCambiarCant(delta){
   const inp = $('#prodCantInput');
   let n = parseInt(inp.value, 10) || 1;
@@ -758,6 +842,10 @@ function prodSetCant(valor){
   inp.value = n;
 }
 function agregarDesdeDetalle(){
+  if(!estaAbierta()){
+    toast('Los pedidos estarán disponibles a partir del 19 de octubre', 'warn');
+    return;
+  }
   if(!productoActual) return;
   const cant = parseInt($('#prodCantInput').value, 10) || 1;
   agregarAlCarrito(productoActual.id, cant);
@@ -779,7 +867,16 @@ function renderCarrito(){
   const body = $('#carritoBody');
   const foot = $('#carritoFoot');
   if(!carrito.length){
-    body.innerHTML = '<div class="carrito-empty"><div class="big">🛒</div><p style="font-size:1.15rem;font-weight:700">Tu carrito está vacío</p><p style="font-size:.95rem;margin-top:8px">Explora el catálogo y agrega productos.</p></div>';
+    let html = '<div class="carrito-empty"><div class="big">🛒</div>';
+    if(!estaAbierta()){
+      html += '<p class="prox-title">🎉 Tienda próximamente</p>';
+      html += '<p style="font-size:.95rem;margin-top:8px;line-height:1.6">Abrimos el <strong>lunes 19 de octubre de 2026</strong>.<br>¡Vuelve pronto!</p>';
+    } else {
+      html += '<p style="font-size:1.15rem;font-weight:700">Tu carrito está vacío</p>';
+      html += '<p style="font-size:.95rem;margin-top:8px">Explora el catálogo y agrega productos.</p>';
+    }
+    html += '</div>';
+    body.innerHTML = html;
     foot.style.display = 'none';
     return;
   }
@@ -823,6 +920,10 @@ function renderCarrito(){
 }
 
 function enviarPedidoWhatsApp(){
+  if(!estaAbierta()){
+    toast('Los pedidos estarán disponibles a partir del 19 de octubre', 'warn');
+    return;
+  }
   if(!carrito.length){ toast('Tu carrito está vacío'); return; }
   let subtotalUSD = 0;
   let msg = '🛒 *Nuevo pedido — AllStore*\n\n';
@@ -841,7 +942,6 @@ function enviarPedidoWhatsApp(){
   const subtotalCUP = subtotalUSD * (Number(config.tasaUSD) || 790);
   const comision = calcularComision(subtotalCUP);
   const totalCUP = subtotalCUP + comision;
-
   msg += `━━━━━━━━━━━━━━━\n`;
   msg += `Subtotal: ${money(subtotalUSD)}\n`;
   msg += `≈ ${fmtCUP(subtotalCUP)}\n`;
@@ -850,51 +950,35 @@ function enviarPedidoWhatsApp(){
   msg += `*TOTAL: ${money(subtotalUSD)} + ${fmtCUP(comision)}*\n`;
   msg += `*≈ ${fmtCUP(totalCUP)}*\n\n`;
   msg += `Por favor confírmame disponibilidad y forma de pago. 🙏`;
-
   const url = `https://wa.me/${config.whatsapp}?text=${encodeURIComponent(msg)}`;
   window.open(url, '_blank');
 }
 
 /* ===== COMENTARIOS ===== */
 const FORM_SUBMIT_EMAIL = 'angel.systems.05@gmail.com';
-function abrirComentarios(){
-  $('#modalComentarios').classList.add('open');
-  document.body.style.overflow = 'hidden';
-}
-function cerrarComentarios(){
-  $('#modalComentarios').classList.remove('open');
-  document.body.style.overflow = '';
-}
+function abrirComentarios(){ $('#modalComentarios').classList.add('open'); document.body.style.overflow = 'hidden'; }
+function cerrarComentarios(){ $('#modalComentarios').classList.remove('open'); document.body.style.overflow = ''; }
 async function enviarComentario(){
   const nombre = $('#comNombre').value.trim();
   const email = $('#comEmail').value.trim();
   const tipo = $('#comTipo').value;
   const mensaje = $('#comMensaje').value.trim();
-
   const honeypot = document.querySelector('.hp-field');
-  if(honeypot && honeypot.value){
-    toast('✅ Mensaje enviado. ¡Gracias!');
-    cerrarComentarios();
-    return;
-  }
-
+  if(honeypot && honeypot.value){ toast('✅ Mensaje enviado. ¡Gracias!'); cerrarComentarios(); return; }
   if(!nombre){ toast('Escribe tu nombre', 'err'); return; }
   if(!mensaje){ toast('Escribe un mensaje', 'err'); return; }
   if(mensaje.length < 5){ toast('El mensaje es muy corto', 'err'); return; }
   if(email && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)){ toast('El email no es válido', 'err'); return; }
-
   const btn = $('#btnEnviarCom');
   btn.innerHTML = '<span class="loader-sm"></span> Enviando...';
   btn.disabled = true;
-
   try{
     const r = await fetch(`https://formsubmit.co/ajax/${FORM_SUBMIT_EMAIL}`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
       body: JSON.stringify({
         _subject: `AllStore — ${tipo} de ${nombre}`,
-        _template: 'table',
-        _captcha: 'false',
+        _template: 'table', _captcha: 'false',
         Tipo: tipo, Nombre: nombre,
         Email: email || 'No proporcionado',
         Mensaje: mensaje,
@@ -903,10 +987,8 @@ async function enviarComentario(){
     });
     if(!r.ok) throw new Error('Estado ' + r.status);
     toast('✅ Mensaje enviado. ¡Gracias por tu opinión!');
-    $('#comNombre').value = '';
-    $('#comEmail').value = '';
-    $('#comMensaje').value = '';
-    $('#comTipo').value = 'Sugerencia';
+    $('#comNombre').value = ''; $('#comEmail').value = '';
+    $('#comMensaje').value = ''; $('#comTipo').value = 'Sugerencia';
     cerrarComentarios();
   }catch(err){
     console.error(err);
@@ -921,6 +1003,10 @@ async function enviarComentario(){
 async function init(){
   cargarCarrito();
   actualizarBadge();
+  actualizarBanner();
+  // Actualizar cada minuto
+  setInterval(actualizarBanner, 60000);
+
   await cargarConfig();
   await cargarCategorias();
   renderCategoriasBar();
@@ -948,4 +1034,4 @@ async function init(){
 document.addEventListener('DOMContentLoaded', init);
 </script>
 </body>
-</html>
+      </html>
