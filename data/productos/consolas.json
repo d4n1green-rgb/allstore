@@ -1,16 +1,1 @@
-[
-  {
-    "id": "mapa-de-dora-ybwu",
-    "nombre": "Mapa de Dora",
-    "descripcion": "Es el mapa 😃",
-    "precio": 5000,
-    "moneda": "CUP",
-    "imagen": "blob:https://d4n1green-rgb.github.io/6cc4e904-2591-478d-8bb8-1287ac41b1ce",
-    "imagenes": [
-      "blob:https://d4n1green-rgb.github.io/6cc4e904-2591-478d-8bb8-1287ac41b1ce"
-    ],
-    "categoria": "consolas",
-    "disponible": true,
-    "destacado": false
-  }
-]
+[]
