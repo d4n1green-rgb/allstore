@@ -126,7 +126,6 @@ input[type="file"]{padding:12px;font-size:.88rem;cursor:pointer;background:var(-
 .upload-progress .bar{height:6px;background:var(--gris-medio);border-radius:3px;overflow:hidden;margin-top:6px}
 .upload-progress .bar-fill{height:100%;background:linear-gradient(90deg,var(--azul-brillante),var(--verde));transition:width .3s;border-radius:3px}
 
-/* Banner de reintento */
 .retry-banner{
   position:fixed;top:70px;left:50%;transform:translateX(-50%);
   background:#fff;border:2px solid var(--amarillo);
@@ -226,7 +225,8 @@ input[type="file"]{padding:12px;font-size:.88rem;cursor:pointer;background:var(-
       <p class="panel-sub">Guía rápida</p>
       <div class="card"><h3>📝 Editar un producto</h3><p style="font-size:.9rem;color:var(--texto-gris);line-height:1.7">Ve a <b>Productos</b>, busca el que quieras y toca el lápiz ✏️.</p></div>
       <div class="card"><h3>💵 Elegir moneda del precio</h3><p style="font-size:.9rem;color:var(--texto-gris);line-height:1.7">Puedes elegir entre <b>USD</b> o <b>CUP</b>. La tienda convierte automáticamente al otro valor.</p></div>
-      <div class="card"><h3>🖼️ Subir imágenes</h3><p style="font-size:.9rem;color:var(--texto-gris);line-height:1.7">Si tienes mala conexión, sube <b>una imagen a la vez</b> y guarda. Luego edita el producto y añade la siguiente. Así se evitan errores.</p></div>
+      <div class="card"><h3>🖼️ Subir imágenes</h3><p style="font-size:.9rem;color:var(--texto-gris);line-height:1.7">Si tienes mala conexión, sube <b>una imagen a la vez</b> y guarda. Luego edita el producto y añade la siguiente.</p></div>
+      <div class="card"><h3>🗑️ Eliminar productos</h3><p style="font-size:.9rem;color:var(--texto-gris);line-height:1.7">Al eliminar un producto, también se borran sus imágenes del repositorio.</p></div>
       <div class="card"><h3>⚠️ Importante</h3><p style="font-size:.9rem;color:var(--texto-gris);line-height:1.7">Los cambios tardan <b>30-60 segundos</b> en reflejarse en la tienda pública.</p></div>
     </div>
   </main>
@@ -386,9 +386,10 @@ async function fetchConReintentos(url, options, intentos = 3){
   throw ultimoError;
 }
 
-/* ===== GITHUB API ===== */
+/* ===== GITHUB API (con cache-busting) ===== */
 async function ghGet(path){
-  const url = `${API}/${path}?ref=${BRANCH}`;
+  // Añadimos &t=Date.now() para forzar que el navegador NO use caché
+  const url = `${API}/${path}?ref=${BRANCH}&t=${Date.now()}-${Math.random()}`;
   const r = await fetchConReintentos(url, {
     headers: {
       'Authorization': `token ${token}`,
@@ -418,7 +419,7 @@ async function ghPut(path, contentB64, sha, message, retry = true){
         'Content-Type': 'application/json'
       },
       body: JSON.stringify(body)
-    });
+    }, 2);
   }catch(netErr){
     throw new Error('Sin conexión al guardar. Revisa tu internet.');
   }
@@ -427,15 +428,18 @@ async function ghPut(path, contentB64, sha, message, retry = true){
     let errMsg = `Error ${r.status}`;
     try{ const e = await r.json(); if(e.message) errMsg = e.message; }catch(_){}
 
+    const msgLower = errMsg.toLowerCase();
     const esConflicto =
       r.status === 409 ||
-      errMsg.toLowerCase().includes('sha') ||
-      errMsg.toLowerCase().includes('does not match') ||
-      errMsg.toLowerCase().includes('conflict');
+      r.status === 422 ||
+      msgLower.includes('sha') ||
+      msgLower.includes('does not match') ||
+      msgLower.includes('conflict') ||
+      msgLower.includes('already exists');
 
     if(retry && esConflicto){
       console.warn('Conflicto de SHA, reintentando con el actual...');
-      await new Promise(res => setTimeout(res, 800));
+      await new Promise(res => setTimeout(res, 1000));
       const actual = await ghGet(path).catch(() => null);
       return ghPut(path, contentB64, actual ? actual.sha : null, message, false);
     }
@@ -468,11 +472,30 @@ async function leerJSON(path){
   return { data: JSON.parse(b64ToUtf8(f.content)), sha: f.sha };
 }
 
-async function guardarJSON(path, data, message){
-  let existe = null;
-  try{ existe = await ghGet(path); }catch(e){ console.warn('ghGet antes de guardar falló:', e); }
+/* Guardar JSON con hasta 3 intentos (siempre obteniendo SHA fresco) */
+async function guardarJSON(path, data, message, intentos = 3){
   const b64 = utf8ToB64(JSON.stringify(data, null, 2));
-  return ghPut(path, b64, existe ? existe.sha : null, message);
+  let ultimoError;
+  for(let i = 0; i < intentos; i++){
+    try{
+      let existe = null;
+      try{ existe = await ghGet(path); }catch(e){ /* 404 */ }
+      return await ghPut(path, b64, existe ? existe.sha : null, message, false);
+    }catch(e){
+      ultimoError = e;
+      const msg = String(e.message || '').toLowerCase();
+      const esConflicto = msg.includes('409') || msg.includes('422') ||
+                          msg.includes('sha') || msg.includes('conflict') ||
+                          msg.includes('does not match');
+      console.warn(`guardarJSON ${path} intento ${i+1}/${intentos}:`, e.message);
+      if(esConflicto && i < intentos - 1){
+        await new Promise(res => setTimeout(res, 1200 * (i + 1)));
+        continue;
+      }
+      throw e;
+    }
+  }
+  throw ultimoError;
 }
 
 /* ===== BANNER DE REINTENTO ===== */
@@ -520,7 +543,6 @@ async function cargarTodo(){
   toast('Cargando datos...');
   let huboError = false;
 
-  // Config
   try{
     const cfg = await leerJSON('data/config.json');
     config = cfg.data || { tasaUSD: 790, comisionPorcentaje: 3, comisionTopeCUP: 1000, whatsapp: '5356686384' };
@@ -530,7 +552,6 @@ async function cargarTodo(){
     config = { tasaUSD: 790, comisionPorcentaje: 3, comisionTopeCUP: 1000, whatsapp: '5356686384' };
   }
 
-  // Categorías
   try{
     const cats = await leerJSON('data/categorias.json');
     categorias = cats.data || [];
@@ -540,7 +561,6 @@ async function cargarTodo(){
     categorias = [];
   }
 
-  // Productos
   productos = [];
   for(const c of categorias){
     try{
@@ -649,7 +669,7 @@ async function comprimirImagen(file, maxAncho = 1000, calidad = 0.78){
       return;
     }
     if(file.size > 25 * 1024 * 1024){
-      reject(new Error('La imagen supera los 25 MB. Usa una más pequeña.'));
+      reject(new Error('La imagen supera los 25 MB'));
       return;
     }
     const url = URL.createObjectURL(file);
@@ -671,7 +691,7 @@ async function comprimirImagen(file, maxAncho = 1000, calidad = 0.78){
         }, 'image/jpeg', calidad);
       }catch(err){
         URL.revokeObjectURL(url);
-        reject(new Error('Error procesando la imagen: ' + err.message));
+        reject(new Error('Error procesando: ' + err.message));
       }
     };
     img.onerror = () => { URL.revokeObjectURL(url); reject(new Error('No se pudo leer la imagen')); };
@@ -689,24 +709,37 @@ function blobToBase64(blob){
       if(idx < 0){ reject(new Error('Formato inválido')); return; }
       resolve(result.slice(idx + 1));
     };
-    reader.onerror = () => reject(new Error('Error leyendo la imagen'));
+    reader.onerror = () => reject(new Error('Error leyendo'));
     reader.readAsDataURL(blob);
   });
 }
 
+/* Subir imagen con hasta 3 intentos y SHA fresco */
 async function subirImagenBlob(blob, productoId, idx){
   const b64 = await blobToBase64(blob);
   const sufijo = idx > 0 ? `-${idx}` : '';
   const ruta = `img/productos/${productoId}${sufijo}.jpg`;
 
-  let shaActual = null;
-  try{
-    const existente = await ghGet(ruta);
-    if(existente && existente.sha) shaActual = existente.sha;
-  }catch(e){ console.warn('No se pudo leer SHA de', ruta, e); }
+  let ultimoError;
+  for(let intento = 0; intento < 3; intento++){
+    try{
+      let shaActual = null;
+      try{
+        const existente = await ghGet(ruta);
+        if(existente && existente.sha) shaActual = existente.sha;
+      }catch(e){ /* 404 = no existe, ok */ }
 
-  await ghPut(ruta, b64, shaActual, `Subir imagen ${productoId} ${idx}`);
-  return ruta;
+      await ghPut(ruta, b64, shaActual, `Subir imagen ${productoId} ${idx}`, false);
+      return ruta;
+    }catch(e){
+      ultimoError = e;
+      console.warn(`subirImagenBlob intento ${intento+1}/3 falló:`, e.message);
+      if(intento < 2){
+        await new Promise(res => setTimeout(res, 1000 * (intento + 1)));
+      }
+    }
+  }
+  throw ultimoError;
 }
 
 /* ===== SELECTOR DE MONEDA ===== */
@@ -828,17 +861,18 @@ async function guardarProducto(){
   btn.innerHTML = '<span class="loader"></span> Guardando...';
   btn.disabled = true;
 
+  let erroresImagenes = [];
+
   try{
+    // 1) Subir imágenes PRIMERO (para no perder el trabajo si falla el JSON)
     const files = Array.from($('#pImgFile').files || []);
     let imagenesFinales = imagenesEdicion.slice();
-    let imagenesFallidas = 0;
 
     if(files.length){
       $('#uploadProgress').classList.add('visible');
       for(let i = 0; i < files.length; i++){
-        const pct = Math.round((i / files.length) * 100);
         $('#uploadProgressText').textContent = `Comprimiendo imagen ${i+1} de ${files.length}...`;
-        $('#uploadProgressBar').style.width = pct + '%';
+        $('#uploadProgressBar').style.width = Math.round((i / files.length) * 100) + '%';
 
         try{
           const blob = await comprimirImagen(files[i]);
@@ -849,17 +883,19 @@ async function guardarProducto(){
           $('#uploadProgressBar').style.width = Math.round(((i+1) / files.length) * 100) + '%';
         }catch(err){
           console.error('Error con imagen', i, err);
-          imagenesFallidas++;
+          erroresImagenes.push(`Imagen ${i+1}: ${err.message || 'error desconocido'}`);
         }
       }
       $('#uploadProgress').classList.remove('visible');
     }
 
+    // Si todas las imágenes fallaron y no hay previas
     if(!imagenesFinales.length && files.length){
+      const detalle = erroresImagenes.join('\n');
       const continuar = confirm(
-        `No se pudo subir ninguna imagen (${imagenesFallidas} fallaron).\n\n` +
+        `No se pudo subir ninguna imagen:\n\n${detalle}\n\n` +
         `Sugerencias:\n` +
-        `• Sube UNA sola imagen a la vez\n` +
+        `• Sube UNA imagen a la vez\n` +
         `• Usa una imagen más pequeña\n` +
         `• Revisa tu conexión\n\n` +
         `¿Guardar el producto SIN imágenes?`
@@ -871,13 +907,13 @@ async function guardarProducto(){
       }
     }
 
+    // 2) Guardar el producto en el JSON de la categoría (con reintentos)
     const oldProd = editId ? productos.find(p => p.id === editId) : null;
     const catAnterior = oldProd?.categoria;
 
     const nuevo = {
       id, nombre, descripcion,
-      precio,
-      moneda,
+      precio, moneda,
       imagen: imagenesFinales[0] || '',
       imagenes: imagenesFinales,
       categoria, disponible, destacado
@@ -887,12 +923,15 @@ async function guardarProducto(){
     productos.push(nuevo);
 
     await guardarCategoriaProducto(categoria, `${editId ? 'Editar' : 'Añadir'} "${nombre}"`);
+
+    // Si cambió de categoría, actualizar la categoría anterior también
     if(editId && catAnterior && catAnterior !== categoria){
       await guardarCategoriaProducto(catAnterior, `Quitar "${nombre}" de categoría anterior`);
     }
 
-    if(imagenesFallidas > 0){
-      toast(`✅ Producto guardado · ${imagenesFallidas} imagen(es) fallaron`, 'warn', 5000);
+    // Mensaje final
+    if(erroresImagenes.length){
+      toast(`⚠️ Producto guardado · ${erroresImagenes.length} imagen(es) fallaron`, 'warn', 5000);
     } else {
       toast('✅ Producto guardado');
     }
@@ -919,15 +958,38 @@ async function editarProducto(id){
 async function eliminarProducto(id){
   await cargarTodo();
   const p = productos.find(x => x.id === id);
-  if(!p) return;
-  if(!confirm(`¿Eliminar "${p.nombre}"?\n\nEsta acción no se puede deshacer.`)) return;
+  if(!p) return toast('Producto no encontrado', 'err');
+
+  const imgs = getImagenesProd(p);
+  let msg = `¿Eliminar "${p.nombre}"?\n\n`;
+  msg += `Esto borrará el producto del catálogo`;
+  if(imgs.length) msg += ` y sus ${imgs.length} imagen(es) del repositorio.`;
+  else msg += '.';
+  msg += `\n\nEsta acción no se puede deshacer.`;
+  if(!confirm(msg)) return;
+
   try{
+    // 1) Eliminar el producto del JSON de su categoría
     productos = productos.filter(x => x.id !== id);
     await guardarCategoriaProducto(p.categoria, `Eliminar "${p.nombre}"`);
+
+    // 2) Eliminar las imágenes del repositorio
+    for(const ruta of imgs){
+      try{
+        const f = await ghGet(ruta);
+        if(f && f.sha){
+          await ghDelete(ruta, f.sha, `Eliminar imagen ${ruta}`);
+        }
+      }catch(e){
+        console.warn('No se pudo borrar imagen', ruta, e);
+      }
+    }
+
     toast('🗑️ Producto eliminado');
+    await cargarTodo();
     renderListaProductos();
   }catch(e){
-    toast('Error: ' + (e.message || 'desconocido'), 'err');
+    toast('Error: ' + (e.message || 'desconocido'), 'err', 6000);
     await cargarTodo();
     renderListaProductos();
   }
