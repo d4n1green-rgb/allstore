@@ -176,15 +176,8 @@ header{background:#fff;position:sticky;top:0;z-index:100;box-shadow:0 2px 12px r
 .spinner{width:48px;height:48px;border:4px solid var(--gris-medio);border-top-color:var(--azul-brillante);border-radius:50%;margin:0 auto 14px;animation:spin 1s linear infinite}
 @keyframes spin{to{transform:rotate(360deg)}}
 
-/* ===== FOOTER ===== */
 footer{background:var(--azul-oscuro);color:rgba(255,255,255,.75);padding:36px 20px;text-align:center;margin-top:auto}
-footer img{
-  height:130px;
-  width:auto;
-  max-width:320px;
-  margin:0 auto 22px;
-  filter:drop-shadow(0 4px 16px rgba(0,168,255,.35));
-}
+footer img{height:130px;width:auto;max-width:320px;margin:0 auto 22px;filter:drop-shadow(0 4px 16px rgba(0,168,255,.35))}
 footer p{font-size:.92rem;margin-bottom:8px}
 footer .credit{font-size:.85rem;opacity:.75;margin-top:16px;line-height:1.7}
 footer .credit strong{color:#2ecc71;font-weight:800}
@@ -448,7 +441,28 @@ function fmtCUP(n){
   const r = Math.round(Number(n) || 0);
   return r.toString().replace(/\B(?=(\d{3})+(?!\d))/g, '.') + ' CUP';
 }
-function usdToCUP(usd){ return usd * config.tasaUSD; }
+
+/* ===== CONVERSIÓN DE MONEDA ===== */
+/* Convierte el precio de un producto a USD, sin importar su moneda original */
+function precioEnUSD(p){
+  if(!p) return 0;
+  const precio = Number(p.precio) || 0;
+  const moneda = p.moneda || 'USD';
+  if(moneda === 'CUP'){
+    const tasa = Number(config.tasaUSD) || 790;
+    return tasa > 0 ? (precio / tasa) : 0;
+  }
+  return precio;
+}
+/* Convierte el precio de un producto a CUP, sin importar su moneda original */
+function precioEnCUP(p){
+  if(!p) return 0;
+  const precio = Number(p.precio) || 0;
+  const moneda = p.moneda || 'USD';
+  if(moneda === 'CUP') return precio;
+  const tasa = Number(config.tasaUSD) || 790;
+  return precio * tasa;
+}
 function calcularComision(subtotalCUP){
   const p = subtotalCUP * (config.comisionPorcentaje / 100);
   return Math.min(p, config.comisionTopeCUP);
@@ -480,6 +494,7 @@ function toast(msg, tipo){
   }, 2800);
 }
 
+/* ===== CARRITO ===== */
 function cargarCarrito(){ carrito = []; }
 function agregarAlCarrito(id, cant = 1){
   const prod = productos.find(p => p.id === id);
@@ -530,6 +545,7 @@ function actualizarBadge(){
   else badge.style.display = 'none';
 }
 
+/* ===== CARGA DE DATOS ===== */
 async function cargarConfig(){
   try{
     const r = await fetch('data/config.json');
@@ -563,6 +579,7 @@ async function cargarProductosDeCategoria(catId){
   productos = await obtenerProductosDeCategoria(catId);
 }
 
+/* ===== RENDER ===== */
 function renderCategoriasBar(){
   const bar = $('#categoriasBar');
   const items = [{id:'todas', nombre:'Todas', icon:'🏠'}, ...categorias];
@@ -595,6 +612,8 @@ function renderProductos(){
     const cat = categorias.find(c => c.id === p.categoria);
     const imgs = getImagenes(p);
     const imgPrincipal = imgs[0] || PLACEHOLDER;
+    const usd = precioEnUSD(p);
+    const cup = precioEnCUP(p);
     return `
       <div class="producto-card" onclick="abrirProducto('${escapeHtml(p.id)}')">
         <div class="producto-img-wrap">
@@ -607,8 +626,8 @@ function renderProductos(){
           <div class="producto-cat">${cat ? escapeHtml(cat.nombre) : ''}</div>
           <div class="producto-nombre">${escapeHtml(p.nombre)}</div>
           <div class="producto-precios">
-            <div class="producto-precio">${money(p.precio)} <small>USD</small></div>
-            <div class="precio-cup">≈ ${fmtCUP(usdToCUP(p.precio))}</div>
+            <div class="producto-precio">${money(usd)} <small>USD</small></div>
+            <div class="precio-cup">≈ ${fmtCUP(cup)}</div>
           </div>
           <button class="btn-agregar" onclick="event.stopPropagation();agregarAlCarrito('${escapeHtml(p.id)}')" ${agotado ? 'disabled' : ''}>
             ${agotado ? '🚫 Agotado' : '🛒 Agregar'}
@@ -628,6 +647,7 @@ async function cambiarCategoria(id){
   window.scrollTo({top:0, behavior:'smooth'});
 }
 
+/* ===== DETALLE DE PRODUCTO ===== */
 function abrirProducto(id){
   const p = productos.find(x => x.id === id);
   if(!p) return;
@@ -637,11 +657,13 @@ function abrirProducto(id){
 
   const cat = categorias.find(c => c.id === p.categoria);
   const agotado = p.disponible === false;
+  const usd = precioEnUSD(p);
+  const cup = precioEnCUP(p);
 
   $('#prodCatDet').textContent = cat ? cat.nombre : '';
   $('#prodNombreDet').textContent = p.nombre;
-  $('#prodPrecioUSDDet').innerHTML = money(p.precio) + ' <small>USD</small>';
-  $('#prodPrecioCUPDet').textContent = '≈ ' + fmtCUP(usdToCUP(p.precio));
+  $('#prodPrecioUSDDet').innerHTML = money(usd) + ' <small>USD</small>';
+  $('#prodPrecioCUPDet').textContent = '≈ ' + fmtCUP(cup);
   $('#prodCantInput').value = 1;
 
   const descEl = $('#prodDescDet');
@@ -744,6 +766,7 @@ function agregarDesdeDetalle(){
   cerrarProducto();
 }
 
+/* ===== CARRITO MODAL ===== */
 function abrirCarrito(){
   renderCarrito();
   $('#carritoOverlay').classList.add('open');
@@ -766,15 +789,17 @@ function renderCarrito(){
   body.innerHTML = carrito.map(item => {
     const p = productos.find(x => x.id === item.id);
     if(!p) return '';
-    const subUSD = p.precio * item.cant;
+    const precioUnitUSD = precioEnUSD(p);
+    const precioUnitCUP = precioEnCUP(p);
+    const subUSD = precioUnitUSD * item.cant;
+    const subCUP = precioUnitCUP * item.cant;
     subtotalUSD += subUSD;
-    const subCUP = usdToCUP(subUSD);
     return `
       <div class="carrito-item">
         <img src="${escapeHtml(getImagenPrincipal(p) || PLACEHOLDER)}" alt="" onerror="this.src='${PLACEHOLDER}'">
         <div class="carrito-item-info">
           <div class="carrito-item-nombre">${escapeHtml(p.nombre)}</div>
-          <div class="carrito-item-precio">${money(p.precio)} <small>USD · ≈ ${fmtCUP(usdToCUP(p.precio))}</small></div>
+          <div class="carrito-item-precio">${money(precioUnitUSD)} <small>USD · ≈ ${fmtCUP(precioUnitCUP)}</small></div>
           <div class="carrito-item-ctrl">
             <button class="qty-btn" onclick="cambiarCantidad('${p.id}',-1)">−</button>
             <input type="number" class="qty-input" value="${item.cant}" min="1" onchange="setCantidadCarrito('${p.id}', this.value)" onblur="setCantidadCarrito('${p.id}', this.value)">
@@ -787,7 +812,7 @@ function renderCarrito(){
     `;
   }).join('');
 
-  const subtotalCUP = usdToCUP(subtotalUSD);
+  const subtotalCUP = subtotalUSD * (Number(config.tasaUSD) || 790);
   const comision = calcularComision(subtotalCUP);
   const totalCUP = subtotalCUP + comision;
 
@@ -806,13 +831,16 @@ function enviarPedidoWhatsApp(){
   carrito.forEach(item => {
     const p = productos.find(x => x.id === item.id);
     if(!p) return;
-    const subUSD = p.precio * item.cant;
+    const precioUnitUSD = precioEnUSD(p);
+    const precioUnitCUP = precioEnCUP(p);
+    const subUSD = precioUnitUSD * item.cant;
+    const subCUP = precioUnitCUP * item.cant;
     subtotalUSD += subUSD;
     msg += `• ${p.nombre}\n`;
-    msg += `  ${item.cant} x ${money(p.precio)} = ${money(subUSD)}\n`;
-    msg += `  ≈ ${fmtCUP(usdToCUP(subUSD))}\n\n`;
+    msg += `  ${item.cant} x ${money(precioUnitUSD)} = ${money(subUSD)}\n`;
+    msg += `  ≈ ${fmtCUP(subCUP)}\n\n`;
   });
-  const subtotalCUP = usdToCUP(subtotalUSD);
+  const subtotalCUP = subtotalUSD * (Number(config.tasaUSD) || 790);
   const comision = calcularComision(subtotalCUP);
   const totalCUP = subtotalCUP + comision;
 
@@ -829,6 +857,7 @@ function enviarPedidoWhatsApp(){
   window.open(url, '_blank');
 }
 
+/* ===== COMENTARIOS ===== */
 const FORM_SUBMIT_EMAIL = 'angel.systems.05@gmail.com';
 function abrirComentarios(){
   $('#modalComentarios').classList.add('open');
@@ -890,6 +919,7 @@ async function enviarComentario(){
   }
 }
 
+/* ===== INIT ===== */
 async function init(){
   cargarCarrito();
   actualizarBadge();
@@ -920,4 +950,4 @@ async function init(){
 document.addEventListener('DOMContentLoaded', init);
 </script>
 </body>
-  </html>
+        </html>
