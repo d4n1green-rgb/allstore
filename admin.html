@@ -234,7 +234,7 @@ input[type="file"]{padding:12px;font-size:.88rem;cursor:pointer;background:var(-
       <div class="card">
         <h3>🖼️ Subir imágenes: dos métodos</h3>
         <p style="font-size:.9rem;color:var(--texto-gris);line-height:1.7;margin-bottom:10px"><b>Método 1 (automático):</b> Selecciona la imagen y guarda. El panel la comprime a 600px y la sube.</p>
-        <p style="font-size:.9rem;color:var(--texto-gris);line-height:1.7"><b>Método 2 (manual, 100% fiable):</b> Dentro del modal hay un botón azul <b>"📤 Abrir GitHub para subir"</b>. Se abre una pestaña nueva del repositorio. Sube la imagen ahí y escribe el nombre del archivo en el campo del admin.</p>
+        <p style="font-size:.9rem;color:var(--texto-gris);line-height:1.7"><b>Método 2 (manual, 100% fiable):</b> Dentro del modal hay un botón azul <b>"📤 Abrir GitHub para subir"</b>. Se abre una pestaña nueva del repositorio. Sube la imagen ahí y escribe el nombre del archivo en el campo del admin. Puedes escribir varias rutas separadas por comas (ej: <i>a.jpg, b.jpg, casas/c1/1.jpg</i>).</p>
       </div>
       <div class="card"><h3>🗑️ Eliminar productos</h3><p style="font-size:.9rem;color:var(--texto-gris);line-height:1.7">Al eliminar un producto, también se borran sus imágenes del repositorio.</p></div>
     </div>
@@ -272,11 +272,11 @@ input[type="file"]{padding:12px;font-size:.88rem;cursor:pointer;background:var(-
 
       <div class="manual-panel">
         <h4>📤 Modo manual (100% fiable)</h4>
-        <p>Si la subida automática falla, sube la imagen directamente a GitHub y escribe el nombre aquí.</p>
+        <p>Sube las imágenes directamente a GitHub y escribe los nombres aquí.</p>
         <button type="button" class="btn-manual" onclick="abrirSubidaManual()">📤 Abrir GitHub para subir</button>
-        <label style="font-size:.72rem;font-weight:800;color:var(--texto-gris);text-transform:uppercase;letter-spacing:.4px;display:block;margin-bottom:5px">Nombre del archivo subido</label>
-        <input type="text" id="pImagenManual" placeholder="ej: moto-bucatti-a4.jpg">
-        <div style="font-size:.72rem;color:var(--texto-gris);margin-top:6px">Pega aquí el nombre del archivo tal como lo subiste. Se añadirá a las imágenes del producto al guardar.</div>
+        <label style="font-size:.72rem;font-weight:800;color:var(--texto-gris);text-transform:uppercase;letter-spacing:.4px;display:block;margin-bottom:5px">Nombres de archivos</label>
+        <input type="text" id="pImagenManual" placeholder="ej: moto.jpg, casas/c1/1.jpg, casas/c1/2.jpg">
+        <div style="font-size:.72rem;color:var(--texto-gris);margin-top:6px">Pega los nombres de los archivos separados por comas. Si están dentro de una carpeta, incluye la ruta (ej: casas/casa1/foto.jpg).</div>
       </div>
 
       <div class="form-group" style="margin-top:16px"><label>Nombre *</label><input type="text" id="pNombre" placeholder="Ej: Casa Modelo A"></div>
@@ -730,11 +730,22 @@ async function guardarProducto(){
   let erroresImagenes = [];
   try{
     let imagenesFinales = imagenesEdicion.slice();
+    
+    // Lógica mejorada para múltiples imágenes manuales
     if(imagenManual){
-      let ruta = imagenManual;
-      if(!ruta.startsWith('img/')) ruta = `${CARPETA_IMGS}/${imagenManual}`;
-      if(!imagenesFinales.includes(ruta)) imagenesFinales.push(ruta);
+      const rutasSeparadas = imagenManual.split(/[\n,]+/).map(s => s.trim()).filter(Boolean);
+      
+      rutasSeparadas.forEach(nombreArchivo => {
+        let ruta = nombreArchivo;
+        if(!ruta.startsWith('img/')) {
+          ruta = `${CARPETA_IMGS}/${nombreArchivo}`;
+        }
+        if(!imagenesFinales.includes(ruta)) {
+          imagenesFinales.push(ruta);
+        }
+      });
     }
+
     const files = Array.from($('#pImgFile').files || []);
     if(files.length){
       $('#uploadProgress').classList.add('visible');
@@ -930,4 +941,4 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 </script>
 </body>
-        </html>
+                                               </html>
