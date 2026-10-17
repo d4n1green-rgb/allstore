@@ -19,31 +19,12 @@ a{text-decoration:none;color:inherit}
 img{max-width:100%;display:block}
 button{font-family:inherit;cursor:pointer;border:none;-webkit-tap-highlight-color:transparent}
 
-/* ===== BANNER INAUGURACIÓN ===== */
-.inauguracion-banner{
-  background:linear-gradient(90deg,#f39c12,#d68910);
-  color:#fff;padding:12px 16px;text-align:center;font-weight:800;
-  line-height:1.4;box-shadow:0 3px 12px rgba(243,156,18,.35);
-  display:flex;flex-direction:column;gap:5px;align-items:center;
-  transition:background .4s ease;
-}
-.inauguracion-banner.ya-abrimos{
-  background:linear-gradient(90deg,#27ae60,#1e8449);
-  box-shadow:0 3px 12px rgba(39,174,96,.35);
-}
-.inauguracion-banner .titulo{
-  font-size:1rem;display:flex;align-items:center;gap:6px;
-  flex-wrap:wrap;justify-content:center;
-}
-.inauguracion-banner .fecha{
-  background:rgba(255,255,255,.22);padding:3px 12px;border-radius:20px;
-  font-weight:900;letter-spacing:.3px;font-size:.92rem;
-}
+.inauguracion-banner{background:linear-gradient(90deg,#f39c12,#d68910);color:#fff;padding:12px 16px;text-align:center;font-weight:800;line-height:1.4;box-shadow:0 3px 12px rgba(243,156,18,.35);display:flex;flex-direction:column;gap:5px;align-items:center;transition:background .4s ease}
+.inauguracion-banner.ya-abrimos{background:linear-gradient(90deg,#27ae60,#1e8449);box-shadow:0 3px 12px rgba(39,174,96,.35)}
+.inauguracion-banner .titulo{font-size:1rem;display:flex;align-items:center;gap:6px;flex-wrap:wrap;justify-content:center}
+.inauguracion-banner .fecha{background:rgba(255,255,255,.22);padding:3px 12px;border-radius:20px;font-weight:900;letter-spacing:.3px;font-size:.92rem}
 .inauguracion-banner .sub{font-size:.8rem;font-weight:600;opacity:.95;max-width:600px}
-.inauguracion-banner .countdown{
-  background:rgba(0,0,0,.25);padding:3px 12px;border-radius:20px;
-  font-weight:900;font-variant-numeric:tabular-nums;font-size:.82rem;
-}
+.inauguracion-banner .countdown{background:rgba(0,0,0,.25);padding:3px 12px;border-radius:20px;font-weight:900;font-variant-numeric:tabular-nums;font-size:.82rem}
 
 header{background:#fff;position:sticky;top:0;z-index:100;box-shadow:0 2px 12px rgba(0,0,0,.08);border-bottom:1px solid var(--gris-medio)}
 .header-top{display:flex;align-items:center;justify-content:space-between;padding:14px 16px;gap:12px}
@@ -114,7 +95,8 @@ header{background:#fff;position:sticky;top:0;z-index:100;box-shadow:0 2px 12px r
 .carrito-item img{width:78px;height:78px;object-fit:cover;border-radius:11px;flex-shrink:0;background:var(--gris-claro)}
 .carrito-item-info{flex:1;min-width:0}
 .carrito-item-nombre{font-size:1.02rem;font-weight:800;margin-bottom:5px;line-height:1.3}
-.carrito-item-precio{font-size:.88rem;color:var(--azul-brillante);font-weight:800}
+.carrito-item-variante{font-size:.78rem;color:var(--azul-brillante);font-weight:700;margin-bottom:3px;text-transform:uppercase;letter-spacing:.5px}
+.carrito-item-precio{font-size:.88rem;color:var(--texto-gris);font-weight:800}
 .carrito-item-precio small{color:var(--texto-gris);font-weight:600}
 .carrito-item-ctrl{display:flex;align-items:center;gap:8px;margin-top:8px}
 .qty-btn{background:var(--gris-claro);border:1px solid var(--gris-medio);width:40px;height:40px;border-radius:10px;font-weight:800;font-size:1.15rem;display:flex;align-items:center;justify-content:center;color:var(--azul-oscuro)}
@@ -166,6 +148,12 @@ header{background:#fff;position:sticky;top:0;z-index:100;box-shadow:0 2px 12px r
 .prod-detalle{padding:22px 24px 28px}
 .prod-cat-detalle{font-size:.8rem;font-weight:800;color:var(--azul-brillante);text-transform:uppercase;letter-spacing:.7px;margin-bottom:8px}
 .prod-nombre-detalle{font-size:1.45rem;font-weight:800;color:var(--azul-oscuro);line-height:1.3;margin-bottom:16px}
+
+/* VARIANTES EN TIENDA */
+.prod-variantes-wrap{margin-bottom:16px;background:var(--gris-claro);padding:12px 15px;border-radius:12px;border:1px solid var(--gris-medio)}
+.prod-variantes-wrap label{display:block;font-size:.82rem;font-weight:800;color:var(--texto-gris);text-transform:uppercase;letter-spacing:.5px;margin-bottom:8px}
+.prod-variantes-wrap select{font-weight:700;color:var(--azul-oscuro);font-size:1.05rem;cursor:pointer}
+
 .prod-precios-detalle{background:linear-gradient(135deg,rgba(0,168,255,.06),rgba(0,168,255,.01));border:1px solid rgba(0,168,255,.2);border-radius:14px;padding:16px 18px;margin-bottom:18px}
 .prod-precio-usd{font-size:1.75rem;font-weight:900;color:var(--azul-oscuro);line-height:1.1}
 .prod-precio-usd small{font-size:.95rem;color:var(--texto-gris);font-weight:700;margin-left:4px}
@@ -278,7 +266,6 @@ footer .credit strong{color:#2ecc71;font-weight:800}
 </head>
 <body>
 
-<!-- BANNER INAUGURACIÓN -->
 <div class="inauguracion-banner" id="inauguracionBanner">
   <div class="titulo">
     🎉 <strong id="bannerTitulo">INAUGURACIÓN</strong>
@@ -376,6 +363,13 @@ footer .credit strong{color:#2ecc71;font-weight:800}
       <div class="prod-detalle">
         <div class="prod-cat-detalle" id="prodCatDet"></div>
         <h2 class="prod-nombre-detalle" id="prodNombreDet"></h2>
+        
+        <!-- SELECTOR DE VARIANTES -->
+        <div class="prod-variantes-wrap" id="prodVariantesWrap" style="display:none">
+          <label>Elige una opción:</label>
+          <select id="prodVarianteSelect" onchange="cambiarVarianteDetalle()"></select>
+        </div>
+
         <div class="prod-precios-detalle">
           <div class="prod-precio-usd" id="prodPrecioUSDDet">$0.00 <small>USD</small></div>
           <div class="prod-precio-cup" id="prodPrecioCUPDet">≈ 0 CUP</div>
@@ -461,6 +455,11 @@ let productoActual = null;
 let imagenesActuales = [];
 let indiceImagen = 0;
 
+/* Variables para el manejo de variantes en el modal */
+let varianteSeleccionada = null;
+let precioActualUSD = 0;
+let precioActualCUP = 0;
+
 const FECHA_INAUGURACION = new Date('2026-10-19T00:00:00');
 const FECHA_FIN_BANNER = new Date('2026-10-26T00:00:00');
 
@@ -502,24 +501,20 @@ function fmtCUP(n){
   return r.toString().replace(/\B(?=(\d{3})+(?!\d))/g, '.') + ' CUP';
 }
 
-function precioEnUSD(p){
-  if(!p) return 0;
-  const precio = Number(p.precio) || 0;
-  const moneda = p.moneda || 'USD';
+/* Funciones de conversión */
+function convertirAUSD(precio, moneda){
   if(moneda === 'CUP'){
     const tasa = Number(config.tasaUSD) || 790;
     return tasa > 0 ? (precio / tasa) : 0;
   }
   return precio;
 }
-function precioEnCUP(p){
-  if(!p) return 0;
-  const precio = Number(p.precio) || 0;
-  const moneda = p.moneda || 'USD';
+function convertirACUP(precio, moneda){
   if(moneda === 'CUP') return precio;
   const tasa = Number(config.tasaUSD) || 790;
   return precio * tasa;
 }
+
 function calcularComision(subtotalCUP){
   const p = subtotalCUP * (config.comisionPorcentaje / 100);
   return Math.min(p, config.comisionTopeCUP);
@@ -552,7 +547,7 @@ function toast(msg, tipo){
 }
 
 function cargarCarrito(){ carrito = []; }
-function agregarAlCarrito(id, cant = 1){
+function agregarAlCarrito(id, cant = 1, variante = null){
   if(!estaAbierta()){
     toast('Los pedidos estarán disponibles a partir del 19 de octubre', 'warn');
     return;
@@ -561,22 +556,27 @@ function agregarAlCarrito(id, cant = 1){
   if(!prod || prod.disponible === false) return;
   cant = parseInt(cant, 10) || 1;
   if(cant < 1) cant = 1;
-  const item = carrito.find(i => i.id === id);
+  
+  // Crear un identificador único para el carrito basado en ID + Variante
+  const cartItemId = id + (variante ? '||' + variante : '');
+  
+  const item = carrito.find(i => i.id === cartItemId);
   if(item) item.cant += cant;
-  else carrito.push({id, cant});
+  else carrito.push({ id: cartItemId, productId: id, variante: variante, cant });
+  
   actualizarBadge();
   toast(`✅ ${cant > 1 ? cant + ' unidades agregadas' : 'Agregado al carrito'}`);
 }
-function cambiarCantidad(id, delta){
-  const item = carrito.find(i => i.id === id);
+function cambiarCantidad(cartId, delta){
+  const item = carrito.find(i => i.id === cartId);
   if(!item) return;
   item.cant += delta;
-  if(item.cant <= 0) carrito = carrito.filter(i => i.id !== id);
+  if(item.cant <= 0) carrito = carrito.filter(i => i.id !== cartId);
   actualizarBadge();
   renderCarrito();
 }
-function setCantidadCarrito(id, valor){
-  const item = carrito.find(i => i.id === id);
+function setCantidadCarrito(cartId, valor){
+  const item = carrito.find(i => i.id === cartId);
   if(!item) return;
   let n = parseInt(valor, 10);
   if(!isFinite(n) || n < 1) n = 1;
@@ -585,8 +585,8 @@ function setCantidadCarrito(id, valor){
   actualizarBadge();
   renderCarrito();
 }
-function eliminarDelCarrito(id){
-  carrito = carrito.filter(i => i.id !== id);
+function eliminarDelCarrito(cartId){
+  carrito = carrito.filter(i => i.id !== cartId);
   actualizarBadge();
   renderCarrito();
 }
@@ -672,8 +672,17 @@ function renderProductos(){
     const cat = categorias.find(c => c.id === p.categoria);
     const imgs = getImagenes(p);
     const imgPrincipal = imgs[0] || PLACEHOLDER;
-    const usd = precioEnUSD(p);
-    const cup = precioEnCUP(p);
+    
+    // Calcular precio de visualización en la tarjeta
+    let precioVisualizar = p.precio; // Precio base
+    if (Array.isArray(p.variantes) && p.variantes.length > 0) {
+      // Si tiene variantes, buscar el precio mínimo
+      precioVisualizar = Math.min(...p.variantes.map(v => v.precio));
+    }
+    
+    const usd = convertirAUSD(precioVisualizar, p.moneda);
+    const cup = convertirACUP(precioVisualizar, p.moneda);
+    const tieneVariantes = Array.isArray(p.variantes) && p.variantes.length > 0;
 
     let boton;
     if(!abierta){
@@ -681,7 +690,9 @@ function renderProductos(){
     } else if(agotado){
       boton = `<button class="btn-agregar" disabled>🚫 Agotado</button>`;
     } else {
-      boton = `<button class="btn-agregar" onclick="event.stopPropagation();agregarAlCarrito('${escapeHtml(p.id)}')">🛒 Agregar</button>`;
+      // Si tiene variantes, el botón de la tarjeta debe abrir el modal para elegir variante
+      const onclickAction = tieneVariantes ? `abrirProducto('${escapeHtml(p.id)}')` : `event.stopPropagation();agregarAlCarrito('${escapeHtml(p.id)}')`;
+      boton = `<button class="btn-agregar" onclick="${onclickAction}">🛒 ${tieneVariantes ? 'Elegir opción' : 'Agregar'}</button>`;
     }
 
     return `
@@ -694,7 +705,7 @@ function renderProductos(){
         </div>
         <div class="producto-info">
           <div class="producto-cat">${cat ? escapeHtml(cat.nombre) : ''}</div>
-          <div class="producto-nombre">${escapeHtml(p.nombre)}</div>
+          <div class="producto-nombre">${escapeHtml(p.nombre)} ${tieneVariantes ? '<span style="font-size:.75rem;color:var(--texto-gris)">(Opciones)</span>' : ''}</div>
           <div class="producto-precios">
             <div class="producto-precio">${money(usd)} <small>USD</small></div>
             <div class="precio-cup">≈ ${fmtCUP(cup)}</div>
@@ -725,14 +736,31 @@ function abrirProducto(id){
   const cat = categorias.find(c => c.id === p.categoria);
   const agotado = p.disponible === false;
   const abierta = estaAbierta();
-  const usd = precioEnUSD(p);
-  const cup = precioEnCUP(p);
 
   $('#prodCatDet').textContent = cat ? cat.nombre : '';
   $('#prodNombreDet').textContent = p.nombre;
-  $('#prodPrecioUSDDet').innerHTML = money(usd) + ' <small>USD</small>';
-  $('#prodPrecioCUPDet').textContent = '≈ ' + fmtCUP(cup);
   $('#prodCantInput').value = 1;
+
+  // Configurar variantes
+  const tieneVariantes = Array.isArray(p.variantes) && p.variantes.length > 0;
+  if (tieneVariantes) {
+    $('#prodVariantesWrap').style.display = 'block';
+    $('#prodVarianteSelect').innerHTML = p.variantes.map((v, i) => `<option value="${i}">${escapeHtml(v.nombre)}</option>`).join('');
+    
+    // Seleccionar la primera variante por defecto
+    varianteSeleccionada = p.variantes[0].nombre;
+    precioActualUSD = convertirAUSD(p.variantes[0].precio, p.moneda);
+    precioActualCUP = convertirACUP(p.variantes[0].precio, p.moneda);
+  } else {
+    $('#prodVariantesWrap').style.display = 'none';
+    varianteSeleccionada = null;
+    precioActualUSD = convertirAUSD(p.precio, p.moneda);
+    precioActualCUP = convertirACUP(p.precio, p.moneda);
+  }
+
+  // Actualizar precios
+  $('#prodPrecioUSDDet').innerHTML = money(precioActualUSD) + ' <small>USD</small>';
+  $('#prodPrecioCUPDet').textContent = '≈ ' + fmtCUP(precioActualCUP);
 
   const descEl = $('#prodDescDet');
   if(p.descripcion && p.descripcion.trim()){
@@ -780,11 +808,26 @@ function abrirProducto(id){
   document.body.style.overflow = 'hidden';
 }
 
+function cambiarVarianteDetalle() {
+  if (!productoActual || !productoActual.variantes) return;
+  const selectedIdx = parseInt($('#prodVarianteSelect').value, 10);
+  const v = productoActual.variantes[selectedIdx];
+  if (!v) return;
+
+  varianteSeleccionada = v.nombre;
+  precioActualUSD = convertirAUSD(v.precio, productoActual.moneda);
+  precioActualCUP = convertirACUP(v.precio, productoActual.moneda);
+
+  $('#prodPrecioUSDDet').innerHTML = money(precioActualUSD) + ' <small>USD</small>';
+  $('#prodPrecioCUPDet').textContent = '≈ ' + fmtCUP(precioActualCUP);
+}
+
 function cerrarProducto(){
   $('#modalProducto').classList.remove('open');
   document.body.style.overflow = '';
   productoActual = null;
   imagenesActuales = [];
+  varianteSeleccionada = null;
 }
 
 function actualizarContadorImagen(){
@@ -830,7 +873,7 @@ function agregarDesdeDetalle(){
   }
   if(!productoActual) return;
   const cant = parseInt($('#prodCantInput').value, 10) || 1;
-  agregarAlCarrito(productoActual.id, cant);
+  agregarAlCarrito(productoActual.id, cant, varianteSeleccionada);
   cerrarProducto();
 }
 
@@ -861,27 +904,39 @@ function renderCarrito(){
     foot.style.display = 'none';
     return;
   }
+  
   let subtotalUSD = 0;
   body.innerHTML = carrito.map(item => {
-    const p = productos.find(x => x.id === item.id);
+    // Encontrar el producto base
+    const p = productos.find(x => x.id === item.productId);
     if(!p) return '';
-    const precioUnitUSD = precioEnUSD(p);
-    const precioUnitCUP = precioEnCUP(p);
+    
+    // Determinar el precio de este ítem (con o sin variante)
+    let precioItem = p.precio;
+    if (item.variante && Array.isArray(p.variantes)) {
+      const v = p.variantes.find(v => v.nombre === item.variante);
+      if (v) precioItem = v.precio;
+    }
+
+    const precioUnitUSD = convertirAUSD(precioItem, p.moneda);
+    const precioUnitCUP = convertirACUP(precioItem, p.moneda);
     const subUSD = precioUnitUSD * item.cant;
     const subCUP = precioUnitCUP * item.cant;
     subtotalUSD += subUSD;
+
     return `
       <div class="carrito-item">
         <img src="${escapeHtml(getImagenPrincipal(p) || PLACEHOLDER)}" alt="" onerror="this.src='${PLACEHOLDER}'">
         <div class="carrito-item-info">
           <div class="carrito-item-nombre">${escapeHtml(p.nombre)}</div>
+          ${item.variante ? `<div class="carrito-item-variante">${escapeHtml(item.variante)}</div>` : ''}
           <div class="carrito-item-precio">${money(precioUnitUSD)} <small>USD · ≈ ${fmtCUP(precioUnitCUP)}</small></div>
           <div class="carrito-item-ctrl">
-            <button class="qty-btn" onclick="cambiarCantidad('${p.id}',-1)">−</button>
-            <input type="number" class="qty-input" value="${item.cant}" min="1" onchange="setCantidadCarrito('${p.id}', this.value)" onblur="setCantidadCarrito('${p.id}', this.value)">
-            <button class="qty-btn" onclick="cambiarCantidad('${p.id}',1)">+</button>
+            <button class="qty-btn" onclick="cambiarCantidad('${item.id}',-1)">−</button>
+            <input type="number" class="qty-input" value="${item.cant}" min="1" onchange="setCantidadCarrito('${item.id}', this.value)" onblur="setCantidadCarrito('${item.id}', this.value)">
+            <button class="qty-btn" onclick="cambiarCantidad('${item.id}',1)">+</button>
           </div>
-          <button class="btn-remove" onclick="eliminarDelCarrito('${p.id}')">Eliminar</button>
+          <button class="btn-remove" onclick="eliminarDelCarrito('${item.id}')">Eliminar</button>
         </div>
         <div class="carrito-item-sub">${money(subUSD)}<small>≈ ${fmtCUP(subCUP)}</small></div>
       </div>
@@ -908,21 +963,32 @@ function enviarPedidoWhatsApp(){
   if(!carrito.length){ toast('Tu carrito está vacío'); return; }
   let subtotalUSD = 0;
   let msg = '🛒 *Nuevo pedido — ArcaCubana*\n\n';
+  
   carrito.forEach(item => {
-    const p = productos.find(x => x.id === item.id);
+    const p = productos.find(x => x.id === item.productId);
     if(!p) return;
-    const precioUnitUSD = precioEnUSD(p);
-    const precioUnitCUP = precioEnCUP(p);
+    
+    let precioItem = p.precio;
+    if (item.variante && Array.isArray(p.variantes)) {
+      const v = p.variantes.find(v => v.nombre === item.variante);
+      if (v) precioItem = v.precio;
+    }
+
+    const precioUnitUSD = convertirAUSD(precioItem, p.moneda);
+    const precioUnitCUP = convertirACUP(precioItem, p.moneda);
     const subUSD = precioUnitUSD * item.cant;
     const subCUP = precioUnitCUP * item.cant;
     subtotalUSD += subUSD;
-    msg += `• ${p.nombre}\n`;
+
+    msg += `• ${p.nombre}${item.variante ? ' (' + item.variante + ')' : ''}\n`;
     msg += `  ${item.cant} x ${money(precioUnitUSD)} = ${money(subUSD)}\n`;
     msg += `  ≈ ${fmtCUP(subCUP)}\n\n`;
   });
+  
   const subtotalCUP = subtotalUSD * (Number(config.tasaUSD) || 790);
   const comision = calcularComision(subtotalCUP);
   const totalCUP = subtotalCUP + comision;
+  
   msg += `━━━━━━━━━━━━━━━\n`;
   msg += `Subtotal: ${money(subtotalUSD)}\n`;
   msg += `≈ ${fmtCUP(subtotalCUP)}\n`;
@@ -931,6 +997,7 @@ function enviarPedidoWhatsApp(){
   msg += `*TOTAL: ${money(subtotalUSD)} + ${fmtCUP(comision)}*\n`;
   msg += `*≈ ${fmtCUP(totalCUP)}*\n\n`;
   msg += `Por favor confírmame disponibilidad y forma de pago. 🙏`;
+  
   const url = `https://wa.me/${config.whatsapp}?text=${encodeURIComponent(msg)}`;
   window.open(url, '_blank');
 }
@@ -1012,4 +1079,4 @@ async function init(){
 document.addEventListener('DOMContentLoaded', init);
 </script>
 </body>
-                                                      </html>
+            </html>
