@@ -1,1 +1,20 @@
-[]
+[
+  {
+    "id": "casa-modelo-a-ixpd",
+    "nombre": "Casa Modelo A",
+    "descripcion": "Casa",
+    "precio": 7500,
+    "moneda": "USD",
+    "imagen": "",
+    "imagenes": [],
+    "categoria": "casas",
+    "disponible": true,
+    "destacado": false,
+    "variantes": [
+      {
+        "nombre": "Amueblada",
+        "precio": 7500
+      }
+    ]
+  }
+]
