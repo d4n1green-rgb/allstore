@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-<title>AllStore — Todo lo que necesitas, en un solo lugar</title>
+<title>ArcaCubana — Todo lo que necesitas, en un solo lugar</title>
 <meta name="description" content="Motos eléctricas, bicimotos, casas, electrodomésticos, consolas, ecoflows y paneles solares. Pide por WhatsApp.">
 <link rel="icon" type="image/webp" href="favicon.webp">
 <style>
@@ -290,8 +290,8 @@ footer .credit strong{color:#2ecc71;font-weight:800}
 
 <header>
   <div class="header-top">
-    <img src="logo.webp" alt="AllStore" class="logo-header" onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
-    <div style="display:none;color:#0a192f;font-weight:900;font-size:1.2rem;letter-spacing:2px">AllStore</div>
+    <img src="logo.webp" alt="ArcaCubana" class="logo-header" onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
+    <div style="display:none;color:#0a192f;font-weight:900;font-size:1.2rem;letter-spacing:2px">ArcaCubana</div>
     <div class="header-actions">
       <button class="btn-header btn-carrito" onclick="abrirCarrito()">
         🛒 Carrito
@@ -431,8 +431,8 @@ footer .credit strong{color:#2ecc71;font-weight:800}
 </div>
 
 <footer>
-  <img src="logo-footer.webp" alt="AllStore" onerror="this.style.display='none'">
-  <p><strong>AllStore</strong> — Todo lo que necesitas, en un solo lugar.</p>
+  <img src="logo-footer.webp" alt="ArcaCubana" onerror="this.style.display='none'">
+  <p><strong>ArcaCubana</strong> — Todo lo que necesitas, en un solo lugar.</p>
   <div class="footer-info">
     <p>📍 <strong>Ubicación:</strong> Güira de Melena, Artemisa, Cuba</p>
     <p>👤 <strong>Propietario:</strong> Anthony Rodriguez Duthil</p>
@@ -443,7 +443,7 @@ footer .credit strong{color:#2ecc71;font-weight:800}
   </div>
   <button class="btn-comentarios" onclick="abrirComentarios()">💬 Comentarios y sugerencias</button>
   <div class="credit">
-    © 2026 AllStore · Todos los derechos reservados<br>
+    © 2026 ArcaCubana · Todos los derechos reservados<br>
     <strong>Creado por Angel Systems</strong>
   </div>
 </footer>
@@ -461,42 +461,29 @@ let productoActual = null;
 let imagenesActuales = [];
 let indiceImagen = 0;
 
-/* ============================================================
-   FECHAS CLAVE
-   - 19 oct 2026: apertura (los botones de compra se activan)
-   - 26 oct 2026: el banner desaparece (7 días después)
-   ============================================================ */
 const FECHA_INAUGURACION = new Date('2026-10-19T00:00:00');
 const FECHA_FIN_BANNER = new Date('2026-10-26T00:00:00');
 
-function estaAbierta(){
-  return new Date() >= FECHA_INAUGURACION;
-}
+function estaAbierta(){ return new Date() >= FECHA_INAUGURACION; }
 
 function actualizarBanner(){
   const banner = document.getElementById('inauguracionBanner');
   const el = document.getElementById('countdown');
   if(!banner || !el) return;
-
   const ahora = new Date();
 
-  // Caso 3: después del 26 oct → ocultar banner
   if(ahora >= FECHA_FIN_BANNER){
     banner.style.display = 'none';
     return;
   }
-
-  // Caso 2: entre el 19 y el 26 oct → "¡Ya abrimos!"
   if(ahora >= FECHA_INAUGURACION){
     banner.classList.add('ya-abrimos');
     document.getElementById('bannerTitulo').textContent = '¡YA ABRIMOS!';
-    document.getElementById('bannerFecha').textContent = 'Bienvenido a AllStore';
+    document.getElementById('bannerFecha').textContent = 'Bienvenido a ArcaCubana';
     el.textContent = '🎉';
     document.getElementById('bannerSub').textContent = 'Ya puedes hacer tus pedidos. ¡Gracias por esperarnos!';
     return;
   }
-
-  // Caso 1: antes del 19 oct → countdown
   const falta = FECHA_INAUGURACION - ahora;
   const d = Math.floor(falta / (1000*60*60*24));
   const h = Math.floor((falta % (1000*60*60*24)) / (1000*60*60));
@@ -515,7 +502,6 @@ function fmtCUP(n){
   return r.toString().replace(/\B(?=(\d{3})+(?!\d))/g, '.') + ' CUP';
 }
 
-/* ===== CONVERSIÓN DE MONEDA ===== */
 function precioEnUSD(p){
   if(!p) return 0;
   const precio = Number(p.precio) || 0;
@@ -565,7 +551,6 @@ function toast(msg, tipo){
   }, 2800);
 }
 
-/* ===== CARRITO ===== */
 function cargarCarrito(){ carrito = []; }
 function agregarAlCarrito(id, cant = 1){
   if(!estaAbierta()){
@@ -620,7 +605,6 @@ function actualizarBadge(){
   else badge.style.display = 'none';
 }
 
-/* ===== CARGA DE DATOS ===== */
 async function cargarConfig(){
   try{
     const r = await fetch(`data/config.json?t=${Date.now()}`);
@@ -654,7 +638,6 @@ async function cargarProductosDeCategoria(catId){
   productos = await obtenerProductosDeCategoria(catId);
 }
 
-/* ===== RENDER ===== */
 function renderCategoriasBar(){
   const bar = $('#categoriasBar');
   const items = [{id:'todas', nombre:'Todas', icon:'🏠'}, ...categorias];
@@ -732,7 +715,6 @@ async function cambiarCategoria(id){
   window.scrollTo({top:0, behavior:'smooth'});
 }
 
-/* ===== DETALLE DE PRODUCTO ===== */
 function abrirProducto(id){
   const p = productos.find(x => x.id === id);
   if(!p) return;
@@ -852,7 +834,6 @@ function agregarDesdeDetalle(){
   cerrarProducto();
 }
 
-/* ===== CARRITO MODAL ===== */
 function abrirCarrito(){
   renderCarrito();
   $('#carritoOverlay').classList.add('open');
@@ -926,7 +907,7 @@ function enviarPedidoWhatsApp(){
   }
   if(!carrito.length){ toast('Tu carrito está vacío'); return; }
   let subtotalUSD = 0;
-  let msg = '🛒 *Nuevo pedido — AllStore*\n\n';
+  let msg = '🛒 *Nuevo pedido — ArcaCubana*\n\n';
   carrito.forEach(item => {
     const p = productos.find(x => x.id === item.id);
     if(!p) return;
@@ -954,7 +935,6 @@ function enviarPedidoWhatsApp(){
   window.open(url, '_blank');
 }
 
-/* ===== COMENTARIOS ===== */
 const FORM_SUBMIT_EMAIL = 'angel.systems.05@gmail.com';
 function abrirComentarios(){ $('#modalComentarios').classList.add('open'); document.body.style.overflow = 'hidden'; }
 function cerrarComentarios(){ $('#modalComentarios').classList.remove('open'); document.body.style.overflow = ''; }
@@ -977,7 +957,7 @@ async function enviarComentario(){
       method: 'POST',
       headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
       body: JSON.stringify({
-        _subject: `AllStore — ${tipo} de ${nombre}`,
+        _subject: `ArcaCubana — ${tipo} de ${nombre}`,
         _template: 'table', _captcha: 'false',
         Tipo: tipo, Nombre: nombre,
         Email: email || 'No proporcionado',
@@ -999,12 +979,10 @@ async function enviarComentario(){
   }
 }
 
-/* ===== INIT ===== */
 async function init(){
   cargarCarrito();
   actualizarBadge();
   actualizarBanner();
-  // Actualizar cada minuto
   setInterval(actualizarBanner, 60000);
 
   await cargarConfig();
@@ -1034,4 +1012,4 @@ async function init(){
 document.addEventListener('DOMContentLoaded', init);
 </script>
 </body>
-      </html>
+                                                      </html>
