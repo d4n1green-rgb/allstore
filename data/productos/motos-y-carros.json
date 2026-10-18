@@ -14,7 +14,7 @@
     "id": "moto-de-combustion-motorstreck-de5v",
     "nombre": "Moto de Combustión MOTORSTRECK",
     "descripcion": "⚠️_Factura a nombre del comprador_⚠️\n\n☑️4 tiempos, 125cc, 0km\n☑️Unidad GS\n☑️Cuadro de criollo\n🎨•Colores : 🔴🖤💙\n\n🧾•Garantía 15 días !!!",
-    "precio": 1770,
+    "precio": 1720,
     "moneda": "USD",
     "imagen": "img/productos/motos/9.jpg",
     "imagenes": [
@@ -25,7 +25,11 @@
     "destacado": false,
     "variantes": [
       {
-        "nombre": "Con unidad Unison 175cc ",
+        "nombre": "Normal",
+        "precio": 1720
+      },
+      {
+        "nombre": "Con unidad Unison 175cc",
         "precio": 1770
       }
     ]
