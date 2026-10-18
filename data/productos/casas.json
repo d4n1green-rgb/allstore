@@ -1,1 +1,38 @@
-[]
+[
+  {
+    "id": "casa-1-0duy",
+    "nombre": "Casa #1",
+    "descripcion": "Casa de Mampostería y Placa.\n📍 Ubicación: Zona céntrica, en la esquina del parque. Dirección: Ave 95 # 8209 A entre 82 y 84, Güira de Melena, Artemisa.\n🧱 Estructura: Casa de mampostería y placa con ventanas de hierro, cristal y zinc.\n🛋️ Planta Baja: Portal, sala, comedor, cocina, escalera de mampostería, bateas y baño.\n🛏️ Planta Alta: 2 cuartos y balcón. Incluye placa libre encima de sala y portal.\n⚡ Servicios: Fluido eléctrico de 110V y 220V. Y acometida directa de entrada de agua tubería ¾.\n📄 Legal: Papeles en regla.",
+    "precio": 6500,
+    "moneda": "USD",
+    "imagen": "img/productos/casas/casa-1/1.jpg",
+    "imagenes": [
+      "img/productos/casas/casa-1/1.jpg",
+      "img/productos/casas/casa-1/2.jpg",
+      "img/productos/casas/casa-1/3.jpg",
+      "img/productos/casas/casa-1/4.jpg",
+      "img/productos/casas/casa-1/5.jpg",
+      "img/productos/casas/casa-1/6.jpg",
+      "img/productos/casas/casa-1/7.jpg",
+      "img/productos/casas/casa-1/8.jpg",
+      "img/productos/casas/casa-1/9.jpg",
+      "img/productos/casas/casa-1/10.jpg",
+      "img/productos/casas/casa-1/11.jpg",
+      "img/productos/casas/casa-1/12.jpg",
+      "img/productos/casas/casa-1/13.jpg"
+    ],
+    "categoria": "casas",
+    "disponible": true,
+    "destacado": false,
+    "variantes": [
+      {
+        "nombre": "Vacía ",
+        "precio": 6500
+      },
+      {
+        "nombre": "Con todo",
+        "precio": 7500
+      }
+    ]
+  }
+]
