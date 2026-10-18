@@ -28,6 +28,20 @@
     "destacado": false
   },
   {
+    "id": "bicimoto-topmaq-evolution-336y",
+    "nombre": "Bicimoto TOPMAQ EVOLUTION",
+    "descripcion": "⚙️ Especificaciones:\n• Motor: 3000 W\n• Batería: 48V-45Ah\n• Controlador / Caja: EM-50\n• Autonomía: 100 km-120km",
+    "precio": 1870,
+    "moneda": "USD",
+    "imagen": "img/productos/motos/18.png",
+    "imagenes": [
+      "img/productos/motos/18.png"
+    ],
+    "categoria": "motos-y-carros",
+    "disponible": true,
+    "destacado": false
+  },
+  {
     "id": "bicimoto-yoazaky-galactica-rw8d",
     "nombre": "Bicimoto YOAZAKY GALÁCTICA",
     "descripcion": "BICIMOTO YOAZAKI GALÁCTICA 2026 \n\n⚙️CARACTERÍSTICAS:\n\n• Motor: 3000w \n• ⁠Batería de litio antiexplosiva: 48v-50Ah\n• Autonomía: 120km\n• ⁠Caja VOTOL 50\n• Velocidad máxima: 50 km/h\n• Tranque en el timón \n• Luces LED, Alarma, encendido a distancia. \n• Bocina compatible con bluetooh, memoria USB y micro SD",
@@ -120,17 +134,17 @@
     "destacado": false
   },
   {
-    "id": "bicimoto-topmaq-evolution-336y",
-    "nombre": "Bicimoto TOPMAQ EVOLUTION",
-    "descripcion": "⚙️ Especificaciones:\n• Motor: 3000 W\n• Batería: 48V-45Ah\n• Controlador / Caja: EM-50\n• Autonomía: 100 km-120km",
-    "precio": 1870,
+    "id": "bicimoto-topmaq-evolution-con-poco-uso-8x7x",
+    "nombre": "Bicimoto TOPMAQ EVOLUTION (Con poco uso)",
+    "descripcion": "⚙️ Especificaciones:\n• Motor: 3000 W\n• Batería: 48V-45Ah\n• Controlador / Caja: EM-50\n• 🔋 Autonomía: De 100 km a 120km\n★ Tiene 2000 km caminados pero no tiene ningún defecto",
+    "precio": 1570,
     "moneda": "USD",
-    "imagen": "img/productos/motos/18.png",
+    "imagen": "img/productos/motos/19.png",
     "imagenes": [
-      "img/productos/motos/18.png"
+      "img/productos/motos/19.png"
     ],
     "categoria": "motos-y-carros",
     "disponible": true,
-    "destacado": false
+    "destacado": true
   }
 ]
