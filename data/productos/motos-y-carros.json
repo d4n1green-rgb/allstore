@@ -136,12 +136,15 @@
     ]
   },
   {
-    "id": "moto-electrica-bucatti-a4-740s",
-    "nombre": "Moto Eléctrica Bucatti A4",
-    "descripcion": "🛵 MOTOS ELÉCTRICAS BUCATTI A4\n\n⚙️ ESPECIFICACIONES:\n• 3000w - 72v - 45ah\n• Batería de litio antiexplosiva\n• Hasta 120 km de autonomía\n• Caja VOTOL 50\n• Velocidad máxima 70 km/h\n• Luces LED, Alarma, encendido a distancia\n• Bocina compatible con Bluetooth, memoria USB y micro SD\n\n🎁 INCLUYE: Cargador inteligente, 2 juegos de llaves\n🧾 PAPELES EN REGLA\n🎨 COLOR: Morado",
-    "precio": 2400,
+    "id": "moto-de-combustion-tk-lw9s",
+    "nombre": "Moto de Combustión TK",
+    "descripcion": "⚠️YA CON CHAPA, CERTIFICO y CIRCULACIÓN!!!⚠️\n\n☑️Original completa, incluyendo el cuadro\n☑️Automática, 200cc, 0km\n☑️Alarma, Luces LED y Reproductor MP3 (Bluetooth)\n☑️Llavero inteligente con arranque a distancia\n☑️Rim 13 con freno de disco delantero y trasero\n☑️Transmisión por correa\n\n🎨•Colores : 🔴🔵\n\n🧾•Se hace poder especial a nombre del cliente!!!",
+    "precio": 2720,
     "moneda": "USD",
-    "imagen": "img/productos/moto-electrica-bucatti-a4-740s.jpg",
+    "imagen": "img/productos/motos/3.jpg",
+    "imagenes": [
+      "img/productos/motos/3.jpg"
+    ],
     "categoria": "motos-y-carros",
     "disponible": true,
     "destacado": false
@@ -190,14 +193,14 @@
     "destacado": false
   },
   {
-    "id": "moto-de-combustion-tk-lw9s",
-    "nombre": "Moto de Combustión TK",
-    "descripcion": "⚠️YA CON CHAPA, CERTIFICO y CIRCULACIÓN!!!⚠️\n\n☑️Original completa, incluyendo el cuadro\n☑️Automática, 200cc, 0km\n☑️Alarma, Luces LED y Reproductor MP3 (Bluetooth)\n☑️Llavero inteligente con arranque a distancia\n☑️Rim 13 con freno de disco delantero y trasero\n☑️Transmisión por correa\n\n🎨•Colores : 🔴🔵\n\n🧾•Se hace poder especial a nombre del cliente!!!",
-    "precio": 2720,
+    "id": "moto-electrica-bucatti-a4-740s",
+    "nombre": "Moto Eléctrica Bucatti A4",
+    "descripcion": "⚙️ ESPECIFICACIONES:\n• Motor: 3000w \n• Batería de litio antiexplosiva; 72v - 45ah\n• Hasta 120 km de autonomía\n• Caja VOTOL 50\n• Velocidad máxima 70 km/h\n• Luces LED, Alarma, encendido a distancia\n• Bocina compatible con Bluetooth, memoria USB y micro SD\n\n🎁 INCLUYE: Cargador inteligente, 2 juegos de llaves\n🧾 PAPELES EN REGLA\n🎨 COLOR: Morado",
+    "precio": 2420,
     "moneda": "USD",
-    "imagen": "img/productos/motos/3.jpg",
+    "imagen": "img/productos/moto-electrica-bucatti-a4-740s.jpg",
     "imagenes": [
-      "img/productos/motos/3.jpg"
+      "img/productos/moto-electrica-bucatti-a4-740s.jpg"
     ],
     "categoria": "motos-y-carros",
     "disponible": true,
