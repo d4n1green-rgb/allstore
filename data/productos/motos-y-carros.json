@@ -9,5 +9,25 @@
     "categoria": "motos-y-carros",
     "disponible": true,
     "destacado": false
+  },
+  {
+    "id": "moto-de-combustion-motorstreck-de5v",
+    "nombre": "Moto de Combustión MOTORSTRECK",
+    "descripcion": "⚠️_Factura a nombre del comprador_⚠️\n\n☑️4 tiempos, 125cc, 0km\n☑️Unidad GS\n☑️Cuadro de criollo\n🎨•Colores : 🔴🖤💙\n\n🧾•Garantía 15 días !!!",
+    "precio": 1770,
+    "moneda": "USD",
+    "imagen": "img/productos/motos/9.jpg",
+    "imagenes": [
+      "img/productos/motos/9.jpg"
+    ],
+    "categoria": "motos-y-carros",
+    "disponible": true,
+    "destacado": false,
+    "variantes": [
+      {
+        "nombre": "Con unidad Unison 175cc ",
+        "precio": 1770
+      }
+    ]
   }
 ]
