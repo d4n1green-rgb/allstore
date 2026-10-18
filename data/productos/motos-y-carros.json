@@ -97,8 +97,10 @@
     "descripcion": "BICIMOTO YOAZAKI GALÁCTICA 2026 \n\n⚙️CARACTERÍSTICAS:\n\n• Motor: 3000w \n• ⁠Batería de litio antiexplosiva: 48v-50Ah\n• Autonomía: 120km\n• ⁠Caja VOTOL 50\n• Velocidad máxima: 50 km/h\n• Tranque en el timón \n• Luces LED, Alarma, encendido a distancia. \n• Bocina compatible con bluetooh, memoria USB y micro SD",
     "precio": 1700,
     "moneda": "USD",
-    "imagen": "",
-    "imagenes": [],
+    "imagen": "img/productos/motos/14.jpg",
+    "imagenes": [
+      "img/productos/motos/14.jpg"
+    ],
     "categoria": "motos-y-carros",
     "disponible": true,
     "destacado": false
