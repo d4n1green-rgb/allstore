@@ -69,8 +69,10 @@
     "descripcion": "⚙️ Características:\n\n• Motor: 1200W\n• Voltaje: 60/72V\n• Capacidad: 40Ah\n• Autonomía: 80-90 km\n\n🎁 Incluye: Cajón de carga y casco\n\n‼️📋 PAPELES EN REGLA (Aduana) 📋‼️\n\n🎨Color: ⚫⚪",
     "precio": 1720,
     "moneda": "USD",
-    "imagen": "",
-    "imagenes": [],
+    "imagen": "img/productos/motos/12.jpg",
+    "imagenes": [
+      "img/productos/motos/12.jpg"
+    ],
     "categoria": "motos-y-carros",
     "disponible": true,
     "destacado": false
