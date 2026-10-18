@@ -1,5 +1,19 @@
 [
   {
+    "id": "mishozuki-grillo-xtz4",
+    "nombre": "Mishozuki Grillo",
+    "descripcion": "•Motor: 3000w\n•Batería: 48v45ah \n•Autonomia: 120 km",
+    "precio": 1750,
+    "moneda": "USD",
+    "imagen": "img/productos/motos/17.png",
+    "imagenes": [
+      "img/productos/motos/17.png"
+    ],
+    "categoria": "motos-y-carros",
+    "disponible": true,
+    "destacado": false
+  },
+  {
     "id": "moto-de-combustion-motorstreck-de5v",
     "nombre": "Moto de Combustión MOTORSTRECK",
     "descripcion": "⚠️_Factura a nombre del comprador_⚠️\n\n☑️4 tiempos, 125cc, 0km\n☑️Unidad GS\n☑️Cuadro de criollo\n🎨•Colores : 🔴🖤💙\n\n🧾•Garantía 15 días !!!",
@@ -50,15 +64,13 @@
     "destacado": false
   },
   {
-    "id": "mishozuki-grillo-xtz4",
-    "nombre": "Mishozuki Grillo",
-    "descripcion": "•Motor: 3000w\n•Batería: 48v45ah \n•Autonomia: 120 km",
-    "precio": 1750,
+    "id": "moto-electrica-vortax-1b90",
+    "nombre": "Moto Eléctrica VORTAX",
+    "descripcion": "⚙️ Características:\n\n• Motor: 1200W\n• Voltaje: 60/72V\n• Capacidad: 40Ah\n• Autonomía: 80-90 km\n\n🎁 Incluye: Cajón de carga y casco\n\n‼️📋 PAPELES EN REGLA (Aduana) 📋‼️\n\n🎨Color: ⚫⚪",
+    "precio": 1720,
     "moneda": "USD",
-    "imagen": "img/productos/motos/17.png",
-    "imagenes": [
-      "img/productos/motos/17.png"
-    ],
+    "imagen": "",
+    "imagenes": [],
     "categoria": "motos-y-carros",
     "disponible": true,
     "destacado": false
