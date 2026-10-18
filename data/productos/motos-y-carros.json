@@ -98,6 +98,20 @@
     "destacado": false
   },
   {
+    "id": "moto-automatica-xmox-tank-pro-x200-racing-poco-uso-frz2",
+    "nombre": "Moto Automática XMOX Tank Pro x200 Racing (Poco uso)",
+    "descripcion": "•Chapa y Circulación\n•Velocidad máxima: 95-100km\n•Autonomía: 38-40km/L\n•Color: Negra y Rojo Vino con llantas, puños y descansapies Dorados\n•Ruedas de aleación 13\"\n•Luces Led\n•Pantalla LCD de alta calidad\n•Refrigeración por aire\n•Frenos de disco Delanteros y Traseros\n•Bluetooth, bocina interior y puerto de carga\n•Resguarda plásticos por todas partes( frente y costados Delanteros, en descansa pies, y los laterales traseros).\n\n★(Solo 900km recorridos)",
+    "precio": 2720,
+    "moneda": "USD",
+    "imagen": "img/productos/motos/5.jpeg",
+    "imagenes": [
+      "img/productos/motos/5.jpeg"
+    ],
+    "categoria": "motos-y-carros",
+    "disponible": true,
+    "destacado": true
+  },
+  {
     "id": "moto-de-combustion-motorstreck-de5v",
     "nombre": "Moto de Combustión MOTORSTRECK",
     "descripcion": "⚠️_Factura a nombre del comprador_⚠️\n\n☑️4 tiempos, 125cc, 0km\n☑️Unidad GS\n☑️Cuadro de criollo\n🎨•Colores : 🔴🖤💙\n\n🧾•Garantía 15 días !!!",
@@ -176,17 +190,17 @@
     "destacado": false
   },
   {
-    "id": "moto-automatica-xmox-tank-pro-x200-racing-poco-uso-frz2",
-    "nombre": "Moto Automática XMOX Tank Pro x200 Racing (Poco uso)",
-    "descripcion": "•Chapa y Circulación\n•Velocidad máxima: 95-100km\n•Autonomía: 38-40km/L\n•Color: Negra y Rojo Vino con llantas, puños y descansapies Dorados\n•Ruedas de aleación 13\"\n•Luces Led\n•Pantalla LCD de alta calidad\n•Refrigeración por aire\n•Frenos de disco Delanteros y Traseros\n•Bluetooth, bocina interior y puerto de carga\n•Resguarda plásticos por todas partes( frente y costados Delanteros, en descansa pies, y los laterales traseros).\n\n★(Solo 900km recorridos)",
+    "id": "moto-de-combustion-tk-lw9s",
+    "nombre": "Moto de Combustión TK",
+    "descripcion": "⚠️YA CON CHAPA, CERTIFICO y CIRCULACIÓN!!!⚠️\n\n☑️Original completa, incluyendo el cuadro\n☑️Automática, 200cc, 0km\n☑️Alarma, Luces LED y Reproductor MP3 (Bluetooth)\n☑️Llavero inteligente con arranque a distancia\n☑️Rim 13 con freno de disco delantero y trasero\n☑️Transmisión por correa\n\n🎨•Colores : 🔴🔵\n\n🧾•Se hace poder especial a nombre del cliente!!!",
     "precio": 2720,
     "moneda": "USD",
-    "imagen": "img/productos/motos/5.jpeg",
+    "imagen": "img/productos/motos/3.jpg",
     "imagenes": [
-      "img/productos/motos/5.jpeg"
+      "img/productos/motos/3.jpg"
     ],
     "categoria": "motos-y-carros",
     "disponible": true,
-    "destacado": true
+    "destacado": false
   }
 ]
