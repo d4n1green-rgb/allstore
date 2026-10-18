@@ -1,16 +1,5 @@
 [
   {
-    "id": "moto-electrica-bucatti-a4-740s",
-    "nombre": "Moto Eléctrica Bucatti A4",
-    "descripcion": "🛵 MOTOS ELÉCTRICAS BUCATTI A4\n\n⚙️ ESPECIFICACIONES:\n• 3000w - 72v - 45ah\n• Batería de litio antiexplosiva\n• Hasta 120 km de autonomía\n• Caja VOTOL 50\n• Velocidad máxima 70 km/h\n• Luces LED, Alarma, encendido a distancia\n• Bocina compatible con Bluetooth, memoria USB y micro SD\n\n🎁 INCLUYE: Cargador inteligente, 2 juegos de llaves\n🧾 PAPELES EN REGLA\n🎨 COLOR: Morado",
-    "precio": 2400,
-    "moneda": "USD",
-    "imagen": "img/productos/moto-electrica-bucatti-a4-740s.jpg",
-    "categoria": "motos-y-carros",
-    "disponible": true,
-    "destacado": false
-  },
-  {
     "id": "moto-de-combustion-motorstreck-de5v",
     "nombre": "Moto de Combustión MOTORSTRECK",
     "descripcion": "⚠️_Factura a nombre del comprador_⚠️\n\n☑️4 tiempos, 125cc, 0km\n☑️Unidad GS\n☑️Cuadro de criollo\n🎨•Colores : 🔴🖤💙\n\n🧾•Garantía 15 días !!!",
@@ -33,5 +22,31 @@
         "precio": 1770
       }
     ]
+  },
+  {
+    "id": "moto-electrica-bucatti-a4-740s",
+    "nombre": "Moto Eléctrica Bucatti A4",
+    "descripcion": "🛵 MOTOS ELÉCTRICAS BUCATTI A4\n\n⚙️ ESPECIFICACIONES:\n• 3000w - 72v - 45ah\n• Batería de litio antiexplosiva\n• Hasta 120 km de autonomía\n• Caja VOTOL 50\n• Velocidad máxima 70 km/h\n• Luces LED, Alarma, encendido a distancia\n• Bocina compatible con Bluetooth, memoria USB y micro SD\n\n🎁 INCLUYE: Cargador inteligente, 2 juegos de llaves\n🧾 PAPELES EN REGLA\n🎨 COLOR: Morado",
+    "precio": 2400,
+    "moneda": "USD",
+    "imagen": "img/productos/moto-electrica-bucatti-a4-740s.jpg",
+    "categoria": "motos-y-carros",
+    "disponible": true,
+    "destacado": false
+  },
+  {
+    "id": "moto-electrica-kvitova-r837",
+    "nombre": "Moto Eléctrica KVITOVA",
+    "descripcion": "•Motor: 1000w\n•Batería: 60V-20Ah\n•Velocidad máxima: 40-45km/h\n•Autonomía: 60-70km\n•Frenos: Disco delantero y trasero\n•Neumáticos: 300-10 (convencionales)",
+    "precio": 1520,
+    "moneda": "USD",
+    "imagen": "img/productos/motos/7.jpg",
+    "imagenes": [
+      "img/productos/motos/7.jpg",
+      "img/productos/motos/8.jpg"
+    ],
+    "categoria": "motos-y-carros",
+    "disponible": true,
+    "destacado": false
   }
 ]
