@@ -14,6 +14,20 @@
     "destacado": false
   },
   {
+    "id": "bicimoto-yoazaky-galactica-rw8d",
+    "nombre": "Bicimoto YOAZAKY GALÁCTICA",
+    "descripcion": "BICIMOTO YOAZAKI GALÁCTICA 2026 \n\n⚙️CARACTERÍSTICAS:\n\n• Motor: 3000w \n• ⁠Batería de litio antiexplosiva: 48v-50Ah\n• Autonomía: 120km\n• ⁠Caja VOTOL 50\n• Velocidad máxima: 50 km/h\n• Tranque en el timón \n• Luces LED, Alarma, encendido a distancia. \n• Bocina compatible con bluetooh, memoria USB y micro SD",
+    "precio": 1700,
+    "moneda": "USD",
+    "imagen": "img/productos/motos/14.jpg",
+    "imagenes": [
+      "img/productos/motos/14.jpg"
+    ],
+    "categoria": "motos-y-carros",
+    "disponible": true,
+    "destacado": false
+  },
+  {
     "id": "mishozuki-grillo-xtz4",
     "nombre": "Mishozuki Grillo",
     "descripcion": "•Motor: 3000w\n•Batería: 48v45ah \n•Autonomia: 120 km",
@@ -92,14 +106,14 @@
     "destacado": false
   },
   {
-    "id": "bicimoto-yoazaky-galactica-rw8d",
-    "nombre": "Bicimoto YOAZAKY GALÁCTICA",
-    "descripcion": "BICIMOTO YOAZAKI GALÁCTICA 2026 \n\n⚙️CARACTERÍSTICAS:\n\n• Motor: 3000w \n• ⁠Batería de litio antiexplosiva: 48v-50Ah\n• Autonomía: 120km\n• ⁠Caja VOTOL 50\n• Velocidad máxima: 50 km/h\n• Tranque en el timón \n• Luces LED, Alarma, encendido a distancia. \n• Bocina compatible con bluetooh, memoria USB y micro SD",
-    "precio": 1700,
+    "id": "bicimoto-halcon-mountain-x8qg",
+    "nombre": "Bicimoto HALCON MOUNTAIN",
+    "descripcion": "⚙️ Características\n\n• Motor: 3000 W\n• Batería: 48V-50Ah\n• Controlador/Caja: VOTOL EM-50\n• Autonomía: 120 Km\n\n‼️📋PAPELES DE ADUANA📋‼️\n\n🎨Colores disponibles: ⚫🔴",
+    "precio": 1620,
     "moneda": "USD",
-    "imagen": "img/productos/motos/14.jpg",
+    "imagen": "img/productos/motos/15.jpg",
     "imagenes": [
-      "img/productos/motos/14.jpg"
+      "img/productos/motos/15.jpg"
     ],
     "categoria": "motos-y-carros",
     "disponible": true,
