@@ -38,5 +38,10 @@
     "id": "materiales",
     "nombre": "Materiales de Construcción",
     "icon": "🧱"
+  },
+  {
+    "id": "triciclos",
+    "nombre": "Triciclos Eléctricos",
+    "icon": "🚚"
   }
 ]
