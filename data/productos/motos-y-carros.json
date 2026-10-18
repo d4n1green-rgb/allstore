@@ -76,5 +76,19 @@
     "categoria": "motos-y-carros",
     "disponible": true,
     "destacado": false
+  },
+  {
+    "id": "bicicleta-electrica-maf-hiij",
+    "nombre": "Bicicleta Eléctrica MAF",
+    "descripcion": "⚙️ CARACTERÍSTICAS: \n\n•Motor: 1200w\n• Batería 48v-20Ah\n• Autonomía: 50-60 km\n• ⁠Pantalla Digital\n• ⁠Frenos de banda \n• Luces LED\n\n🔋BATERÍA DE LITHIUM",
+    "precio": 640,
+    "moneda": "USD",
+    "imagen": "img/productos/motos/13.jpg",
+    "imagenes": [
+      "img/productos/motos/13.jpg"
+    ],
+    "categoria": "motos-y-carros",
+    "disponible": true,
+    "destacado": false
   }
 ]
