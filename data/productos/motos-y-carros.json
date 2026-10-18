@@ -14,6 +14,20 @@
     "destacado": false
   },
   {
+    "id": "bicimoto-fly-racing-c0cf",
+    "nombre": "Bicimoto FLY Racing",
+    "descripcion": "💥 Motor: 3000w\n🔋 Batería: 72V-50Ah LITHIUM\n💨Velocidad: 99km/h\n🏍️Autonomía: 130-150km\n🚨Luz Led de varios colores \n🎼Bocina compatible con bluetooth, memoria USB y micro SD",
+    "precio": 1870,
+    "moneda": "USD",
+    "imagen": "img/productos/motos/16.jpg",
+    "imagenes": [
+      "img/productos/motos/16.jpg"
+    ],
+    "categoria": "motos-y-carros",
+    "disponible": true,
+    "destacado": false
+  },
+  {
     "id": "bicimoto-halcon-mountain-x8qg",
     "nombre": "Bicimoto HALCON MOUNTAIN",
     "descripcion": "⚙️ Características\n\n• Motor: 3000 W\n• Batería: 48V-50Ah\n• Controlador/Caja: VOTOL EM-50\n• Autonomía: 120 Km\n\n‼️📋PAPELES DE ADUANA📋‼️\n\n🎨Colores disponibles: ⚫🔴",
@@ -148,15 +162,13 @@
     "destacado": false
   },
   {
-    "id": "bicimoto-fly-racing-c0cf",
-    "nombre": "Bicimoto FLY Racing",
-    "descripcion": "💥 Motor: 3000w\n🔋 Batería: 72V-50Ah LITHIUM\n💨Velocidad: 99km/h\n🏍️Autonomía: 130-150km\n🚨Luz Led de varios colores \n🎼Bocina compatible con bluetooth, memoria USB y micro SD",
-    "precio": 1870,
+    "id": "moto-lifan-panther-deportiva-lf250-10-e-zqo4",
+    "nombre": "Moto Lifan Panther Deportiva LF250-10-E",
+    "descripcion": "Especificaciones: \n•Motor: 250cc ; 4 tiempos CB233 monocilíndrico\n•Velocidad máxima: 120 km/h\n•Tanque: 12.5L\n•Autonomía: 450 km\n•Medidas: 2005x750x1065 mm\n•Peso: 141 kg\n•Neumático delantero: 100/80-17\n•Neumático trasero: 120/80-17\n•Ignición electrónica\n•Frenos delantero y trasero Disc/Disc\n•Pantalla velocímetro: LCD TFT\n•Suspensión delantera: hidráulica\n•Suspensión trasera: doble amortiguador \n•Cambios: manual, 6\n•Aceite: 15W40\n•Enfriamiento por aire\n•Batería: 12V\n•Potencia máxima: 12.5 kW/7500 rpm\n•Torque máximo 16.5 Nm/6500 rpm.\n\n(DE MOMENTO EL PRECIO SE ESTABLECE POR WHATSAPP)",
+    "precio": 3000,
     "moneda": "USD",
-    "imagen": "img/productos/motos/16.jpg",
-    "imagenes": [
-      "img/productos/motos/16.jpg"
-    ],
+    "imagen": "",
+    "imagenes": [],
     "categoria": "motos-y-carros",
     "disponible": true,
     "destacado": false
