@@ -1,9 +1,42 @@
 [
-  { "id": "motos-y-carros", "nombre": "Motos y Carros", "icon": "🏍️" },
-  { "id": "ropa", "nombre": "Ropa", "icon": "👕" },
-  { "id": "electrodomesticos", "nombre": "Electrodomésticos", "icon": "🔌" },
-  { "id": "casas", "nombre": "Casas", "icon": "🏠" },
-  { "id": "consolas", "nombre": "Consolas de Videojuegos", "icon": "🎮" },
-  { "id": "ecoflow-baterias", "nombre": "Ecoflow y Baterías", "icon": "🔋" },
-  { "id": "paneles-solares", "nombre": "Paneles y Kit Solares", "icon": "☀️" }
+  {
+    "id": "motos-y-carros",
+    "nombre": "Motos y Carros",
+    "icon": "🏍️"
+  },
+  {
+    "id": "ropa",
+    "nombre": "Ropa",
+    "icon": "👕"
+  },
+  {
+    "id": "electrodomesticos",
+    "nombre": "Electrodomésticos",
+    "icon": "🔌"
+  },
+  {
+    "id": "casas",
+    "nombre": "Casas",
+    "icon": "🏠"
+  },
+  {
+    "id": "consolas",
+    "nombre": "Consolas de Videojuegos",
+    "icon": "🎮"
+  },
+  {
+    "id": "ecoflow-baterias",
+    "nombre": "Ecoflow y Baterías",
+    "icon": "🔋"
+  },
+  {
+    "id": "paneles-solares",
+    "nombre": "Paneles y Kit Solares",
+    "icon": "☀️"
+  },
+  {
+    "id": "materiales",
+    "nombre": "Materiales de Construcción",
+    "icon": "🧱"
+  }
 ]
