@@ -38,5 +38,29 @@
         "precio": 305
       }
     ]
+  },
+  {
+    "id": "ps4-slim-pirateada-12-52-0qjf",
+    "nombre": "PS4 Slim Pirateada 12.52",
+    "descripcion": "🔥 🔵 PS4 Slim pirateada 12.52 (versión disco lista para jugar)\n🔌 Todos sus cables\n🎯 Relleno de juegos gratuito (+info en el WhatsApp)\n\nOferta 1️⃣\n215$ 🎮 Control original + forro de silicona\n\nOferta 2️⃣ \n240$ 🎮🎮 Control original + Control sellado PlayX multiplataforma + 2 forros de silicona",
+    "precio": 230,
+    "moneda": "USD",
+    "imagen": "img/productos/consolas de videojuegos/5.jpg",
+    "imagenes": [
+      "img/productos/consolas de videojuegos/5.jpg"
+    ],
+    "categoria": "consolas",
+    "disponible": true,
+    "destacado": false,
+    "variantes": [
+      {
+        "nombre": "Con control original + Forro de silicona ",
+        "precio": 230
+      },
+      {
+        "nombre": "Con control original + Control sellado PlayX multiplataforma + Dos Forros de Silicona ",
+        "precio": 260
+      }
+    ]
   }
 ]
