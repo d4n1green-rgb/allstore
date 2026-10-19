@@ -26,5 +26,19 @@
         "precio": 45
       }
     ]
+  },
+  {
+    "id": "tubo-de-acero-int0",
+    "nombre": "Tubo de Acero",
+    "descripcion": "🏗️ Tubos de Acero Redondos de 3/4\n\nOfrecemos tubos de acero redondos de la mejor calidad, perfectos para la fabricación de pasamanos, cercas, estructuras de techos, bases de mesas y múltiples proyectos de soldadura.\n\n📏 Especificación y Precio\n\n· Tubo Redondo de 3/4\n\n✅ Características:\n\n· Excelente resistencia y acabado.\n· Material listo para cortar y soldar.\n· Ideales para construcciones duraderas.\n\n📦 ¿Cómo comprar?\nSi necesitas varias unidades, solo escríbenos y te preparamos el pedido a la medida.\n\n📲 Para coordinar tu pedido o consultar disponibilidad, haz clic en el botón de WhatsApp y escríbenos directamente. ¡Construye con seguridad y calidad!",
+    "precio": 35,
+    "moneda": "USD",
+    "imagen": "img/productos/construccion/3.jpg",
+    "imagenes": [
+      "img/productos/construccion/3.jpg"
+    ],
+    "categoria": "materiales",
+    "disponible": true,
+    "destacado": false
   }
 ]
