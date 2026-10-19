@@ -226,8 +226,10 @@
     "descripcion": "• Motor: 350W\n• Batería: 4 baterías de gel de 12Ah\n• Voltaje: 48V-20Ah\n• Autonomía: 40-60km\n• Peso 53Kg\n• Bluetooth ; Luces LED",
     "precio": 640,
     "moneda": "USD",
-    "imagen": "",
-    "imagenes": [],
+    "imagen": "img/productos/motos/10.jpg",
+    "imagenes": [
+      "img/productos/motos/10.jpg"
+    ],
     "categoria": "motos-y-carros",
     "disponible": true,
     "destacado": false
