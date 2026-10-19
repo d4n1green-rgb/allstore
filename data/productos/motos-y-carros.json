@@ -14,6 +14,20 @@
     "destacado": false
   },
   {
+    "id": "bicimoto-electrica-jmd-dlqf",
+    "nombre": "Bicimoto Eléctrica JMD",
+    "descripcion": "🎁 Traen de regalo casco , capa para la moto y guantillas \n\n•Motor: 3000W\n•48V-50Ah\n• Autonomía: 100 km ✅\n• Luces LED \n• Alarma \n• Bocina ( bluetooth ) \n• ⁠Batería de litio Extraible \n• ⁠3 Velocidad y Marcha atrás \n• ⁠Sistema de frenos de Disco  \n\n🎨Colores: 🟣🔴🔵⚫",
+    "precio": 1380,
+    "moneda": "USD",
+    "imagen": "img/productos/motos/1.jpeg",
+    "imagenes": [
+      "img/productos/motos/1.jpeg"
+    ],
+    "categoria": "motos-y-carros",
+    "disponible": true,
+    "destacado": false
+  },
+  {
     "id": "bicimoto-fly-racing-c0cf",
     "nombre": "Bicimoto FLY Racing",
     "descripcion": "💥 Motor: 3000w\n🔋 Batería: 72V-50Ah LITHIUM\n💨Velocidad: 99km/h\n🏍️Autonomía: 130-150km\n🚨Luz Led de varios colores \n🎼Bocina compatible con bluetooth, memoria USB y micro SD",
@@ -207,15 +221,13 @@
     "destacado": false
   },
   {
-    "id": "bicimoto-electrica-jmd-dlqf",
-    "nombre": "Bicimoto Eléctrica JMD",
-    "descripcion": "🎁 Traen de regalo casco , capa para la moto y guantillas \n\n•Motor: 3000W\n•48V-50Ah\n• Autonomía: 100 km ✅\n• Luces LED \n• Alarma \n• Bocina ( bluetooth ) \n• ⁠Batería de litio Extraible \n• ⁠3 Velocidad y Marcha atrás \n• ⁠Sistema de frenos de Disco  \n\n🎨Colores: 🟣🔴🔵⚫",
-    "precio": 1380,
+    "id": "bicimoto-jmd-5iuv",
+    "nombre": "Bicimoto JMD",
+    "descripcion": "• Motor: 350W\n• Batería: 4 baterías de gel de 12Ah\n• Voltaje: 48V-20Ah\n• Autonomía: 40-60km\n• Peso 53Kg\n• Bluetooth ; Luces LED",
+    "precio": 640,
     "moneda": "USD",
-    "imagen": "img/productos/motos/1.jpeg",
-    "imagenes": [
-      "img/productos/motos/1.jpeg"
-    ],
+    "imagen": "",
+    "imagenes": [],
     "categoria": "motos-y-carros",
     "disponible": true,
     "destacado": false
