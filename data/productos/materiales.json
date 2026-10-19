@@ -1,1 +1,30 @@
-[]
+[
+  {
+    "id": "perfiles-de-acero-varios-tamanos-g5m8",
+    "nombre": "Perfiles de Acero (Varios tamaños)",
+    "descripcion": "🏗️ Perfiles de Acero Cuadrados para Estructuras y Soldadura\n\n¿Necesitas material resistente para tu obra, rejas, techos o portones? Tenemos a la venta perfiles de acero cuadrados de excelente grosor y durabilidad, ideales para todo tipo de trabajos de carpintería metálica.\n\n📏 Tamaños:\n\n· Perfil 20x20\n· Perfil 30x30\n· Perfil 40x40\n\n✅ Características:\n\n· Acero de alta resistencia.\n· Listos para usar en estructuras pesadas o ligeras.\n· Ideales para soldadores y constructores.\n\n📦 ¿Cómo comprar?\nSelecciona el tamaño que necesitas en el menú de opciones. Si llevas varios, indícanos la cantidad exacta y te calculamos el total.\n\n📲 Para coordinar tu pedido, verificar disponibilidad o acordar la entrega, escríbenos directamente por WhatsApp haciendo clic en el botón de abajo.",
+    "precio": 35,
+    "moneda": "USD",
+    "imagen": "img/productos/construccion/2.jpg",
+    "imagenes": [
+      "img/productos/construccion/2.jpg"
+    ],
+    "categoria": "materiales",
+    "disponible": true,
+    "destacado": false,
+    "variantes": [
+      {
+        "nombre": "Perfil 20x20",
+        "precio": 35
+      },
+      {
+        "nombre": "Perfil 30x30",
+        "precio": 40
+      },
+      {
+        "nombre": "Perfil 40x40",
+        "precio": 45
+      }
+    ]
+  }
+]
