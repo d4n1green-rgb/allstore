@@ -14,5 +14,29 @@
     "categoria": "consolas",
     "disponible": true,
     "destacado": false
+  },
+  {
+    "id": "ps4-pro-glacier-white-pirateada-13-02-9jca",
+    "nombre": "PS4 Pro Glacier White Pirateada 13.02",
+    "descripcion": "Pirateada 13.02 (no hace falta memoria ni disco)\n🔌 Todos sus cables\n💾 1 TB de almacenamiento \n🎯 Relleno de juegos gratuitos (+info en el WhatsApp)",
+    "precio": 285,
+    "moneda": "USD",
+    "imagen": "img/productos/consolas de videojuegos/4.jpg",
+    "imagenes": [
+      "img/productos/consolas de videojuegos/4.jpg"
+    ],
+    "categoria": "consolas",
+    "disponible": true,
+    "destacado": false,
+    "variantes": [
+      {
+        "nombre": "Mando original + Forro de silicona",
+        "precio": 285
+      },
+      {
+        "nombre": "Mando original con forro + Control PlayX multiplataforma sellado acompañado de forro",
+        "precio": 305
+      }
+    ]
   }
 ]
